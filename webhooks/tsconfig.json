@@ -2,7 +2,21 @@
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
     "rootDir": ".",
-    "outDir": "build"
+    "outDir": "build",
+    "paths": {
+      "@r2-utils-js/*": [
+        "./node_modules/r2-utils-js/dist/es6-es2015/src/*"
+      ],
+      "@r2-opds-js/*": [
+        "./node_modules/r2-opds-js/dist/es6-es2015/src/*"
+      ],
+      "@r2-shared-js/*": [
+        "./node_modules/r2-shared-js/dist/es6-es2015/src/*"
+      ],
+      "@r2-lcp-js/*": [
+        "./node_modules/r2-lcp-js/dist/es6-es2015/src/*"
+      ]
+    }
   },
   "include": [
     "src/**/*.ts",

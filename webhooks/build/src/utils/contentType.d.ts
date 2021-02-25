@@ -1,0 +1,34 @@
+export declare enum ContentType {
+    AtomXml = "application/atom+xml",
+    Xml = "application/xml",
+    TextXml = "text/xml",
+    Json = "application/json",
+    JsonLd = "application/ld+json",
+    Opds2 = "application/opds+json",
+    Divina = "application/divina+json",
+    DivinaPacked = "application/divina+zip",
+    Opds2Auth = "application/opds-authentication+json",
+    Opds2Pub = "application/opds-publication+json",
+    Opds2AuthVendorV1_0 = "application/vnd.opds.authentication.v1.0+json",
+    OpenSearch = "application/opensearchdescription+xml",
+    FormUrlEncoded = "application/x-www-form-url-encoded",
+    Xhtml = "application/xhtml+xml",
+    Html = "text/html",
+    Epub = "application/epub+zip",
+    Lpf = "application/lpf+zip",
+    AudioBook = "application/audiobook+json",
+    webpub = "application/webpub+json",
+    AudioBookPacked = "application/audiobook+zip",
+    AudioBookPackedLcp = "application/audiobook+lcp",
+    webpubPacked = "application/webpub+zip",
+    Lcp = "application/vnd.readium.lcp.license.v1.0+json",
+    Lsd = "application/vnd.readium.license.status.v1.0+json",
+    lcppdf = "application/pdf+lcp",
+    pdf = "application/pdf",
+    ApiProblem = "application/api-problem+json"
+}
+export declare const parseContentType: (RawContentType: string) => ContentType | undefined;
+export declare const contentTypeisXml: (contentType: ContentType | undefined) => boolean | undefined;
+export declare const contentTypeisOpds: (contentType: ContentType | undefined) => boolean | undefined;
+export declare const contentTypeisOpdsAuth: (contentType: ContentType | undefined) => boolean;
+export declare const contentTypeisApiProblem: (contentType: ContentType | undefined) => boolean;
