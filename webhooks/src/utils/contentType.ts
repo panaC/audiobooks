@@ -56,7 +56,7 @@ export const contentTypeisXml = (contentType: ContentType | undefined) =>
         || contentType === ContentType.TextXml
     );
 
-export const contentTypeisOpds = (contentType: ContentType | undefined) =>
+export const contentTypeisOpds = (contentType: any): contentType is ContentType =>
     contentType && (
         contentType === ContentType.Json
         || contentType === ContentType.Opds2

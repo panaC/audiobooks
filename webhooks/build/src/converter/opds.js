@@ -16,6 +16,9 @@ const opds2_properties_1 = require("@r2-opds-js/opds/opds2/opds2-properties");
 const fallback_1 = require("./tools/fallback");
 const filterLink_1 = require("./tools/filterLink");
 const resolveUrl_1 = require("./tools/resolveUrl");
+const init_globals_1 = require("@r2-opds-js/opds/init-globals");
+init_globals_1.initGlobalConverters_GENERIC();
+init_globals_1.initGlobalConverters_OPDS();
 const debug = console.log;
 const supportedFileTypeLinkArray = [
     contentType_1.ContentType.AudioBookPacked,
@@ -78,6 +81,7 @@ class OpdsFeedViewConverter {
             title: ln.Title,
             type: ln.TypeLink,
             rel: ln.Rel && ln.Rel.length > 0 ? ln.Rel[0] : undefined,
+            duration: ln.Duration,
         };
     }
     filterLinks(links, filter) {
@@ -242,7 +246,7 @@ class OpdsFeedViewConverter {
         return {
             title,
             metadata: undefined,
-            publications: undefined,
+            publications: [],
             navigation: undefined,
             links: undefined,
             groups: undefined,
@@ -309,7 +313,7 @@ class OpdsFeedViewConverter {
                 text: this.convertFilterLinksToView(baseUrl, r2OpdsFeed.Links, { type: [contentType_1.ContentType.Html] }),
                 self: this.convertFilterLinksToView(baseUrl, r2OpdsFeed.Links, { rel: "self" }),
             };
-        const metadata = r2OpdsFeed.Metadata &&
+        const metadata = r2OpdsFeed.Metadata ?
             {
                 numberOfItems: typeof r2OpdsFeed.Metadata.NumberOfItems === "number" ?
                     r2OpdsFeed.Metadata.NumberOfItems : undefined,
@@ -317,7 +321,7 @@ class OpdsFeedViewConverter {
                     r2OpdsFeed.Metadata.ItemsPerPage : undefined,
                 currentPage: typeof r2OpdsFeed.Metadata.CurrentPage === "number" ?
                     r2OpdsFeed.Metadata.CurrentPage : undefined
-            };
+            } : undefined;
         return {
             title,
             metadata,

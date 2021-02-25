@@ -7,8 +7,8 @@
 
 import * as moment from "moment";
 import {
-    IOpdsAuthView, IOpdsCoverView, IOpdsFeedMetadataView, IOpdsFeedView, IOpdsGroupView,
-    IOpdsLinkView, IOpdsNavigationLink, IOpdsNavigationLinkView, IOPDSPropertiesView,
+    IOpdsAuthView, IOpdsCoverView, IOpdsFeedMetadataView,  IOpdsGroupView,
+    IOpdsLinkView, IOpdsNavigationLink, IOpdsNavigationLinkView,
     IOpdsPublicationView, IOpdsResultView, IOpdsTagView, IOpdsContributorView, IOpdsFacetView
 } from "../interface/opds";
 import { convertMultiLangStringToString } from "./tools/localisation";
@@ -17,11 +17,9 @@ import { ContentType } from "../utils/contentType";
 import { IWithAdditionalJSON, TaJsonSerialize } from "@r2-lcp-js/serializable";
 import { OPDSFeed } from "@r2-opds-js/opds/opds2/opds2";
 import { OPDSAuthenticationDoc } from "@r2-opds-js/opds/opds2/opds2-authentication-doc";
-import { OPDSAvailabilityEnum } from "@r2-opds-js/opds/opds2/opds2-availability";
 import { OPDSFacet } from "@r2-opds-js/opds/opds2/opds2-facet";
 import { OPDSGroup } from "@r2-opds-js/opds/opds2/opds2-group";
 import { OPDSLink } from "@r2-opds-js/opds/opds2/opds2-link";
-import { OPDSCurrencyEnum } from "@r2-opds-js/opds/opds2/opds2-price";
 import { OPDSProperties } from "@r2-opds-js/opds/opds2/opds2-properties";
 import { OPDSPublication } from "@r2-opds-js/opds/opds2/opds2-publication";
 import { Contributor } from "@r2-shared-js/models/metadata-contributor";
@@ -30,8 +28,13 @@ import { Subject } from "@r2-shared-js/models/metadata-subject";
 import { fallback } from "./tools/fallback";
 import { filterRelLink, filterTypeLink } from "./tools/filterLink";
 import { urlPathResolve } from "./tools/resolveUrl";
-import { TLinkMayBeOpds, TProperties } from "./type/link.type";
+import { TLinkMayBeOpds } from "./type/link.type";
 import { ILinkFilter } from "./type/linkFilter.interface";
+
+import { initGlobalConverters_GENERIC, initGlobalConverters_OPDS } from "@r2-opds-js/opds/init-globals";
+
+initGlobalConverters_GENERIC();
+initGlobalConverters_OPDS();
 
 const debug = console.log;
 
@@ -108,6 +111,7 @@ export class OpdsFeedViewConverter {
             title: ln.Title,
             type: ln.TypeLink,
             rel: ln.Rel && ln.Rel.length > 0 ? ln.Rel[0] : undefined,
+            duration: ln.Duration,
         };
     }
 
@@ -336,7 +340,7 @@ export class OpdsFeedViewConverter {
         return {
             title,
             metadata: undefined,
-            publications: undefined,
+            publications: [],
             navigation: undefined,
             links: undefined,
             groups: undefined,
@@ -428,7 +432,7 @@ export class OpdsFeedViewConverter {
             text: this.convertFilterLinksToView(baseUrl, r2OpdsFeed.Links, { type: [ContentType.Html] }),
             self: this.convertFilterLinksToView(baseUrl, r2OpdsFeed.Links, { rel: "self" }),
         };
-        const metadata: IOpdsFeedMetadataView | undefined = r2OpdsFeed.Metadata &&
+        const metadata: IOpdsFeedMetadataView | undefined = r2OpdsFeed.Metadata ?
         {
             numberOfItems: typeof r2OpdsFeed.Metadata.NumberOfItems === "number" ?
                 r2OpdsFeed.Metadata.NumberOfItems : undefined,
@@ -436,7 +440,7 @@ export class OpdsFeedViewConverter {
                 r2OpdsFeed.Metadata.ItemsPerPage : undefined,
             currentPage: typeof r2OpdsFeed.Metadata.CurrentPage === "number" ?
                 r2OpdsFeed.Metadata.CurrentPage : undefined
-        };
+        } : undefined;
 
         return {
             title,

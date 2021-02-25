@@ -29,6 +29,6 @@ export declare enum ContentType {
 }
 export declare const parseContentType: (RawContentType: string) => ContentType | undefined;
 export declare const contentTypeisXml: (contentType: ContentType | undefined) => boolean | undefined;
-export declare const contentTypeisOpds: (contentType: ContentType | undefined) => boolean | undefined;
+export declare const contentTypeisOpds: (contentType: any) => contentType is ContentType;
 export declare const contentTypeisOpdsAuth: (contentType: ContentType | undefined) => boolean;
 export declare const contentTypeisApiProblem: (contentType: ContentType | undefined) => boolean;

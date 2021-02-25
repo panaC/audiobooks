@@ -45,7 +45,7 @@ export interface IOpdsResultView {
     title: string;
     metadata?: IOpdsFeedMetadataView;
     navigation?: IOpdsNavigationLinkView[];
-    publications?: IOpdsPublicationView[];
+    publications: IOpdsPublicationView[];
     links?: IOpdsNavigationLink;
     facets?: IOpdsFacetView[];
     groups?: IOpdsGroupView[];
@@ -91,9 +91,10 @@ export interface IOpdsContributorView extends IOpdsBaseLinkView {
 }
 export interface IOpdsLinkView {
     url: string;
-    title?: string | undefined;
-    type?: string | undefined;
+    title?: string;
+    type?: string;
     properties?: IOPDSPropertiesView;
+    duration?: number;
     rel?: string;
 }
 export interface IOpdsNavigationLink {
