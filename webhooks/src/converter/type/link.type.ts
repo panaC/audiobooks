@@ -5,11 +5,11 @@
 // that can be found in the LICENSE file exposed on Github (readium) in the project repository.
 // ==LICENSE-END==
 
-import { OPDSLink } from "@r2-opds-js/opds/opds2/opds2-link";
-import { OPDSProperties } from "@r2-opds-js/opds/opds2/opds2-properties";
+import {OPDSLink} from '@r2-opds-js/opds/opds2/opds2-link';
+import {OPDSProperties} from '@r2-opds-js/opds/opds2/opds2-properties';
 
 export type TProperties = Partial<OPDSProperties>;
-type TLink = Omit<OPDSLink, "Properties">;
+type TLink = Omit<OPDSLink, 'Properties'>;
 export type TLinkMayBeOpds = TLink & {
-    Properties: TProperties,
+  Properties: TProperties;
 };

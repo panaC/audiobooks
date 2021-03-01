@@ -5,8 +5,8 @@
 // that can be found in the LICENSE file exposed on Github (readium) in the project repository.
 // ==LICENSE-END==
 
-import { Contributor } from "@r2-shared-js/models/metadata-contributor";
-import { IStringMap } from "@r2-shared-js/models/metadata-multilang";
+import {Contributor} from '@r2-shared-js/models/metadata-contributor';
+import {IStringMap} from '@r2-shared-js/models/metadata-multilang';
 // import { diMainGet } from "readium-desktop/main/di";
 
 // https://github.com/IDPF/epub3-samples/blob/master/30/regime-anticancer-arabic/EPUB/package.opf
@@ -42,17 +42,20 @@ import { IStringMap } from "@r2-shared-js/models/metadata-multilang";
 // https://github.com/readium/webpub-manifest/blob/ff5c1e9e76ccc184d4d670179cfb70ced691fcec/schema/contributor-object.schema.json#L7-L24
 // tslint:disable-next-line: max-line-length
 // https://github.com/readium/webpub-manifest/blob/ff5c1e9e76ccc184d4d670179cfb70ced691fcec/schema/metadata.schema.json#L15-L32
-export function convertMultiLangStringToString(items: string | IStringMap | undefined): string {
-    if (typeof items === "object") {
-        // FIXME: main DI inside common utils!!
-        // const translator = diMainGet("translator");
-        const langs = Object.keys(items);
-        const lang = langs.filter((l) =>
-            l.toLowerCase().includes(/*translator.getLocale().toLowerCase())*/ 'fr'));
-        const localeLang = lang[0];
-        return items[localeLang] || items._ || items[langs[0]];
-    }
-    return items || "";
+export function convertMultiLangStringToString(
+  items: string | IStringMap | undefined
+): string {
+  if (typeof items === 'object') {
+    // FIXME: main DI inside common utils!!
+    // const translator = diMainGet("translator");
+    const langs = Object.keys(items);
+    const lang = langs.filter(l =>
+      l.toLowerCase().includes(/*translator.getLocale().toLowerCase())*/ 'fr')
+    );
+    const localeLang = lang[0];
+    return items[localeLang] || items._ || items[langs[0]];
+  }
+  return items || '';
 }
 
 // Note that the contributor JSON Schema applies to the serialized format:
@@ -66,15 +69,17 @@ export function convertMultiLangStringToString(items: string | IStringMap | unde
 // https://github.com/readium/r2-shared-js/blob/develop/test/test-JSON-Contributor.ts
 // https://github.com/readium/r2-shared-js/blob/develop/src/models/metadata-contributor-json-converter.ts
 // https://github.com/readium/r2-shared-js/blob/develop/src/models/metadata-contributor.ts
-export function convertContributorArrayToStringArray(items: Contributor[] | undefined): string[] {
-    if (!items) {
-        return  [];
-    }
+export function convertContributorArrayToStringArray(
+  items: Contributor[] | undefined
+): string[] {
+  if (!items) {
+    return [];
+  }
 
-    return items.map((item) => {
-        if (typeof item.Name === "object") {
-            return convertMultiLangStringToString(item.Name);
-        }
-        return item.Name;
-    });
+  return items.map(item => {
+    if (typeof item.Name === 'object') {
+      return convertMultiLangStringToString(item.Name);
+    }
+    return item.Name;
+  });
 }
