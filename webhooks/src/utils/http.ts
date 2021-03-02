@@ -1,5 +1,4 @@
 import fetch, {Headers} from 'node-fetch';
-import {URL} from 'node:url';
 import {
   IHttpGetResult,
   THttpGetCallback,
@@ -7,6 +6,7 @@ import {
   THttpResponse,
 } from './type/http';
 import * as https from 'https';
+import {URL} from 'url';
 
 const DEFAULT_HTTP_TIMEOUT = 30000;
 const debug = console.log;

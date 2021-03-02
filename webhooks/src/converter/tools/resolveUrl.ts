@@ -5,7 +5,7 @@
 // that can be found in the LICENSE file exposed on Github (readium) in the project repository.
 // ==LICENSE-END==
 
-import {URL} from 'node:url';
+import {URL} from 'url';
 
 export const urlPathResolve = (from: string, to: string) =>
   to && !/^https?:\/\//.exec(to) && !/^data:\/\//.exec(to)

@@ -5,8 +5,8 @@
 // that can be found in the LICENSE file exposed on Github (readium) in the project repository.
 // ==LICENSE-END==
 
+import {URL} from 'url';
 import {RequestInit, Response} from 'node-fetch';
-import {URL} from 'node:url';
 
 export type THttpOptions = RequestInit;
 export type THttpResponse = Response;

@@ -2,6 +2,7 @@
   "extends": "./node_modules/gts/tsconfig-google.json",
   "compilerOptions": {
     "rootDir": ".",
+    "baseUrl": ".",
     "outDir": "build",
     "paths": {
       "@r2-utils-js/*": [

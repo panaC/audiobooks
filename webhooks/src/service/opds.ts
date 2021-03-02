@@ -13,8 +13,8 @@ import {Publication as R2Publication} from '@r2-shared-js/models/publication';
 import fetch, {Headers, RequestInit} from 'node-fetch';
 import * as https from 'https';
 import {httpFetchFormattedResponse} from '../utils/http';
-import {ok} from 'node:assert';
 import {IWebPubView} from '../interface/webpub';
+import {ok} from 'assert';
 
 const debug = console.log;
 
