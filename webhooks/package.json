@@ -11,7 +11,7 @@
   "keywords": [],
   "scripts": {
     "test": "mocha -r tsconfig-paths/register build/test/**/*.js",
-    "run": "node -r tsconfig-paths/register build/src/index.js",
+    "start": "node -r tsconfig-paths/register build/src/index.js",
     "lint": "gts lint",
     "clean": "gts clean",
     "compile": "tsc",

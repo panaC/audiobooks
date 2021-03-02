@@ -1,122 +1,136 @@
 import {TaJsonDeserialize} from 'r2-lcp-js/dist/es6-es2015/src/serializable';
+import {OPDSFeed} from 'r2-opds-js/dist/es6-es2015/src/opds/opds2/opds2';
 import {Publication as R2Publication} from 'r2-shared-js/dist/es6-es2015/src/models/publication';
-import {webpubViewConverter} from './di';
+import {opdsFeedViewConverter, webpubViewConverter} from './di';
+import * as util from 'util';
 
 const json = {
-  '@context': 'https://readium.org/webpub-manifest/context.jsonld',
   metadata: {
-    '@type': 'http://schema.org/Audiobook',
-    title: "L'assommoir",
-    identifier: 'assommoir_emile_zola',
-    author: 'Emile Zola',
-    publisher: 'archive',
-    language: 'fr',
-    description:
-      "L'Assommoir est un roman d'Émile Zola publié en feuilleton dès 1876 dans Le Bien public, puis dans La République des Lettres, avant sa sortie en livre en 1877 chez l'éditeur Georges Charpentier. C'est le septième volume de la série Les Rougon-Macquart.",
-    rights: '',
-    duration: 61664,
-    subject: 'roman',
+    title: 'audiobok feed',
   },
   links: [
     {
-      type: 'application/webpub+json',
       rel: 'self',
-      href:
-        'https://storage.googleapis.com/audiobook_edrlab/webpub/assommoir_emile_zola.json',
+      href: 'https://storage.googleapis.com/audiobook_edrlab/feed.json',
+      type: 'application/opds+json',
+    },
+    {
+      rel: 'search',
+      href: 'search function link',
+      type: 'application/opds+json',
     },
   ],
-  readingOrder: [
+  navigation: [
     {
       href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-Chapitre01.mp3',
-      type: 'audio/mpeg',
-      duration: 4054,
+        'https://storage.googleapis.com/audiobook_edrlab/navigation/all.json',
+      title: 'All Publications',
+      type: 'application/opds+json',
     },
     {
       href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre02.mp3',
-      type: 'audio/mpeg',
-      duration: 3979,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre03.mp3',
-      type: 'audio/mpeg',
-      duration: 4253,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre04.mp3',
-      type: 'audio/mpeg',
-      duration: 4232,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre05.mp3',
-      type: 'audio/mpeg',
-      duration: 4697,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre06.mp3',
-      type: 'audio/mpeg',
-      duration: 4754,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre07.mp3',
-      type: 'audio/mpeg',
-      duration: 5536,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre08.mp3',
-      type: 'audio/mpeg',
-      duration: 5649,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre09.mp3',
-      type: 'audio/mpeg',
-      duration: 5738,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre10.mp3',
-      type: 'audio/mpeg',
-      duration: 5734,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre11.mp3',
-      type: 'audio/mpeg',
-      duration: 5973,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre12.mp3',
-      type: 'audio/mpeg',
-      duration: 4723,
-    },
-    {
-      href:
-        'https://archive.org/download/LAssommoir/Emile-Zola-L-Assommoir-chapitre13.mp3',
-      type: 'audio/mpeg',
-      duration: 2342,
+        'https://storage.googleapis.com/audiobook_edrlab/groups/popular.json',
+      title: 'Popular Publications',
+      type: 'application/opds+json',
+      rel: 'http://opds-spec.org/sort/popular',
     },
   ],
-  resources: [
+  groups: [
     {
-      type: 'image/jpeg',
-      rel: 'cover',
-      href: 'https://ia600200.us.archive.org/8/items/LAssommoir/__ia_thumb.jpg',
+      metadata: {
+        title: 'popular audiobooks',
+        numberOfItems: 2,
+      },
+      links: [
+        {
+          rel: 'self',
+          href:
+            'https://storage.googleapis.com/audiobook_edrlab/groups/popular.json',
+          type: 'application/opds+json',
+        },
+      ],
+      publications: [
+        {
+          metadata: {
+            '@type': 'http://schema.org/Audiobook',
+            title: "L'assommoir",
+            identifier: 'assommoir_emile_zola',
+            author: 'Emile Zola',
+            publisher: 'archive',
+            language: 'fr',
+            description:
+              "L'Assommoir est un roman d'Émile Zola publié en feuilleton dès 1876 dans Le Bien public, puis dans La République des Lettres, avant sa sortie en livre en 1877 chez l'éditeur Georges Charpentier. C'est le septième volume de la série Les Rougon-Macquart.",
+            rights: '',
+            duration: 61664,
+            subject: 'roman',
+          },
+          links: [
+            {
+              type: 'application/opds-publication+json',
+              rel: 'self',
+              href:
+                'https://storage.googleapis.com/audiobook_edrlab/opdspub/assommoir_emile_zola.json',
+            },
+            {
+              rel: 'http://opds-spec.org/acquisition/open-access',
+              type: 'application/webpub+json',
+              href:
+                'https://storage.googleapis.com/audiobook_edrlab/webpub/assommoir_emile_zola.json',
+            },
+          ],
+          images: [
+            {
+              type: 'image/jpeg',
+              href:
+                'https://ia600200.us.archive.org/8/items/LAssommoir/__ia_thumb.jpg',
+            },
+          ],
+        },
+        {
+          metadata: {
+            '@type': 'http://schema.org/Audiobook',
+            title: 'Du contrat social',
+            identifier: 'du_contrat_social_rousseau',
+            author: 'Rousseau',
+            publisher: 'archive',
+            language: 'fr',
+            description:
+              "Du contrat social ou Principes du droit politique est un ouvrage de philosophie politique pensé et écrit par Jean-Jacques Rousseau, publié en 1762. L'œuvre a constitué un tournant décisif pour la modernité et s'est imposée comme un des textes majeurs de la philosophie politique et sociale, en affirmant le principe de souveraineté du peuple appuyé sur les notions de liberté, d'égalité, et de volonté générale. ",
+            rights: '',
+            duration: 14127,
+            subject: 'essai',
+          },
+          links: [
+            {
+              type: 'application/opds-publication+json',
+              rel: 'self',
+              href:
+                'https://storage.googleapis.com/audiobook_edrlab/opdspub/du_contrat_social_rousseau.json',
+            },
+            {
+              rel: 'http://opds-spec.org/acquisition/open-access',
+              href:
+                'https://storage.googleapis.com/audiobook_edrlab/webpub/du_contrat_social_rousseau.json',
+              type: 'application/webpub+json',
+            },
+          ],
+          images: [
+            {
+              type: 'image/jpeg',
+              href:
+                'https://upload.wikimedia.org/wikipedia/commons/d/db/Social_contract_rousseau_page.jpg',
+            },
+          ],
+        },
+      ],
     },
   ],
-  toc: [],
-  landmarks: [],
 };
 
-const pub = TaJsonDeserialize(json, R2Publication);
-const view = webpubViewConverter.convertWebpubToView(pub, '');
+const feed = TaJsonDeserialize(json, OPDSFeed);
+const view = opdsFeedViewConverter.convertOpdsFeedToView(
+  feed,
+  'https://storage.googleapis.com/'
+);
 
-console.log(view);
+console.log(util.inspect(view, {showHidden: false, depth: null}));
