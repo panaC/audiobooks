@@ -3,6 +3,7 @@
   "compilerOptions": {
     "rootDir": ".",
     "baseUrl": ".",
+    "resolveJsonModule": true,
     "outDir": "build",
     "paths": {
       "@r2-utils-js/*": [
@@ -21,6 +22,7 @@
   },
   "include": [
     "src/**/*.ts",
-    "test/**/*.ts"
+    "test/**/*.ts",
+    "locales/**/*.json"
   ]
 }
