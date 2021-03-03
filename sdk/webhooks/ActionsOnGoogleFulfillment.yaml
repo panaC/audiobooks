@@ -1,0 +1,5 @@
+handlers:
+- name: main
+httpsEndpoint:
+  baseUrl: https://943f70849b67.ngrok.io
+  endpointApiVersion: 2
