@@ -1,6 +1,12 @@
 defaultLocale: fr
 localizedSettings:
   displayName: audiobooks
-  pronunciation: audiobooks
+  pronunciation: lecteur livre audio
+  developerEmail: panacpp@gmail.com
+  developerName: pierre leroux
+  fullDescription: 
+  privacyPolicyUrl:
+  smallLogoImage:
+  termsOfServiceUrl:
   voice: female_1
 projectId: audiobooks-a6348
