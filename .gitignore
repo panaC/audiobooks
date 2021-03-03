@@ -1,6 +1,8 @@
 
-webhooks/build/
+service_account.json
 
+webhooks/build/
+test/build
 
 .*.swp
 
