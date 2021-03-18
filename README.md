@@ -10,6 +10,6 @@ opds feed : https://storage.googleapis.com/audiobook_edrlab/feed.json
 
 #### update
 
-'gsutil cp -R publication-database gs://audiobook_edrlab'
+`gsutil cp -R publication-database gs://audiobook_edrlab`
 
-'gsutil iam ch allUsers:objectViewer gs://audiobook_edrlab'
+`gsutil iam ch allUsers:objectViewer gs://audiobook_edrlab`
