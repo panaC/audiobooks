@@ -15,16 +15,19 @@
  */
 
 import 'mocha';
-import {ActionsOnGoogleTestManager} from '@assistant/conversation-testing';
-import {resolve} from 'path';
 
-const DEFAULT_LOCALE = 'en-US';
+import {env} from 'process';
+import {ActionsOnGoogleTestManager} from '@assistant/conversation-testing';
+
+const DEFAULT_LOCALE = 'fr-FR';
 const DEFAULT_SURFACE = 'PHONE';
 const CONTINUE_CONVO_PROMPT =
-  'I can show you basic cards, lists, and more on your phone and smart display. What would you like to see?';
+  "Bienvenue dans l'application d'écoute de livres audio";
 
-const PROJECT_ID = 'audiobooks-a6348';
-const TRIGGER_PHRASE = 'Parler avec audioboks';
+const PROJECT_ID = env['PROJECT_ID'] || '';
+const TRIGGER_PHRASE = 'Parler avec audiobooks';
+
+console.log(PROJECT_ID);
 
 // tslint:disable:only-arrow-functions
 
@@ -38,7 +41,7 @@ describe('My Action Test Suite', function () {
     test.assertSpeech(CONTINUE_CONVO_PROMPT);
     test.assertText(CONTINUE_CONVO_PROMPT);
     test.assertIntent('actions.intent.MAIN');
-    test.assertScene('Prompts');
+    // test.assertScene('Prompts');
   }
 
   before('before all', async () => {
@@ -54,9 +57,8 @@ describe('My Action Test Suite', function () {
   });
 
   it('trigger only', async () => {
-    // test.setTestSurface('SMART_DISPLAY');
     await startConversation();
-    await test.sendStop();
+    // await test.sendStop();
     test.assertConversationEnded();
   });
 });

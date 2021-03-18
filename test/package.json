@@ -10,7 +10,7 @@
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
-    "test": "env GOOGLE_APPLICATION_CREDENTIALS=$PWD/../service_account.json mocha --recursive build/src/test.js",
+    "test": "env GOOGLE_APPLICATION_CREDENTIALS=$PWD/../service_account.json PROJECT_ID=$(cat $PWD/../service_account.json| jq -r '.project_id') mocha --recursive build/src/test.js",
     "enable-activity-controls": "env GOOGLE_APPLICATION_CREDENTIALS=$PWD/../service_account.json web-and-app-activity-controls",
     "lint": "gts lint",
     "clean": "gts clean",
