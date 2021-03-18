@@ -1,0 +1,100 @@
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Audiobook",
+    "title": "vingt mille lieu sous les mers",
+    "identifier": "vingt_mille_lieu_sous_les_mers_verne",
+    "author": "Jule Verne",
+    "publisher": "archive",
+    "language": "fr",
+    "description": "Vingt Mille Lieues sous les mers est un roman d'aventures de Jules Verne, paru en 1869-1870. Il relate le voyage de trois naufragés capturés par le capitaine Nemo, mystérieux inventeur qui parcourt les fonds des mers à bord du Nautilus, un sous-marin très en avance sur les technologies de l'époque. ",
+    "rights": "",
+    "duration": 48007,
+    "subject": "roman"
+  },
+  "links": [
+    {
+      "type": "application/webpub+json",
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/vingt_mille_lieu_sous_les_mers_verne.json"
+    }
+  ],
+  "readingOrder": [
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part1.mp3",
+          "type": "audio/mpeg",
+          "duration": 3332
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part2.mp3",
+          "type": "audio/mpeg",
+          "duration": 4398
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part3.mp3",
+          "type": "audio/mpeg",
+          "duration": 3845
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part4.mp3",
+          "type": "audio/mpeg",
+          "duration": 3753
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part5.mp3",
+          "type": "audio/mpeg",
+          "duration": 4880
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part6.mp3",
+          "type": "audio/mpeg",
+          "duration": 3810
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part7.mp3",
+          "type": "audio/mpeg",
+          "duration": 4170
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part8.mp3",
+          "type": "audio/mpeg",
+          "duration": 3914
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part9.mp3",
+          "type": "audio/mpeg",
+          "duration": 3503
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part10.mp3",
+          "type": "audio/mpeg",
+          "duration": 3840
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part11.mp3",
+          "type": "audio/mpeg",
+          "duration": 3235
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part12.mp3",
+          "type": "audio/mpeg",
+          "duration": 2921
+      },
+      {
+          "href": "https://archive.org/download/Vingt-mille-lieues-sous-les-mers/Verne-2000-part13.mp3",
+          "type": "audio/mpeg",
+          "duration": 2316
+      }
+  ],
+  "resources": [
+    {
+      "type": "image/jpeg",
+      "rel": "cover",
+      "href": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Houghton_FC8_V5946_869ve_-_Verne%2C_frontispiece.jpg/800px-Houghton_FC8_V5946_869ve_-_Verne%2C_frontispiece.jpg"
+    }
+  ],
+  "toc": [
+  ],
+  "landmarks": [
+  ]
+}

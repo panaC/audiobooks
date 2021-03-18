@@ -1,0 +1,75 @@
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Audiobook",
+    "title": "le prince",
+    "identifier": "machiavel_le_prince",
+    "author": "Nicolas Machiavel",
+    "publisher": "archive",
+    "language": "fr",
+    "description": "Le Prince, traduction française de l'ouvrage Il Principe ou De Principatibus est un traité politique écrit au début du XVIe siècle par Nicolas Machiavel, homme politique et écrivain florentin, qui montre comment devenir prince et le rester, analysant des exemples de l'histoire antique et de l'histoire italienne de l'époque. Parce que l'ouvrage ne donnait pas de conseils moraux au prince comme les traités classiques adressés à des rois, et qu'au contraire il conseillait dans certains cas des actions contraires aux bonnes mœurs, il a été souvent accusé d'immoralisme, donnant lieu à l'épithète machiavélique. Cependant, l'ouvrage a connu une grande postérité et a été loué et analysé par de nombreux penseurs. ",
+    "rights": "",
+    "duration": 19115,
+    "subject": "essai"
+  },
+  "links": [
+    {
+      "type": "application/webpub+json",
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/machiavel_le_prince.json"
+    }
+  ],
+  "readingOrder": [
+      {
+          "href": "https://archive.org/download/Machiavel-Le-Prince/Machiavel-Le-Prince-1-3.mp3",
+          "type": "audio/mpeg",
+          "duration": 5546
+      },
+      {
+          "href": "https://archive.org/download/Machiavel-Le-Prince/Machiavel-Le-Prince-4-7.mp3",
+          "type": "audio/mpeg",
+          "duration": 2462
+      },
+      {
+          "href": "https://archive.org/download/Machiavel-Le-Prince/Machiavel-Le-Prince-8-11.mp3",
+          "type": "audio/mpeg",
+          "duration": 2050
+      },
+      {
+          "href": "https://archive.org/download/Machiavel-Le-Prince/Machiavel-Le-Prince-12-14.mp3",
+          "type": "audio/mpeg",
+          "duration": 2042
+      },
+      {
+          "href": "https://archive.org/download/Machiavel-Le-Prince/Machiavel-Le-Prince-15-18.mp3",
+          "type": "audio/mpeg",
+          "duration": 1832
+      },
+      {
+          "href": "https://archive.org/download/Machiavel-Le-Prince/Machiavel-Le-Prince-19.mp3",
+          "type": "audio/mpeg",
+          "duration": 1780
+      },
+      {
+          "href": "https://archive.org/download/Machiavel-Le-Prince/Machiavel-Le-Prince-20-22.mp3",
+          "type": "audio/mpeg",
+          "duration": 1577
+      },
+      {
+          "href": "https://archive.org/download/Machiavel-Le-Prince/Machiavel-Le-Prince-23-26.mp3",
+          "type": "audio/mpeg",
+          "duration": 1826
+      }
+  ],
+  "resources": [
+    {
+      "type": "image/jpeg",
+      "rel": "cover",
+      "href": "https://upload.wikimedia.org/wikipedia/commons/7/77/Machiavelli_Principe_Cover_Page.jpg"
+    }
+  ],
+  "toc": [
+  ],
+  "landmarks": [
+  ]
+}

@@ -1,0 +1,40 @@
+{ 
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Audiobook",
+    "title": "peau d'âne",
+    "identifier": "peau_dane_perrault",
+    "author": "Charles Perrault",
+    "publisher": "archive",
+    "language": "fr",
+    "description": "contes pour enfants",
+    "rights": "",
+    "duration": 1211,
+    "subject": "nouvelle"
+  },
+  "links": [
+    {
+      "type": "application/webpub+json",
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/peau_dane_perrault.json"
+    }
+  ],
+  "readingOrder": [
+      {
+          "href": "https://storage.googleapis.com/audiobook_edrlab/audio/peau-d-ane-charles-perrault.mp3",
+          "type": "audio/mpeg",
+          "duration": 1211
+      }
+  ],
+  "resources": [
+    {
+      "type": "image/jpeg",
+      "rel": "cover",
+      "href": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Peau_d%27%C3%A2ne.jpg"
+    }
+  ],
+  "toc": [
+  ],
+  "landmarks": [
+  ]
+}

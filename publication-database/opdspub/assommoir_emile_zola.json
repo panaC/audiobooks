@@ -1,0 +1,32 @@
+{
+    "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "L'assommoir",
+        "identifier": "assommoir_emile_zola",
+        "author": "Emile Zola",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "L'Assommoir est un roman d'Émile Zola publié en feuilleton dès 1876 dans Le Bien public, puis dans La République des Lettres, avant sa sortie en livre en 1877 chez l'éditeur Georges Charpentier. C'est le septième volume de la série Les Rougon-Macquart.",
+        "rights": "",
+        "duration": 61664,
+        "subject": "roman"
+    },
+    "links": [
+        {
+            "type": "application/opds-publication+json",
+            "rel": "self",
+            "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/assommoir_emile_zola.json"
+        },
+        {
+            "rel": "http://opds-spec.org/acquisition/open-access",
+            "type": "application/webpub+json",
+            "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/assommoir_emile_zola.json"
+        }
+    ],
+    "images": [
+        {
+            "type": "image/jpeg",
+            "href": "https://ia600200.us.archive.org/8/items/LAssommoir/__ia_thumb.jpg"
+        }
+    ]
+}

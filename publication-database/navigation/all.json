@@ -1,0 +1,238 @@
+{
+  "metadata": {
+    "title": "all audiobooks"
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/navigation/all.json",
+      "type": "application/opds+json"
+    }
+  ],
+  "publications": [
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "L'assommoir",
+        "identifier": "assommoir_emile_zola",
+        "author": "Emile Zola",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "L'Assommoir est un roman d'Émile Zola publié en feuilleton dès 1876 dans Le Bien public, puis dans La République des Lettres, avant sa sortie en livre en 1877 chez l'éditeur Georges Charpentier. C'est le septième volume de la série Les Rougon-Macquart.",
+        "rights": "",
+        "duration": 61664,
+        "subject": "roman"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/assommoir_emile_zola.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "type": "application/webpub+json",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/assommoir_emile_zola.json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "href": "https://ia600200.us.archive.org/8/items/LAssommoir/__ia_thumb.jpg"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "Du contrat social",
+        "identifier": "du_contrat_social_rousseau",
+        "author": "Rousseau",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "Du contrat social ou Principes du droit politique est un ouvrage de philosophie politique pensé et écrit par Jean-Jacques Rousseau, publié en 1762. L'œuvre a constitué un tournant décisif pour la modernité et s'est imposée comme un des textes majeurs de la philosophie politique et sociale, en affirmant le principe de souveraineté du peuple appuyé sur les notions de liberté, d'égalité, et de volonté générale. ",
+        "rights": "",
+        "duration": 14127,
+        "subject": "essai"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/du_contrat_social_rousseau.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/du_contrat_social_rousseau.json",
+          "type": "application/webpub+json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "href": "https://upload.wikimedia.org/wikipedia/commons/d/db/Social_contract_rousseau_page.jpg"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "La chevre de monsieur segin",
+        "identifier": "la_chevre_de_monsieur_segin_daudet",
+        "author": "Alphonse Daudet",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "La Chèvre de monsieur Seguin est l'une des nouvelles des Lettres de mon moulin d'Alphonse Daudet. Son inspiration relève possiblement du poète Théocrite (vers 310, mort vers 250 av. J.-C.). D'après Claude Gagnière, elle est clairement attribuée à son prête-plume, Paul Arène1. D'après Roger Ripoll, éditeur des œuvres de Daudet dans la Bibliothèque de la Pléiade, l'étendue de la collaboration de Paul Arène aux Lettres est impossible à déterminer2. Sous forme de lettre à un ami, Pierre Gringoire, c'est un apologue inspiré (d'après les dernières lignes du texte) d'une histoire populaire de Provence. ",
+        "rights": "",
+        "duration": 756,
+        "subject": "nouvelle"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/la_chevre_de_monsieur_segin_daudet.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/la_chevre_de_monsieur_segin_daudet.json",
+          "type": "application/webpub+json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "href": "https://upload.wikimedia.org/wikipedia/commons/1/15/La_Ch%C3%A8vre_de_monsieur_Seguin_de_Daudet.jpg"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "la guerre des boutons",
+        "identifier": "la_guerre_des_boutons_pergaud",
+        "author": "pergaud",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "",
+        "rights": "",
+        "duration": 5553,
+        "subject": "roman"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/la_guerre_des_boutons_pergaud.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/la_guerre_des_boutons_pergaud.json",
+          "type": "application/webpub+json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "href": "https://upload.wikimedia.org/wikipedia/fr/a/ac/Affiche_Guerre_des_boutons_1962.jpg"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "le prince",
+        "identifier": "machiavel_le_prince",
+        "author": "Nicolas Machiavel",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "Le Prince, traduction française de l'ouvrage Il Principe ou De Principatibus est un traité politique écrit au début du XVIe siècle par Nicolas Machiavel, homme politique et écrivain florentin, qui montre comment devenir prince et le rester, analysant des exemples de l'histoire antique et de l'histoire italienne de l'époque. Parce que l'ouvrage ne donnait pas de conseils moraux au prince comme les traités classiques adressés à des rois, et qu'au contraire il conseillait dans certains cas des actions contraires aux bonnes mœurs, il a été souvent accusé d'immoralisme, donnant lieu à l'épithète machiavélique. Cependant, l'ouvrage a connu une grande postérité et a été loué et analysé par de nombreux penseurs. ",
+        "rights": "",
+        "duration": 19115,
+        "subject": "essai"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/machiavel_le_prince.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/machiavel_le_prince.json",
+          "type": "application/webpub+json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "href": "https://upload.wikimedia.org/wikipedia/commons/7/77/Machiavelli_Principe_Cover_Page.jpg"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "peau d'âne",
+        "identifier": "peau_dane_perrault",
+        "author": "Charles Perrault",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "contes pour enfants",
+        "rights": "",
+        "duration": 1211,
+        "subject": "nouvelle"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/peau_dane_perrault.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/peau_dane_perrault.json",
+          "type": "application/webpub+json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "href": "https://upload.wikimedia.org/wikipedia/commons/e/eb/Peau_d%27%C3%A2ne.jpg"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "vingt mille lieu sous les mers",
+        "identifier": "vingt_mille_lieu_sous_les_mers_verne",
+        "author": "Jule Verne",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "Vingt Mille Lieues sous les mers est un roman d'aventures de Jules Verne, paru en 1869-1870. Il relate le voyage de trois naufragés capturés par le capitaine Nemo, mystérieux inventeur qui parcourt les fonds des mers à bord du Nautilus, un sous-marin très en avance sur les technologies de l'époque. ",
+        "rights": "",
+        "duration": 48007,
+        "subject": "roman"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/vingt_mille_lieu_sous_les_mers_verne.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/vingt_mille_lieu_sous_les_mers_verne.json",
+          "type": "application/webpub+json"
+        }
+      ],
+      "resources": [
+        {
+          "type": "image/jpeg",
+          "href": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Houghton_FC8_V5946_869ve_-_Verne%2C_frontispiece.jpg/800px-Houghton_FC8_V5946_869ve_-_Verne%2C_frontispiece.jpg"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{ 
+  "metadata": {
+    "@type": "http://schema.org/Audiobook",
+    "title": "la guerre des boutons",
+    "identifier": "la_guerre_des_boutons_pergaud",
+    "author": "pergaud",
+    "publisher": "archive",
+    "language": "fr",
+    "description": "",
+    "rights": "",
+    "duration": 5553,
+    "subject": "roman"
+  },
+  "links": [
+    {
+      "type": "application/opds-publication+json",
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/la_guerre_des_boutons_pergaud.json"
+    },
+    {
+      "rel": "http://opds-spec.org/acquisition/open-access",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/la_guerre_des_boutons_pergaud.json",
+      "type": "application/webpub+json"
+    }
+  ],
+  "images": [
+    {
+      "type": "image/jpeg",
+      "href": "https://upload.wikimedia.org/wikipedia/fr/a/ac/Affiche_Guerre_des_boutons_1962.jpg"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "metadata": {
+    "@type": "http://schema.org/Audiobook",
+    "title": "vingt mille lieu sous les mers",
+    "identifier": "vingt_mille_lieu_sous_les_mers_verne",
+    "author": "Jule Verne",
+    "publisher": "archive",
+    "language": "fr",
+    "description": "Vingt Mille Lieues sous les mers est un roman d'aventures de Jules Verne, paru en 1869-1870. Il relate le voyage de trois naufragés capturés par le capitaine Nemo, mystérieux inventeur qui parcourt les fonds des mers à bord du Nautilus, un sous-marin très en avance sur les technologies de l'époque. ",
+    "rights": "",
+    "duration": 48007,
+    "subject": "roman"
+  },
+  "links": [
+    {
+      "type": "application/opds-publication+json",
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/vingt_mille_lieu_sous_les_mers_verne.json"
+    },
+    {
+      "rel": "http://opds-spec.org/acquisition/open-access",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/vingt_mille_lieu_sous_les_mers_verne.json",
+      "type": "application/webpub+json"
+    }
+  ],
+  "resources": [
+    {
+      "type": "image/jpeg",
+      "href": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/10/Houghton_FC8_V5946_869ve_-_Verne%2C_frontispiece.jpg/800px-Houghton_FC8_V5946_869ve_-_Verne%2C_frontispiece.jpg"
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Audiobook",
+    "title": "Du contrat social",
+    "identifier": "du_contrat_social_rousseau",
+    "author": "Rousseau",
+    "publisher": "archive",
+    "language": "fr",
+    "description": "Du contrat social ou Principes du droit politique est un ouvrage de philosophie politique pensé et écrit par Jean-Jacques Rousseau, publié en 1762. L'œuvre a constitué un tournant décisif pour la modernité et s'est imposée comme un des textes majeurs de la philosophie politique et sociale, en affirmant le principe de souveraineté du peuple appuyé sur les notions de liberté, d'égalité, et de volonté générale. ",
+    "rights": "",
+    "duration": 14127,
+    "subject": "essai"
+  },
+  "links": [
+    {
+      "type": "application/webpub+json",
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/du_contrat_social_rousseau.json"
+    }
+  ],
+  "readingOrder": [
+      {
+          "href": "https://archive.org/download/Du-contrat-social/Du_contrat_social_livre1.mp3",
+          "type": "audio/mpeg",
+          "duration": 2035
+      },
+      {
+          "href": "https://archive.org/download/Du-contrat-social/Du_contrat_social_livre2.mp3",
+          "type": "audio/mpeg",
+          "duration": 3265
+      },
+      {
+          "href": "https://archive.org/download/Du-contrat-social/Du_contrat_social_livre3.mp3",
+          "type": "audio/mpeg",
+          "duration": 4891
+      },
+      {
+          "href": "https://archive.org/download/Du-contrat-social/Du_contrat_social_livre4.mp3",
+          "type": "audio/mpeg",
+          "duration": 3936
+      }
+  ],
+  "resources": [
+    {
+      "type": "image/jpeg",
+      "rel": "cover",
+      "href": "https://upload.wikimedia.org/wikipedia/commons/d/db/Social_contract_rousseau_page.jpg"
+    }
+  ],
+  "toc": [
+  ],
+  "landmarks": [
+  ]
+}

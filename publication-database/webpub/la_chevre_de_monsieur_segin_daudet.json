@@ -1,0 +1,40 @@
+{ 
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Audiobook",
+    "title": "La chevre de monsieur segin",
+    "identifier": "la_chevre_de_monsieur_segin_daudet",
+    "author": "Alphonse Daudet",
+    "publisher": "archive",
+    "language": "fr",
+    "description": "La Chèvre de monsieur Seguin est l'une des nouvelles des Lettres de mon moulin d'Alphonse Daudet. Son inspiration relève possiblement du poète Théocrite (vers 310, mort vers 250 av. J.-C.). D'après Claude Gagnière, elle est clairement attribuée à son prête-plume, Paul Arène1. D'après Roger Ripoll, éditeur des œuvres de Daudet dans la Bibliothèque de la Pléiade, l'étendue de la collaboration de Paul Arène aux Lettres est impossible à déterminer2. Sous forme de lettre à un ami, Pierre Gringoire, c'est un apologue inspiré (d'après les dernières lignes du texte) d'une histoire populaire de Provence. ",
+    "rights": "",
+    "duration": 756,
+    "subject": "nouvelle"
+  },
+  "links": [
+    {
+      "type": "application/webpub+json",
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/la_chevre_de_monsieur_segin_daudet.json"
+    }
+  ],
+  "readingOrder": [
+      {
+          "href": "https://archive.org/download/LaChevreDeMonsieurSeguin/la-chevre-de-M-Seguin.mp3",
+          "type": "audio/mpeg",
+          "duration": 756
+      }
+  ],
+  "resources": [
+    {
+      "type": "image/jpeg",
+      "rel": "cover",
+      "href": "https://upload.wikimedia.org/wikipedia/commons/1/15/La_Ch%C3%A8vre_de_monsieur_Seguin_de_Daudet.jpg"
+    }
+  ],
+  "toc": [
+  ],
+  "landmarks": [
+  ]
+}
