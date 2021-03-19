@@ -14,7 +14,10 @@ the webhooks is one-way communication of type [request-resonse](https://en.wikip
 ## quickstart
 
 `npm run compile`
+
 `npm run start`
+
+
 `./ngrok.sh` __on another terminal__
 
 
