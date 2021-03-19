@@ -1,6 +1,6 @@
 
 
-URL (CI/CD) : https://webhooks-4ovpraf5sq-ew.a.run.app/
+
 
 
 # webhooks
@@ -11,18 +11,41 @@ it receive voice request from google actions api and send back the conversationa
 
 the webhooks is one-way communication of type [request-resonse](https://en.wikipedia.org/wiki/Request%E2%80%93response). It's not possible to send information to the google actions api without a request from it 
 
+## quickstart
 
-## architecture
+`npm run compile`
+`npm run start`
+`./ngrok.sh` __on another terminal__
+
+
+### local test suite
+
+`npm run test`
+
+### eslint
+
+
+`npm run fix`
+
+
+### Continous delivery
+
+there are an automatic build webhooks to construct the container in GCP container build and deploy on google cloud run
+the build start at every push in main branch
+
+cf URL : https://webhooks-4ovpraf5sq-ew.a.run.app/
+
+
+## micro-service architecture
 
 
 ``` 
-
- |=================|         |==================|          |=================
- |                 |         |                  |          |                |
- | google actions  |  http   |   webhooks       | http json|  opds2 feed    |
- |     API         |<------->| server (node js) |<-------->|                |
- |                 |         |                  |          |                |
- |=================|         |==================|          |================|
+ |=================|         |==================|           |=================
+ |                 |         |                  |           |                |
+ | google actions  |  http   |   webhooks       | http json |  opds2 feed    |
+ |     API         |<------->| server (node js) |<--------->|                |
+ |                 |         |                  |           |                |
+ |=================|         |==================|           |================|
                                       
 ```
 
@@ -183,4 +206,24 @@ example GOOGLE ID TOKEN JWT :
 
 https://github.com/panaC/opds2-auth-test-server
 
+
+## software architecture
+
+lay on the MVC pattern :
+- Model : opds api with access by service class
+- View : google action API or perhaps in the future to amazon skills
+- Controler : Conversationnal flows
+
+with 2 externals services : 
+- Depency injections common on each class
+- I18n for the translation
+
+#### Memory (database): 
+
+google actions provide 2 tiny json storages : one for the session (delete at the end) and one persistent (user storage)
+
+the project in his first stage doesn't need a lot of storage..
+their 2 kind of storages is tranmit in the request-response (webhooks is stateless) : the storage capacity should not exess of much KO.
+
+What is the storage footprint of the project ? **TODO**
 
