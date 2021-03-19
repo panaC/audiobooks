@@ -206,6 +206,26 @@ example GOOGLE ID TOKEN JWT :
 ```
 
 
+**UPDATE**
+
+we cannot use google sign-in authentication.
+
+google sign-in is for register the user in webhooks database.
+
+oauth2 implicit grant allows this type of authentication.
+authentication by oauth2 server
+
+opds2 auth spec allow to authenticate the user with implicit grant
+
+https://drafts.opds.io/authentication-for-opds-1.0.html#345-implicit-grant
+
+but the redirect uri is hardcoded in the spec
+need to extend in implementation server this limitation
+
+    if redirect_uri param is filed do not redirect to opds://authorize
+    same for state param
+
+
 #### opdsAuthentication playground server
 
 https://github.com/panaC/opds2-auth-test-server
