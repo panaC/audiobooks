@@ -188,7 +188,7 @@ the webhook get back the http data and say it to the user. (sucess or failure)
 **opdsAuthentication format ?**  TODO
 
 example GOOGLE ID TOKEN JWT : 
-```json
+```js
 
 {
   "sub": 1234567890,        // The unique ID of the user's Google Account
