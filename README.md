@@ -21,7 +21,7 @@ The deadline for first stage of the project (cf technical specification) is for 
 ## some technical challenges
 
 - It need to have a powerful opds feed with some audiobooks, the search feature, and so one 
-- Creation of a convesational flows (you speak to a machine, so, need to be carefully crafted)
+- Creation of a convesational flows (you speak to a machine, so, needs to be carefully crafted)
 - The player/streaming machine and the connection to the google home player (some limitation like media-status has been solved recently)
 - The deployment of the project
 
