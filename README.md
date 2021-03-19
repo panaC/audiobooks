@@ -5,7 +5,9 @@
 ## purpose of the project
 
 you have an opds feed with audiobook
+
 you have a google home nest speaker (or your phone)
+
 **SO** You can enjoy to read an audiobook on the google home
 
 ## This project is a work in progress
