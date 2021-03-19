@@ -1,5 +1,5 @@
 
 
-18/03/21 : 8 hours -- online test
+18/03/21 : 8 hours -- online test -- demo opds feed
 19/03/21 : 8 hours -- technical spec (webhooks, ..)
 
