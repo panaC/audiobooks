@@ -1,6 +1,6 @@
 # audiobooks
 
-**listen an audiobook on smart speaker**
+**listen an audiobook on a smart speaker**
 
 ## purpose of the project
 
