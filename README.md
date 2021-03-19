@@ -18,7 +18,7 @@ The deadline for first stage of the project (cf technical specification) is for 
 
 **not working at all**
 
-## some technical challenge
+## some technical challenges
 
 - It need to have a powerful opds feed with some audiobooks, the search feature, and so one 
 - Creation of a convesational flows (you speak to a machine, so, need to be carefully crafted)
