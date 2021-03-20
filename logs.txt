@@ -1,5 +1,7 @@
 
 
 18/03/21 : 8 hours -- online test -- demo opds feed
-19/03/21 : 8 hours -- technical spec (webhooks, ..)
+19/03/21 : 8 hours -- technical spec (webhooks, ..) - authentication (switch to implict grand instead google sign-in sso)
+20/03/21 : n hours -- 
+    fix opds2 auth server implicit grant https://github.com/panaC/opds2-auth-test-server/commit/3785646c87cb618d818a05177d9ac4532cc50248
 
