@@ -25,6 +25,19 @@ The deadline for first stage of the project (cf technical specification) is for 
 - The player/streaming machine and the connection to the google home player (some limitation like media-status has been solved recently)
 - The deployment of the project
 
+
+## architecture
+
+``` 
+ |=================|         |==================|           |=================            =================|
+ |                 |         |                  |           |                |            |                |
+ | google home     |  voice  |  google actions  | http json |  webhooks      |   opds2    |  opds2 feed    |
+ |  smart speaker  |<------->|    platforms     |<--------->|    (node js)   |<---------->|    wepbub      |
+ |                 |         |   (NLU -> API)   |           |                |            |                |
+ |=================|         |==================|           |================|            |================|
+                                      
+```
+
 ## webhooks
 
 see the webhooks readme
