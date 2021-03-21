@@ -5,3 +5,11 @@
 20/03/21 : n hours -- 
     fix opds2 auth server implicit grant https://github.com/panaC/opds2-auth-test-server/commit/3785646c87cb618d818a05177d9ac4532cc50248
     update opds2 search microservice https://github.com/panaC/opds2-search
+
+implicit flow authentication doens't work -- bug google ?
+I follow the process https://developers.google.com/assistant/identity/oauth2?oauth=implicit
+with this oauth-implicit-login page : https://opds-auth-test-server-aplqpqv3wa-ey.a.run.app/implicit/login
+I receive the authentication notification in my google home application on my phone .. but nothing happens on click (it should display the login html page)
+
+21/03/21 : n hours --
+    works on the basic 'read a book' flow
