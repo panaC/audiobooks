@@ -29,12 +29,12 @@ The deadline for first stage of the project (cf technical specification) is for 
 ## architecture
 
 ``` 
- |=================|         |==================|           |=================            =================|
- |                 |         |                  |           |                |            |                |
- | google home     |  voice  |  google actions  | http json |  webhooks      |   opds2    |  opds2 feed    |
- |  smart speaker  |<------->|    platforms     |<--------->|    (node js)   |<---------->|    wepbub      |
- |                 |         |   (NLU -> API)   |           |                |            |   mp3 on CDN   |
- |=================|         |==================|           |================|            |================|
+ |=================|         |==================|           |=================            ==================|
+ |                 |         |                  |           |                |            |                 |
+ | google home     |  voice  |  google actions  | http json |  webhooks      |   opds2    |  opds2 feed     |
+ |  smart speaker  |<------->|    platforms     |<--------->|    (node js)   |<---------->|    wepbub       |
+ |                 |         |   (NLU -> API)   |           |                |            | mp3 http served |
+ |=================|         |==================|           |================|            |=================|
                                       
 ```
 
