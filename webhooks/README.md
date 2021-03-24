@@ -248,11 +248,11 @@ for more convenience this code is a number with 2 digits (90 possibilies to find
 
 #### authentication demo server :
 
-GET /login : send the html authentication form
-POST /login : send the access_token (json)
-       (user/pass)
-POST /verify  :  200 : ok
-        (token)  401 : ko
+- GET /login : send the html authentication form
+- POST /login : send the access_token (json)
+-       (user/pass)
+- POST /verify  :  200 : ok
+-        (token)  401 : ko
 
 ## software architecture
 
