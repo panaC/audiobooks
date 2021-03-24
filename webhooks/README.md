@@ -230,6 +230,29 @@ need to extend in implementation server this limitation
 
 https://github.com/panaC/opds2-auth-test-server
 
+**UPDATE2**
+
+oauth implicit doesn't work on google server
+
+oauth process crash !
+
+no communication with the oauth server
+
+
+the more simple sollution is an authentication on the conversation side.
+There are no need to use google oauth method to authenticate the application
+
+in the authentication process ask to user a unique code randomly generate from the web library dashboard
+
+for more convenience this code is a number with 2 digits (90 possibilies to find the right one) and a lifespan of some minutes
+
+#### authentication demo server :
+
+GET /login : send the html authentication form
+POST /login : send the access_token (json)
+       (user/pass)
+POST /verify  :  200 : ok
+        (token)  401 : ko
 
 ## software architecture
 
