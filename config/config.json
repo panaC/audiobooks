@@ -1,0 +1,13 @@
+{
+  "feed": {
+    "all": "https://storage.googleapis.com/audiobook_edrlab/navigation/all.json",
+    "popular": "https://storage.googleapis.com/audiobook_edrlab/groups/popular.json",
+    "search": "https://europe-west1-audiobooks-a6348.cloudfunctions.net/indexer?url=https://storage.googleapis.com/audiobook_edrlab/navigation/all.json&query={query}"
+  },
+  "locale": {
+    "first": {
+      "fr": "bonjour",
+      "en": "hello"
+    }
+  }
+}
