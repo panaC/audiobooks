@@ -10,8 +10,6 @@ import {OPDSPublication} from 'r2-opds-js/dist/es6-es2015/src/opds/opds2/opds2-p
 import {opdsFeedViewConverter, webpubViewConverter} from '../di';
 import {OPDSFeed} from 'r2-opds-js/dist/es6-es2015/src/opds/opds2/opds2';
 import {Publication as R2Publication} from '@r2-shared-js/models/publication';
-import fetch, {Headers, RequestInit} from 'node-fetch';
-import * as https from 'https';
 import {httpFetchFormattedResponse} from '../utils/http';
 import {IWebPubView} from '../interface/webpub';
 import {ok} from 'assert';

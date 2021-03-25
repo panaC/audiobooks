@@ -20,7 +20,7 @@ export async function httpFetchRawResponse(
     options.headers instanceof Headers
       ? options.headers
       : new Headers(options.headers || {});
-  options.headers.set('user-agent', 'readium-desktop');
+  options.headers.set('user-agent', 'fetch');
   options.headers.set('accept-language', `${locale},en-US;q=0.7,en;q=0.5`);
 
   // https://github.com/node-fetch/node-fetch#custom-agent
@@ -50,9 +50,9 @@ export async function httpFetchRawResponse(
 
   debug('fetch URL:', `${url}`);
   debug('Method', options.method);
-  debug('Request headers :');
-  debug(options.headers);
-  debug('###');
+  // debug('Request headers :');
+  // debug(options.headers);
+  // debug('###');
   debug('OK: ', response.ok);
   debug('status code :', response.status);
   debug('status text :', response.statusText);
@@ -89,9 +89,9 @@ export async function httpFetchFormattedResponse<TData = undefined>(
   try {
     const response = await httpFetchRawResponse(url, options, locale);
 
-    debug('Response headers :');
-    debug({...response.headers.raw()});
-    debug('###');
+    // debug('Response headers :');
+    // debug({...response.headers.raw()});
+    // debug('###');
 
     result = {
       isAbort: false,

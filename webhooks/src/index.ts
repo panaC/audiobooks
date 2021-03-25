@@ -2,16 +2,19 @@ import * as bodyParser from 'body-parser';
 import * as express from 'express';
 
 // Import the appropriate service and chosen wrappers
-import {conversation, Image} from '@assistant/conversation';
-import {i18n} from './di';
+import {conversation, Image, Media} from '@assistant/conversation';
+import { configService, localeService } from './di';
+import { tryCatch } from './utils/tryCatch';
 // https://github.com/actions-on-google/assistant-conversation-nodejs
 
 // Create an app instance
 const app = conversation();
 
 // Register handlers for Actions SDK
-app.handle('main', conv => {
-  conv.add(i18n.__('main.home.message', 'test'));
+app.handle('main', async (conv) => {
+
+  const config = await configService.get();
+  conv.add(localeService.translate(config.locale?.first, "config.locale.first"));
   conv.add(
     new Image({
       url:
@@ -19,16 +22,22 @@ app.handle('main', conv => {
       alt: 'A cat',
     })
   );
+
+  console.log(conv.user.params);;
+  
 });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.middleware((conv, framework) => {
-  i18n.setLocale(conv.user.locale || 'fr-FR');
 
-  console.log('i18n set locale ', i18n.getLocale(), conv.user.locale);
+  console.log('conv.user.locale=', conv.user.locale);
+  tryCatch(() => localeService.locale = conv.user.locale.split("-")[0]);
 
   // conv request
-  // console.log(conv);
+  console.log("CONV DEBUG");
+  console.log(conv);
+  console.log("==========");
+  
   // express
   // console.log(framework);
 });

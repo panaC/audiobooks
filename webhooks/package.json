@@ -18,12 +18,15 @@
     "fix": "gts fix",
     "prepare": "npm run compile",
     "pretest": "npm run compile",
-    "posttest": "npm run lint"
+    "posttest": "npm run lint",
+    "proxy": "npx localtunnel --port 3000 --subdomain audiobooks",
+    "proxy-ngrok": "ngrok http 3000",
+    "config": "npx json-dts-generator ../config config"
   },
   "devDependencies": {
     "@types/i18n": "^0.13.0",
     "@types/mocha": "^8.2.1",
-    "@types/node": "^14.14.31",
+    "@types/node": "^14.14.36",
     "@types/node-fetch": "^2.5.8",
     "gts": "^3.1.0",
     "mocha": "^8.3.0",
