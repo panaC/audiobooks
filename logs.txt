@@ -20,4 +20,14 @@ I receive the authentication notification in my google home application on my ph
 25/03/21 : 8 hours -- authentication : 
                     - fixes implicit flow issue (clientId was not filled)
                     - fixes opds2-auth-server : implement google oauth process
+                    - gactions cli doesn't work on apple m1
+                    
+                    TODO : 
+                        - localization : double storage : one part in the action builder and the other part in the webhook functions
+                            - we cannot gather them : need a specific locale json file stored statically
+                        - storage : - localization for webhooks conversation reply
+                                    - opdsFeed url, one for each categories
+                                    - ...
+                                   
+                            
                     
