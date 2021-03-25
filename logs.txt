@@ -13,3 +13,11 @@ I receive the authentication notification in my google home application on my ph
 
 21/03/21 : n hours --
     works on the basic 'read a book' flow
+    
+
+23/03/21
+24/03/21 : 8 hours -- implement an authentication with a unique 4 digits short-lived code.
+25/03/21 : 8 hours -- authentication : 
+                    - fixes implicit flow issue (clientId was not filled)
+                    - fixes opds2-auth-server : implement google oauth process
+                    
