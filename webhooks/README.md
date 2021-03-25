@@ -239,6 +239,8 @@ for more convenience this code is a number with 2 or 4 digits (90 to 900 possibi
 -       (user/pass)
 - POST /verify  :  200 : ok
 -        (token)  401 : ko
+```
+
 
 
 ## software architecture
