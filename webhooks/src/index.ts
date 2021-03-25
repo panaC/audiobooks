@@ -1,6 +1,8 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 
+import log from 'roarr';
+
 // Import the appropriate service and chosen wrappers
 import {conversation, Image, Media} from '@assistant/conversation';
 import { configService, localeService } from './di';
@@ -22,15 +24,12 @@ app.handle('main', async (conv) => {
       alt: 'A cat',
     })
   );
-
-  console.log(conv.user.params);;
-  
 });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 app.middleware((conv, framework) => {
 
-  console.log('conv.user.locale=', conv.user.locale);
+  log.info(`conv.user.locale=${conv.user.locale}`);
   tryCatch(() => localeService.locale = conv.user.locale.split("-")[0]);
 
   // conv request
