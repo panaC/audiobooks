@@ -50,6 +50,8 @@ webhooks url : https://webhooks-4ovpraf5sq-ew.a.run.app/
 
 URL: https://storage.googleapis.com/audiobook_edrlab/feed.json
 
+TODO: switch to https://raw.githack.com/
+
 #### update
 
 `gsutil cp -R publication-database gs://audiobook_edrlab`
