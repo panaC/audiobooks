@@ -23,7 +23,7 @@ type RecursivePartial<T> = {
 
 type TConfigPartial = RecursivePartial<TConfig>;
 
-const configUrl = process.env.CONFIG_URL || "";
+const configUrl = process.env.CONFIG_URL || "https://rawcdn.githack.com/panaC/audiobooks/main/config/config.json";
 log.info("CONFIG_URL: " + configUrl);
 
 export const configService = new ConfigService<TConfigPartial>(configUrl);
