@@ -1,11 +1,9 @@
 import * as bodyParser from 'body-parser';
 import * as express from 'express';
 
-import log from 'roarr';
-
 // Import the appropriate service and chosen wrappers
 import {conversation, Image, Media} from '@assistant/conversation';
-import { configService, localeService } from './di';
+import { configService, localeService, logService } from './di';
 import { tryCatch } from './utils/tryCatch';
 // https://github.com/actions-on-google/assistant-conversation-nodejs
 
@@ -27,15 +25,17 @@ app.handle('main', async (conv) => {
 });
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-app.middleware((conv, framework) => {
+app.middleware((conv, _framework) => {
 
-  log.info(`conv.user.locale=${conv.user.locale}`);
+  logService.setContext(conv);
+  logService.log.info(`conv.user.locale=${conv.user.locale}`);
   tryCatch(() => localeService.locale = conv.user.locale.split("-")[0]);
 
   // conv request
-  console.log("CONV DEBUG");
-  console.log(conv);
-  console.log("==========");
+  // console.log("CONV DEBUG");
+  // console.log(conv);
+  // console.log("==========");
+
   
   // express
   // console.log(framework);

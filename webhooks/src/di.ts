@@ -9,7 +9,7 @@ import {WebpubViewConverter} from './converter/webpub';
 import {OpdsService} from './service/opds';
 import { ConfigService } from './service/config';
 import { LocaleService } from "./service/locale";
-import log from 'roarr';
+import { LoggerService } from "./service/logger";
 
 export const opdsFeedViewConverter = new OpdsFeedViewConverter();
 
@@ -24,13 +24,15 @@ type RecursivePartial<T> = {
 type TConfigPartial = RecursivePartial<TConfig>;
 
 const configUrl = process.env.CONFIG_URL || "https://rawcdn.githack.com/panaC/audiobooks/main/config/config.json";
-log.info("CONFIG_URL: " + configUrl);
 
 export const configService = new ConfigService<TConfigPartial>(configUrl);
 
 export const localeService = new LocaleService("fr", ["fr", "en"]);
 
+export const logService = new LoggerService();
+
 initGlobalConverters_GENERIC();
 initGlobalConverters_OPDS();
 
-log.info("Dirname: " + __dirname);
+logService.log.info("Dirname: " + __dirname);
+logService.log.info("CONFIG_URL: " + configUrl);
