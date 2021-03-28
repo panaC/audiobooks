@@ -29,5 +29,8 @@ I receive the authentication notification in my google home application on my ph
                                     - opdsFeed url, one for each categories
                                     - ...
                                    
+26/03/21
+27/03/21
+28/03/21 : 8 hours -- implement first stage webhook
                             
                     
