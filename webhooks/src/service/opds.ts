@@ -7,16 +7,27 @@ import {
 import {IOpdsResultView} from '../interface/opds';
 import {TaJsonDeserialize} from 'r2-lcp-js/dist/es6-es2015/src/serializable';
 import {OPDSPublication} from 'r2-opds-js/dist/es6-es2015/src/opds/opds2/opds2-publication';
-import {opdsFeedViewConverter, webpubViewConverter} from '../di';
 import {OPDSFeed} from 'r2-opds-js/dist/es6-es2015/src/opds/opds2/opds2';
 import {Publication as R2Publication} from '@r2-shared-js/models/publication';
 import {httpFetchFormattedResponse} from '../utils/http';
 import {IWebPubView} from '../interface/webpub';
 import {ok} from 'assert';
+import {OpdsFeedViewConverter} from 'src/converter/opds';
+import {WebpubViewConverter} from 'src/converter/webpub';
 
 const debug = console.log;
 
 export class OpdsService {
+  opdsFeedViewConverter: OpdsFeedViewConverter;
+  webpubViewConverter: WebpubViewConverter;
+
+  constructor() {
+    this.opdsFeedViewConverter = new OpdsFeedViewConverter();
+    this.webpubViewConverter = new WebpubViewConverter(
+      this.opdsFeedViewConverter
+    );
+  }
+
   public async opdsRequest(url: string): Promise<IOpdsResultView> {
     const res = await httpFetchFormattedResponse<IOpdsResultView>(
       url,
@@ -81,7 +92,7 @@ export class OpdsService {
 
           if (isR2Pub) {
             const r2Publication = TaJsonDeserialize(jsonObj, R2Publication);
-            webpubData.data = webpubViewConverter.convertWebpubToView(
+            webpubData.data = this.webpubViewConverter.convertWebpubToView(
               r2Publication,
               baseUrl
             );
@@ -164,7 +175,7 @@ export class OpdsService {
       }; // need to refresh the page
     } else if (isOpdsPub) {
       const r2OpdsPublication = TaJsonDeserialize(jsonObj, OPDSPublication);
-      const pubView = opdsFeedViewConverter.convertOpdsPublicationToView(
+      const pubView = this.opdsFeedViewConverter.convertOpdsPublicationToView(
         r2OpdsPublication,
         baseUrl
       );
@@ -198,7 +209,7 @@ export class OpdsService {
         ''
       );
 
-      const pubView = opdsFeedViewConverter.convertOpdsPublicationToView(
+      const pubView = this.opdsFeedViewConverter.convertOpdsPublicationToView(
         pub,
         baseUrl
       );
@@ -212,7 +223,7 @@ export class OpdsService {
       const {
         title,
         publications: _pubs,
-      } = opdsFeedViewConverter.convertOpdsFeedToView(r2OpdsFeed, baseUrl);
+      } = this.opdsFeedViewConverter.convertOpdsFeedToView(r2OpdsFeed, baseUrl);
       return {
         title,
         publications: Array.isArray(_pubs) ? _pubs : [],

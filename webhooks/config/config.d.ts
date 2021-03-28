@@ -1,1 +1,1 @@
-export { T3 as default } from "./_common";
+export {T3 as default} from './_common';

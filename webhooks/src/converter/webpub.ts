@@ -12,10 +12,15 @@ import {convertContributorArrayToStringArray} from './tools/localisation';
 
 import {Publication as R2Publication} from '@r2-shared-js/models/publication';
 import {fallback} from './tools/fallback';
-import {opdsFeedViewConverter} from '../di';
 import {convertMultiLangStringToString} from './tools/localisation';
+import {OpdsFeedViewConverter} from './opds';
 
 export class WebpubViewConverter {
+  opdsFeedViewConverter: OpdsFeedViewConverter;
+
+  constructor(opdsFeedViewConverter = new OpdsFeedViewConverter()) {
+    this.opdsFeedViewConverter = opdsFeedViewConverter;
+  }
   // Note: PublicationDocument and PublicationView are both Identifiable, with identical `identifier`
   public convertWebpubToView(
     r2Publication: R2Publication,
@@ -37,7 +42,7 @@ export class WebpubViewConverter {
     }
 
     const coverLinks = fallback(
-      opdsFeedViewConverter.convertFilterLinksToView(
+      this.opdsFeedViewConverter.convertFilterLinksToView(
         baseUrl,
         r2Publication.Resources,
         {
@@ -45,14 +50,14 @@ export class WebpubViewConverter {
           rel: 'cover',
         }
       ),
-      opdsFeedViewConverter.convertFilterLinksToView(
+      this.opdsFeedViewConverter.convertFilterLinksToView(
         baseUrl,
         r2Publication.Resources,
         {
           type: ['image/png', 'image/jpeg'],
         }
       ),
-      opdsFeedViewConverter.convertFilterLinksToView(
+      this.opdsFeedViewConverter.convertFilterLinksToView(
         baseUrl,
         r2Publication.Resources,
         {
@@ -63,7 +68,7 @@ export class WebpubViewConverter {
 
     const cover = coverLinks.find(v => v.url)?.url;
 
-    const readingOrdersLinks = opdsFeedViewConverter.convertFilterLinksToView(
+    const readingOrdersLinks = this.opdsFeedViewConverter.convertFilterLinksToView(
       baseUrl,
       r2Publication.Spine,
       {
