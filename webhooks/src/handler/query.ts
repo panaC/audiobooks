@@ -1,9 +1,8 @@
 import {ok} from 'assert';
 import {URL} from 'url';
-import {TAppService} from 'src';
-import {ContentType} from 'src/utils/contentType';
-import {tryCatch} from 'src/utils/tryCatch';
-import {IOpdsLinkView} from 'src/interface/opds';
+import {TAppService} from '..';
+import {ContentType} from '../utils/contentType';
+import {tryCatch} from '../utils/tryCatch';
 
 export default function ({
   app,
@@ -40,7 +39,7 @@ export default function ({
       .slice(0, 5)
       .map(({title, authors, openAccessLinks}) => ({
         title: title,
-        author: authors[0].name,
+        author: authors[0]?.name || "",
         webpuburl: openAccessLinks ? openAccessLinks[0].url : 'never',
       }));
 
@@ -49,7 +48,17 @@ export default function ({
     );
   });
 
-  app.handle('query_publication_number', async conv => {
+  app.handle('query_select_publication_list', async conv => {
+
+    const pubs = storage.session.query_publicationsList;
+    ok(Array.isArray(pubs));
+    conv.add(`il y a ${pubs} publications`);
+    pubs.map(
+      ({title, author}, i) =>
+        conv.add(`numero ${i} : ${title} ${author ? `de ${author}` : ""}`));
+  });
+
+  app.handle('query_select_publication_check_number', async conv => {
     const number = conv.intent.params?.query.resolved;
     ok(typeof number === 'number');
     ok(number > 0 && number < 6, 'number not in range');

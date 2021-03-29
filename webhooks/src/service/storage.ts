@@ -1,6 +1,6 @@
 import {ConversationV3} from '@assistant/conversation';
 import {createDraft, Draft, finishDraft, isDraft} from 'immer';
-import {ok} from 'node:assert';
+import {ok} from 'assert';
 
 const _isDraft = <T>(v: T | undefined): v is T => {
   return isDraft(v);

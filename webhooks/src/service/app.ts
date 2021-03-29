@@ -4,7 +4,7 @@ import {
   ConversationV3,
   ConversationV3App,
 } from '@assistant/conversation/dist/conversation';
-import {tryCatch} from 'src/utils/tryCatch';
+import {tryCatch} from '../utils/tryCatch';
 import {ConfigService} from './config';
 import {LocaleService} from './locale';
 import {LoggerService} from './logger';
