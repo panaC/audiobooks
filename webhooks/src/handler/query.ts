@@ -47,14 +47,17 @@ export default function (app: TAppService) {
 
     const pubs = app.storage.session.query_publicationsList;
     ok(Array.isArray(pubs));
-    conv.add(`il y a ${pubs} publications`);
+    let text = `il y a ${pubs.length} publications\n`;
     pubs.map(
-      ({title, author}, i) =>
-        conv.add(`numero ${i} : ${title} ${author ? `de ${author}` : ""}`));
+      ({title, author}, i) => {
+        text += `numero ${i + 1} : ${title} ${author ? `de ${author}` : ""}\n`;
+      });
+
+    conv.add(text);
   });
 
   app.handle('query_select_publication_check_number', async conv => {
-    const number = conv.intent.params?.query.resolved;
+    const number = conv.intent.params?.number?.resolved;
     ok(typeof number === 'number');
     ok(number > 0 && number < 6, 'number not in range');
 
