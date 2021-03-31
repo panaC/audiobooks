@@ -20,16 +20,19 @@ export class StorageService<TSession extends object, TUser extends object> {
 
   get session(): Draft<Partial<TSession>> {
     ok(this._conv, 'conv value not set');
-    return _isDraft(this._session)
+    this._session = _isDraft(this._session)
       ? this._session
       : createDraft((this._conv.session.params || {}) as Partial<TSession>);
+
+      return this._session;
   }
 
   get user() {
     ok(this._conv, 'conv value not set');
-    return _isDraft(this._user)
+    this._user = _isDraft(this._user)
       ? this._user
       : createDraft((this._conv.user.params || {}) as Partial<TUser>);
+    return this._user;
   }
 
   public apply() {

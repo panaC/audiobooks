@@ -4,27 +4,22 @@ import {TAppService} from '..';
 import {ContentType} from '../utils/contentType';
 import {tryCatch} from '../utils/tryCatch';
 
-export default function ({
-  app,
-  config,
-  storage,
-  opds,
-  log: {log},
-}: TAppService) {
+export default function (app: TAppService) {
+
   app.handle('query_search_query', async conv => {
     const q = conv.intent.params?.query.resolved;
     ok(typeof q === 'string');
 
-    const conf = await config.get();
+    const conf = await app.config.get();
     const searchUrl = conf.feed?.search || '';
     ok(new URL(searchUrl));
 
     const url = searchUrl.replace('{query}', encodeURIComponent(q));
 
-    const {publications} = await opds.opdsRequest(url);
+    const {publications} = await app.opds.opdsRequest(url);
     ok(Array.isArray(publications));
 
-    storage.session.query_publicationsList = publications
+    app.storage.session.query_publicationsList = publications
       .filter(({openAccessLinks: l}) /*: l is IOpdsLinkView[]*/ => {
         return (
           Array.isArray(l) &&
@@ -43,14 +38,14 @@ export default function ({
         webpuburl: openAccessLinks ? openAccessLinks[0].url : 'never',
       }));
 
-    log.info(
+    app.log.log.info(
       `search ${q} in ${url} return ${publications.length} publications`
     );
   });
 
-  app.handle('query_select_publication_list', async conv => {
+  app.handle('query_select_publications_list', async conv => {
 
-    const pubs = storage.session.query_publicationsList;
+    const pubs = app.storage.session.query_publicationsList;
     ok(Array.isArray(pubs));
     conv.add(`il y a ${pubs} publications`);
     pubs.map(
@@ -63,12 +58,12 @@ export default function ({
     ok(typeof number === 'number');
     ok(number > 0 && number < 6, 'number not in range');
 
-    const publications = storage.session.query_publicationsList;
+    const publications = app.storage.session.query_publicationsList;
     ok(Array.isArray(publications));
 
     const pub = publications[number - 1];
-    storage.session.query_publicationsList = [];
-    storage.session.query_publicationNumberSelected = !!pub;
-    storage.session.listen_publication = pub;
+    app.storage.session.query_publicationsList = [];
+    app.storage.session.query_publicationNumberSelected = !!pub;
+    app.storage.session.listen_publication = pub;
   });
 }

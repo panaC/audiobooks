@@ -60,9 +60,13 @@ export class AppService<
     });
 
     this._app.middleware((conv, _framework) => {
+
       this._storageService.setConv(conv);
       this._logService.setContext(conv);
       tryCatch(() => (localeService.locale = conv.user.locale.split('-')[0]));
+
+      logService.log.info("new request from " + conv.intent.name);
+      
 
       // conv request
       // console.log("CONV DEBUG");
@@ -102,16 +106,19 @@ export class AppService<
     ...arg: Parameters<ConversationV3App<ConversationV3>['handle']>
   ) {
     const [name, handler] = arg;
-    this._app.handle(name, conv => {
+    this._app.handle(name, async conv => {
       try {
+        // this._logService.log(`[${conv.intent.name}] start`);
         this._storageService.session.error = false;
 
-        handler(conv);
+        await Promise.resolve(handler(conv));
         //   } catch (e) {
         //     throw e;
         //   } finally {
       } finally {
         this._storageService.apply();
+        // this._logService.log(`[${conv.intent.name}] done`);
+        this._logService.log("USER: " + JSON.stringify(conv.user.params) + " SESSION: " + JSON.stringify(conv.session.params));
       }
     });
   }

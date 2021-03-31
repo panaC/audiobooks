@@ -22,9 +22,10 @@
     "proxy": "npx localtunnel --port 3000 --subdomain audiobooks-webhooks",
     "proxy-ngrok": "ngrok http 3000",
     "config": "npx json-dts-generator ../config config",
-    "start:dev": "npm run compile && CONFIG_URL=https://rawcdn.githack.com/panaC/audiobooks/main/config/config.json ROARR_LOG=true npm run start"
+    "start:dev": "npm run compile && CONFIG_URL=https://rawcdn.githack.com/panaC/audiobooks/main/config/config.json ROARR_LOG=true npm run start | roarr"
   },
   "devDependencies": {
+    "@roarr/cli": "^3.2.3",
     "@types/i18n": "^0.13.0",
     "@types/mocha": "^8.2.1",
     "@types/node": "^14.14.36",
