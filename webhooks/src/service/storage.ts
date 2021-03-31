@@ -15,7 +15,6 @@ export class StorageService<TSession extends object, TUser extends object> {
 
   public setConv(conv: ConversationV3) {
     this._conv = conv;
-    this._user = createDraft((conv.user.params || {}) as Partial<TUser>);
   }
 
   get session(): Draft<Partial<TSession>> {
@@ -39,10 +38,12 @@ export class StorageService<TSession extends object, TUser extends object> {
     if (!this._conv) return;
     if (isDraft(this._user)) {
       this._conv.user.params = finishDraft(this._user) as TUser;
+      this._user = undefined;
     }
     if (isDraft(this._session)) {
       const b = finishDraft(this._session);
       this._conv.session.params = b as TSession;
+      this._session = undefined;
     }
   }
 }
