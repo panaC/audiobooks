@@ -1,10 +1,27 @@
+import { ConversationV3 } from '@assistant/conversation';
 import {ok} from 'assert';
+import { IPublicationHandler } from 'src/type/publication.type';
 import {URL} from 'url';
 import {TAppService} from '..';
 import {ContentType} from '../utils/contentType';
-import {tryCatch} from '../utils/tryCatch';
+import { tryCatch } from '../utils/tryCatch';
 
 export default function (app: TAppService) {
+  const fn = (p: IPublicationHandler) => {
+    delete app.storage.session.query_publicationsList;
+    app.storage.session.listen_publication = p;
+
+    const playerUserStorage = app.storage.user.player;
+    if (Array.isArray(playerUserStorage)) {
+      const playerInfo = playerUserStorage[p.webpuburl];
+      if (playerInfo) {
+        app.storage.session.state = "alreadylisten";
+        return;
+      }
+    }
+
+    app.storage.session.state = "readytolisten";
+  };
 
   app.handle('query_search_query', async conv => {
     const q = conv.intent.params?.query.resolved;
@@ -16,11 +33,11 @@ export default function (app: TAppService) {
 
     const url = searchUrl.replace('{query}', encodeURIComponent(q));
 
-    const {publications} = await app.opds.opdsRequest(url);
+    const { publications } = await app.opds.opdsRequest(url);
     ok(Array.isArray(publications));
 
-    app.storage.session.query_publicationsList = publications
-      .filter(({openAccessLinks: l}) /*: l is IOpdsLinkView[]*/ => {
+    const list = app.storage.session.query_publicationsList = publications
+      .filter(({ openAccessLinks: l }) /*: l is IOpdsLinkView[]*/ => {
         return (
           Array.isArray(l) &&
           l[0] &&
@@ -32,7 +49,7 @@ export default function (app: TAppService) {
         );
       })
       .slice(0, 5)
-      .map(({title, authors, openAccessLinks}) => ({
+      .map(({ title, authors, openAccessLinks }) => ({
         title: title,
         author: authors[0]?.name || "",
         webpuburl: openAccessLinks ? openAccessLinks[0].url : 'never',
@@ -41,6 +58,16 @@ export default function (app: TAppService) {
     app.log.log.info(
       `search ${q} in ${url} return ${publications.length} publications`
     );
+
+    const len = list.length;
+    if (len === 0) {
+      app.storage.session.state = "nopub";
+    } else if (len === 1) {
+      fn(list[0]);
+    } else {
+      app.storage.session.state = "publistover1";
+    }
+
   });
 
   app.handle('query_select_publications_list', async conv => {
@@ -50,7 +77,7 @@ export default function (app: TAppService) {
     conv.add(`il y a ${pubs.length} publications :\nPour choisir une publication dite son numéro`);
     let text = "";
     pubs.map(
-      ({title, author}, i) => {
+      ({ title, author }, i) => {
         text += `numero ${i + 1} : ${title} ${author ? `de ${author}` : ""}\n`;
       });
 
@@ -66,8 +93,6 @@ export default function (app: TAppService) {
     ok(Array.isArray(publications));
 
     const pub = publications[number - 1];
-    app.storage.session.query_publicationsList = [];
-    app.storage.session.query_publicationNumberSelected = !!pub;
-    app.storage.session.listen_publication = pub;
+    fn(pub);
   });
 }

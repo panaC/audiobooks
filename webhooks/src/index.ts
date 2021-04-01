@@ -33,16 +33,21 @@ const localeService = new LocaleService('fr', ['fr', 'en']);
 
 const logService = new LoggerService();
 
-type IUserStorage = IAppUserStorage;
+interface IUserStorage extends IAppUserStorage {
+  player: Record<string, {
+    i: number, // index
+    t: number, // time
+    d: number, // timestamp
+  } | undefined>,
+}
+type TState = "publistover1" | "alreadylisten" | "nopub" | "readytolisten";
 interface ISessionStorage extends IAppSessionStorage {
-  query_publicationsList: Array<IPublicationHandler>;
-  query_publicationNumberSelected: boolean;
-  listen_publication: IPublicationHandler;
-  player_publicationUrl: string;
-  player_partIndex: number;
-  player_nbOfPart: number;
-  player_partTime: number;
-  player_totalTime: number;
+  state: TState,
+  query_publicationsList: Array<IPublicationHandler>; // publication_numberSlotFilling
+  // query_publicationNumberSelected: boolean;
+  listen_publication: IPublicationHandler; // listen_publication
+  player_startIndex: number; // listen_ask
+  player_startTime: number; // listen_ask
 }
 
 const storageService = new StorageService<ISessionStorage, IUserStorage>();

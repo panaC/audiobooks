@@ -1,15 +1,23 @@
-import { ConversationV3 } from "@assistant/conversation";
+import { ConversationV3, Media } from "@assistant/conversation";
+import { MediaType } from "@assistant/conversation/dist/api/schema";
 import { ok } from "assert";
+import { ppid } from "node:process";
+import { URL } from "node:url";
 import { TAppService } from "..";
 
 export default function (app: TAppService) {
 
   const reset = () => {
-    delete app.storage.session.player_publicationUrl;
-    delete app.storage.session.player_partIndex;
-    delete app.storage.session.player_nbOfPart;
-    delete app.storage.session.player_totalTime;
-    delete app.storage.session.player_partTime
+
+    if (Array.isArray(app.storage.user.player)) {
+      const url = app.storage.session.listen_publication?.webpuburl;
+      if (url) {
+        delete app.storage.user.player[url];
+      }
+    }
+    delete app.storage.session.listen_publication;
+    delete app.storage.session.state;
+
   }
 
   const player = (conv: ConversationV3) => {
@@ -18,12 +26,21 @@ export default function (app: TAppService) {
     ok(typeof progress === "string");
     ok(typeof index === "number");
 
-    app.storage.session.player_partIndex = index;
-    app.storage.session.player_partTime = parseInt(progress, 10);
+    if (!app.storage.user.player) {
+      app.storage.user.player = {};
+    }
+    const url = app.storage.session.listen_publication?.webpuburl;
+    ok(url);
+    app.storage.user.player[url] = {
+      i: index,
+      t: parseInt(progress, 10),
+      d: (new Date).getTime()
+    }
 
-    ok(app.storage.session.player_partIndex <= (app.storage.session.player_nbOfPart || 0), "part index to high")
+    conv.add(new Media({
+      mediaType: MediaType.MediaStatusACK,
+    }));
   }
-
 
   app.handle('player_media_status_finished', conv => {
 
