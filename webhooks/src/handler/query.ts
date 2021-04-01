@@ -47,7 +47,8 @@ export default function (app: TAppService) {
 
     const pubs = app.storage.session.query_publicationsList;
     ok(Array.isArray(pubs));
-    let text = `il y a ${pubs.length} publications\n`;
+    conv.add(`il y a ${pubs.length} publications :\nPour choisir une publication dite son numéro`);
+    let text = "";
     pubs.map(
       ({title, author}, i) => {
         text += `numero ${i + 1} : ${title} ${author ? `de ${author}` : ""}\n`;
