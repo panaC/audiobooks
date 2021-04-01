@@ -45,7 +45,7 @@ export class AppService<
     this._app.catch((conv, err) => {
       logService.log.error('app catch ' + err.message);
 
-      conv.add("Une erreur c'est produite");
+      conv.add("Une erreur s'est produite");
       conv.add(err.message);
 
       storageService.session.error = true;
