@@ -12,7 +12,7 @@ export default function (app: TAppService) {
     app.storage.session.listen_publication = p;
 
     const playerUserStorage = app.storage.user.player;
-    if (Array.isArray(playerUserStorage)) {
+    if (playerUserStorage) {
       const playerInfo = playerUserStorage[p.webpuburl];
       if (playerInfo) {
         app.storage.session.state = "alreadylisten";
