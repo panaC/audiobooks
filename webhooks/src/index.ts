@@ -38,6 +38,11 @@ interface ISessionStorage extends IAppSessionStorage {
   query_publicationsList: Array<IPublicationHandler>;
   query_publicationNumberSelected: boolean;
   listen_publication: IPublicationHandler;
+  player_publicationUrl: string;
+  player_partIndex: number;
+  player_nbOfPart: number;
+  player_partTime: number;
+  player_totalTime: number;
 }
 
 const storageService = new StorageService<ISessionStorage, IUserStorage>();
