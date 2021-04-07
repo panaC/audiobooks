@@ -1,0 +1,5 @@
+conditionalEvents:
+- condition: user.accountLinkingStatus == "LINKED"
+  transitionToScene: listen_start
+- condition: user.accountLinkingStatus != "LINKED"
+  transitionToScene: listen_audiobookSlotFilling_AccountLinking

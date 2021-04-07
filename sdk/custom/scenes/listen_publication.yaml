@@ -1,0 +1,2 @@
+onEnter:
+  webhookHandler: listen_publication_start

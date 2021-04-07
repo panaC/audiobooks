@@ -1,0 +1,10 @@
+parameters:
+- name: query
+  type:
+    name: string
+trainingPhrases:
+- je veux écouter ce livre de ($query 'emile zola' auto=false)
+- écouter ce livre ($query 'la vie est belle' auto=false)
+- lis moi ($query 'L\'assommoir de zola' auto=false)
+- lis moi ($query 'L\'assommoir' auto=false)
+- je veux écouter ($query 'le comte de monte cristo' auto=false)

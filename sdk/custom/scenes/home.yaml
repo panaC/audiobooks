@@ -1,0 +1,12 @@
+intentEvents:
+- intent: listen_audiobook
+  transitionToScene: listen_audiobookSlotFilling
+onEnter:
+  staticPrompt:
+    candidates:
+    - promptResponse:
+        firstSimple:
+          variants:
+          - speech: Que voulez-vous faire ? Vous pouvez écouter un livre audio
+        suggestions:
+        - title: écouter un livre audio

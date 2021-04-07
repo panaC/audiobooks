@@ -1,5 +1,13 @@
 handlers:
-- name: main
+- name: query_search_query
+- name: query_select_publication_check_number
+- name: query_select_publications_list
+- name: player_media_status_finished
+- name: player_media_status_failed
+- name: player_media_status_stopped
+- name: player_media_status_paused
+- name: listen_publication_start
+- name: listen_ask_yes
 httpsEndpoint:
-  baseUrl: https://943f70849b67.ngrok.io
+  baseUrl: https://webhooks-4ovpraf5sq-ew.a.run.app/
   endpointApiVersion: 2

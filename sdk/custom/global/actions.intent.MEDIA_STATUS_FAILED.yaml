@@ -4,5 +4,6 @@ handler:
     - promptResponse:
         firstSimple:
           variants:
-          - speech: Bienvenue dans l'application de lecture de livre audio
+          - speech: Une erreur s'est produite pendant la lecture
+  webhookHandler: player_media_status_failed
 transitionToScene: home
