@@ -23,7 +23,7 @@ export class StorageService<TSession extends object, TUser extends object> {
       ? this._session
       : createDraft((this._conv.session.params || {}) as Partial<TSession>);
 
-      return this._session;
+    return this._session;
   }
 
   get user() {

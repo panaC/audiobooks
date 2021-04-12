@@ -12,8 +12,8 @@ import {Publication as R2Publication} from '@r2-shared-js/models/publication';
 import {httpFetchFormattedResponse} from '../utils/http';
 import {IWebPubView} from '../interface/webpub';
 import {ok} from 'assert';
-import { OpdsFeedViewConverter } from '../converter/opds';
-import { WebpubViewConverter } from '../converter/webpub';
+import {OpdsFeedViewConverter} from '../converter/opds';
+import {WebpubViewConverter} from '../converter/webpub';
 
 const debug = console.log;
 

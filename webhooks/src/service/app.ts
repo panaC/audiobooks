@@ -60,13 +60,11 @@ export class AppService<
     });
 
     this._app.middleware((conv, _framework) => {
-
       this._storageService.setConv(conv);
       this._logService.setContext(conv);
       tryCatch(() => (localeService.locale = conv.user.locale.split('-')[0]));
 
-      logService.log.info("new request from " + conv.intent.name);
-      
+      logService.log.info('new request from ' + conv.intent.name);
 
       // conv request
       // console.log("CONV DEBUG");
@@ -118,7 +116,12 @@ export class AppService<
       } finally {
         this._storageService.apply();
         // this._logService.log(`[${conv.intent.name}] done`);
-        this._logService.log("USER: " + JSON.stringify(conv.user.params) + " SESSION: " + JSON.stringify(conv.session.params));
+        this._logService.log(
+          'USER: ' +
+            JSON.stringify(conv.user.params) +
+            ' SESSION: ' +
+            JSON.stringify(conv.session.params)
+        );
       }
     });
   }

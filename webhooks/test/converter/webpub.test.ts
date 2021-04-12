@@ -5,7 +5,7 @@ import {
 } from 'r2-lcp-js/dist/es6-es2015/src/serializable';
 
 import * as assert from 'assert';
-import {WebpubViewConverter} from 'src/converter/webpub';
+import {WebpubViewConverter} from '../../src/converter/webpub';
 
 const json = {
   '@context': 'https://readium.org/webpub-manifest/context.jsonld',

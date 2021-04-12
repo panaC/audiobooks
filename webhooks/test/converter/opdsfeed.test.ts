@@ -1,7 +1,7 @@
 import * as assert from 'assert';
 import {TaJsonDeserialize} from 'r2-lcp-js/dist/es6-es2015/src/serializable';
 import {OPDSFeed} from 'r2-opds-js/dist/es6-es2015/src/opds/opds2/opds2';
-import {OpdsFeedViewConverter} from 'src/converter/opds';
+import {OpdsFeedViewConverter} from '../../src/converter/opds';
 
 const json = {
   metadata: {
