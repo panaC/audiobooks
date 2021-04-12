@@ -1,7 +1,7 @@
 import {Publication as R2Publication} from '@r2-shared-js/models/publication';
 import {
   TaJsonDeserialize,
-  TaJsonSerialize,
+  // TaJsonSerialize,
 } from 'r2-lcp-js/dist/es6-es2015/src/serializable';
 
 import * as assert from 'assert';

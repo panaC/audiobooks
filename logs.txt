@@ -29,5 +29,13 @@ I receive the authentication notification in my google home application on my ph
                                     - opdsFeed url, one for each categories
                                     - ...
                                    
-                            
-                    
+26/03/21
+27/03/21
+28/03/21 : 8 hours -- implement first stage webhook
+29/03/21 : 8 hours -- flowchart https://drive.google.com/file/d/1zEJQ8oDXU0E5h31OtbDz2COLnirJ8WTn/view?usp=sharing
+--/--/-- : n hours -- user storage doesn't works , why ?
+...
+
+12/04/21 : fix publication number : user storage really doesn't work with guest or some verified user (https://developers.google.com/assistant/conversational/storage-user)
+
+

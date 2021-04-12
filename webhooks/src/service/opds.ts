@@ -35,7 +35,7 @@ export class OpdsService {
       async opdsData => {
         const {
           url: _baseUrl,
-          responseUrl,
+          // responseUrl,
           contentType: _contentType,
         } = opdsData;
         const baseUrl = `${_baseUrl}`;
@@ -65,7 +65,7 @@ export class OpdsService {
       async webpubData => {
         const {
           url: _baseUrl,
-          responseUrl,
+          // responseUrl,
           contentType: _contentType,
         } = webpubData;
         const baseUrl = `${_baseUrl}`;
