@@ -16,6 +16,7 @@ export class LoggerService {
         locale: conv.user.locale,
         lastSeenTime: conv.user.lastSeenTime,
         accountLinkingStatus: conv.user.accountLinkingStatus,
+        status: conv.user.verificationStatus,
       },
       intent: Object.assign(conv.intent),
       scene: Object.assign(conv.scene),
