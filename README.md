@@ -38,6 +38,10 @@ The deadline for first stage of the project (cf technical specification) is for 
                                       
 ```
 
+## flowchart
+
+link : https://drive.google.com/file/d/1zEJQ8oDXU0E5h31OtbDz2COLnirJ8WTn/view?usp=sharing
+
 ## webhooks
 
 see the webhooks readme
