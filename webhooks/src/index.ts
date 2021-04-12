@@ -40,7 +40,7 @@ interface IUserStorage extends IAppUserStorage {
     d: number, // timestamp
   } | undefined>,
 }
-type TState = "publistover1" | "alreadylisten" | "nopub" | "readytolisten";
+type TState = "publistover1" | "alreadylisten" | "nopub" | "readytolisten" | "notinrange";
 interface ISessionStorage extends IAppSessionStorage {
   state: TState,
   query_publicationsList: Array<IPublicationHandler>; // publication_numberSlotFilling

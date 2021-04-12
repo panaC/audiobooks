@@ -8,6 +8,11 @@ import { tryCatch } from '../utils/tryCatch';
 
 export default function (app: TAppService) {
   const fn = (p: IPublicationHandler) => {
+
+    if (!p) {
+      app.storage.session.state = "notinrange";
+      return;
+    }
     delete app.storage.session.query_publicationsList;
     app.storage.session.listen_publication = p;
 

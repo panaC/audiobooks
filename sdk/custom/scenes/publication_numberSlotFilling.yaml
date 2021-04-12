@@ -1,7 +1,7 @@
 conditionalEvents:
-- condition: session.params.query_publicationNumberSelected == true
+- condition: session.params.state == 'readytolisten'
   transitionToScene: listen_publication
-- condition: session.params.query_publicationNumberSelected == false
+- condition: session.params.state == 'notinrange'
   handler:
     staticPrompt:
       candidates:
