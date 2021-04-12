@@ -1,34 +1,30 @@
-import { ConversationV3 } from "@assistant/conversation";
-import { Logger } from "roarr/dist/src/types";
-import log from "roarr";
+import {ConversationV3} from '@assistant/conversation';
+import {Logger} from 'roarr/dist/src/types';
+import log from 'roarr';
 
-export class LoggerService  {
+export class LoggerService {
+  private _log: Logger;
 
-    private _log: Logger;
+  constructor() {
+    this._log = log;
+  }
 
-    constructor() {
-        this._log = log;
-    }
+  public setContext(conv: ConversationV3) {
+    const context = {
+      id: conv.session.id,
+      user: {
+        locale: conv.user.locale,
+        lastSeenTime: conv.user.lastSeenTime,
+        accountLinkingStatus: conv.user.accountLinkingStatus,
+      },
+      intent: Object.assign(conv.intent),
+      scene: Object.assign(conv.scene),
+    };
 
-    public setContext(conv: ConversationV3) {
+    this._log = log.child(context);
+  }
 
-        const context = {
-            id: conv.session.id,
-            user: {
-                locale: conv.user.locale,
-                lastSeenTime: conv.user.lastSeenTime,
-                accountLinkingStatus: conv.user.accountLinkingStatus,
-            },
-            intent: Object.assign(conv.intent),
-            scene: Object.assign(conv.scene),
-            
-        }
-
-        this._log = log.child(context);
-    }
-
-    get log() {
-        return this._log;
-    }
-
+  get log() {
+    return this._log;
+  }
 }
