@@ -38,4 +38,6 @@ I receive the authentication notification in my google home application on my ph
 
 12/04/21 : fix publication number : user storage really doesn't work with guest or some verified user (https://developers.google.com/assistant/conversational/storage-user)
 
+...
+16/04/21 : 8 hours -- docs
 
