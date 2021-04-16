@@ -25,7 +25,7 @@ the webhooks is one-way communication of type [request-resonse](https://en.wikip
 `npm run fix`
 
 
-### Continous delivery
+### CI/CD
 
 there are an automatic build webhooks to construct the container in GCP container build and deploy on google cloud run
 
@@ -235,8 +235,6 @@ for more convenience this code is a number with 2 or 4 digits (90 to 900 possibi
 -        (token)  401 : ko
 ```
 
-
-
 ## software architecture
 
 lay on the MVC pattern :
@@ -252,8 +250,33 @@ with 2 externals services :
 
 google actions provide 2 tiny json storages : one for the session (delete at the end) and one persistent (user storage)
 
-the project in his first stage doesn't need a lot of storage..
-their 2 kind of storages is tranmit in the request-response (webhooks is stateless) : the storage capacity should not exess of much KO.
+this 2 kinds of storages is sync by the request-response (webhook is stateless) : the storage capacity should not exceed some kilo-octet.
 
-What is the storage footprint of the project ? **TODO**
+##### session storage
 
+used by the webhook to synchronize the state between google action logic and webhook logic.
+
+##### user storage
+
+https://developers.google.com/assistant/conversational/storage-user
+
+**doesn't works in my side**
+
+__caveats__:
+
+```
+Expiration of user storage data
+For verified users, data stored in user storage expires based on their Web & App Activity settings and can also be cleared by the Action itself. For users who aren't verified, Assistant clears the contents of user storage at the end of the conversation.
+
+Actions on Google sets the user's verification status at the start of each conversation based on a variety of indicators when the conversation starts. As one example, a user logged in to Google Assistant on their mobile device has a verification status of VERIFIED.
+
+The following are possible reasons for a user to have a verification status of GUEST:
+
+The user has personal results turned off.
+The user disabled their Web & App Activity. Keep in mind that some users may have this setting disabled at the domain level.
+If a device has Voice Match enabled, and the match fails or the user invokes the Assistant without using their voice (such as a long press on a Nest Home device).
+The user isn't signed in.
+Always check the user's verification status before storing data with user storage to prevent guest users from interacting with a feature that will fail for them.
+
+
+```
