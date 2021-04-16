@@ -35,7 +35,13 @@ The deadline for first stage of the project (cf technical specification) is for 
  |  smart speaker  |<------->|    platforms     |<--------->|    (node js)   |<---------->|    wepbub       |
  |                 |         |   (NLU -> API)   |           |                |            | mp3 http served |
  |=================|         |==================|           |================|            |=================|
-                                      
+                                     |
+                                     |
+                             |==================|
+                             |                  |
+                             |   opds2 oauth    |
+                             |      implicit.   |
+                             |==================|                                     
 ```
 
 ## authentication 
