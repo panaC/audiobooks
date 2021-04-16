@@ -38,6 +38,18 @@ The deadline for first stage of the project (cf technical specification) is for 
                                       
 ```
 
+## authentication 
+
+https://developers.google.com/assistant/identity/oauth2?oauth=implicit
+
+- oauth2 implicit flow
+
+#### opds oauth2 test server
+
+https://github.com/panaC/opds2-auth-test-server
+
+url : https://opds-auth-test-server-aplqpqv3wa-ey.a.run.app/implicit/login/google
+
 ## flowchart
 
 link : https://drive.google.com/file/d/1zEJQ8oDXU0E5h31OtbDz2COLnirJ8WTn/view?usp=sharing
