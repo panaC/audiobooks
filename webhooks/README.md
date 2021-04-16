@@ -13,17 +13,14 @@ the webhooks is one-way communication of type [request-resonse](https://en.wikip
 
 ## quickstart
 
-`npm run compile`
-
+`npm run proxy &`
 `npm run start:dev`
-
 
 ### local test suite
 
 `npm run test`
 
 ### eslint
-
 
 `npm run fix`
 
