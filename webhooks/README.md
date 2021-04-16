@@ -15,10 +15,7 @@ the webhooks is one-way communication of type [request-resonse](https://en.wikip
 
 `npm run compile`
 
-`npm run start`
-
-
-`./ngrok.sh` __on another terminal__
+`npm run start:dev`
 
 
 ### local test suite
