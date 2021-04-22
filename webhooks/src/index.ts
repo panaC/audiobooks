@@ -11,9 +11,10 @@ import {ConfigService} from './service/config';
 import {LocaleService} from './service/locale';
 import {LoggerService} from './service/logger';
 import {StorageService} from './service/storage';
-import {AppService, IAppSessionStorage, IAppUserStorage} from './service/app';
+import {AppService, IAppSessionStorage, IAppUserStorage, IAppStore} from './service/app';
 import {IPublicationHandler} from './type/publication.type';
 import handler from './handler';
+import { Store } from "./service/storage/store";
 
 const opdsService = new OpdsService();
 
@@ -33,7 +34,7 @@ const localeService = new LocaleService('fr', ['fr', 'en']);
 
 const logService = new LoggerService();
 
-interface IUserStorage extends IAppUserStorage {
+interface IStore extends IAppStore {
   player: Record<
     string,
     | {
@@ -50,6 +51,7 @@ type TState =
   | 'nopub'
   | 'readytolisten'
   | 'notinrange';
+
 interface ISessionStorage extends IAppSessionStorage {
   state: TState;
   query_publicationsList: Array<IPublicationHandler>; // publication_numberSlotFilling
@@ -59,7 +61,11 @@ interface ISessionStorage extends IAppSessionStorage {
   player_startTime: number; // listen_ask
 }
 
-const storageService = new StorageService<ISessionStorage, IUserStorage>();
+interface IUserStorage extends IAppUserStorage {}
+
+const store = new Store<IStore>(configService);
+const storageService = new StorageService<ISessionStorage, IUserStorage, IStore>(store);
+
 
 // Create an app instance
 const appService = new AppService(

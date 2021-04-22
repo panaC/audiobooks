@@ -7,7 +7,7 @@ import {ContentType} from '../utils/contentType';
 import {tryCatch} from '../utils/tryCatch';
 
 export default function (app: TAppService) {
-  const fn = (p: IPublicationHandler) => {
+  const fn = async (p: IPublicationHandler) => {
     if (!p) {
       app.storage.session.state = 'notinrange';
       return;
@@ -15,7 +15,7 @@ export default function (app: TAppService) {
     delete app.storage.session.query_publicationsList;
     app.storage.session.listen_publication = p;
 
-    const playerUserStorage = app.storage.user.player;
+    const playerUserStorage = app.storage.store.player;
     if (playerUserStorage) {
       const playerInfo = playerUserStorage[p.webpuburl];
       if (playerInfo) {
@@ -67,7 +67,7 @@ export default function (app: TAppService) {
     if (len === 0) {
       app.storage.session.state = 'nopub';
     } else if (len === 1) {
-      fn(list[0]);
+      await fn(list[0]);
     } else {
       app.storage.session.state = 'publistover1';
     }
@@ -96,6 +96,6 @@ export default function (app: TAppService) {
     ok(Array.isArray(publications));
 
     const pub = publications[number - 1];
-    fn(pub);
+    await fn(pub);
   });
 }

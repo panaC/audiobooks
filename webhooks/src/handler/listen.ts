@@ -9,8 +9,8 @@ import {TAppService} from '..';
 export default function (app: TAppService) {
   app.handle('listen_ask_yes', async conv => {
     const url = app.storage.session.listen_publication?.webpuburl;
-    const playerStorage = app.storage.user.player;
-    if (Array.isArray(playerStorage) && url) {
+    const playerStorage = app.storage.store.player;
+    if (playerStorage && url) {
       app.storage.session.player_startIndex = playerStorage[url]?.i;
       app.storage.session.player_startTime = playerStorage[url]?.t;
     }

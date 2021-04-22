@@ -5,11 +5,9 @@ import {TAppService} from '..';
 
 export default function (app: TAppService) {
   const reset = () => {
-    if (Array.isArray(app.storage.user.player)) {
-      const url = app.storage.session.listen_publication?.webpuburl;
-      if (url) {
-        delete app.storage.user.player[url];
-      }
+    const url = app.storage.session.listen_publication?.webpuburl;
+    if (app.storage.store.player && url) {
+      delete app.storage.store.player[url];
     }
     delete app.storage.session.listen_publication;
     delete app.storage.session.state;
@@ -21,12 +19,12 @@ export default function (app: TAppService) {
     ok(typeof progress === 'string');
     ok(typeof index === 'number');
 
-    if (!app.storage.user.player) {
-      app.storage.user.player = {};
+    if (!app.storage.store.player) {
+      app.storage.store.player = {};
     }
     const url = app.storage.session.listen_publication?.webpuburl;
     ok(url);
-    app.storage.user.player[url] = {
+    app.storage.store.player[url] = {
       i: index,
       t: parseInt(progress, 10),
       d: new Date().getTime(),
@@ -56,6 +54,14 @@ export default function (app: TAppService) {
   app.handle('player_media_status_stopped', conv => {
     app.log.log(JSON.stringify(conv.request.context?.media));
 
+    player(conv);
+  });
+
+  app.handle('cancel', conv => {
+
+    console.log("CANCEL PLAYER");
+
+    // save media player on cancel
     player(conv);
   });
 }

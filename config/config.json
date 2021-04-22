@@ -1,4 +1,8 @@
 {
+  "store": {
+    "get": "https://us-central1-audiobooks-a6348.cloudfunctions.net/get",
+    "set": "https://us-central1-audiobooks-a6348.cloudfunctions.net/set"
+  },
   "feed": {
     "all": "https://storage.googleapis.com/audiobook_edrlab/navigation/all.json",
     "popular": "https://storage.googleapis.com/audiobook_edrlab/groups/popular.json",

@@ -6,15 +6,37 @@ const _isDraft = <T>(v: T | undefined): v is T => {
   return isDraft(v);
 };
 
-export class StorageService<TSession extends object, TUser extends object> {
+export interface IStoreNew<T> {
+
+  apply: (d: Partial<T>) => Promise<void>;
+  store: Partial<T>;
+  init: (key: string) => Promise<undefined>;
+}
+
+export interface IUserStorageService {
+  bearerToken?: string;
+}
+
+export class StorageService<
+  TSession extends object,
+  TUser extends IUserStorageService,
+  TStore extends object> {
   private _conv: ConversationV3 | undefined;
   private _session: Draft<Partial<TSession>> | undefined;
   private _user: Draft<Partial<TUser>> | undefined;
+  private _store: Draft<Partial<TStore>> | undefined;
+  private _storeAdapter: IStoreNew<TStore>;
 
-  constructor() {}
+  constructor(store: IStoreNew<TStore>) {
+    this._storeAdapter = store;
+  }
 
-  public setConv(conv: ConversationV3) {
+  public async init(conv: ConversationV3) {
     this._conv = conv;
+  }
+
+  get storeAdapter() {
+    return this._storeAdapter;
   }
 
   get session(): Draft<Partial<TSession>> {
@@ -34,7 +56,30 @@ export class StorageService<TSession extends object, TUser extends object> {
     return this._user;
   }
 
-  public apply() {
+  public async storeGet() {
+
+    // @ts-ignore
+    // bug with Draft :(
+    const key = this.user?.bearerToken;
+    await this._storeAdapter.init(key);
+    return this.store;
+  }
+
+  get store() {
+    this._store = _isDraft(this._store)
+      ? this._store
+      : createDraft((this._storeAdapter.store || {}) as Partial<TStore>);
+    return this._store;
+  }
+
+  public async apply() {
+    let p = Promise.resolve();
+
+    if (isDraft(this._store)) {
+      const b = finishDraft(this._store);
+      p = this._storeAdapter.apply(b as TStore) || p;
+      this._store = undefined;
+    }
     if (!this._conv) return;
     if (isDraft(this._user)) {
       this._conv.user.params = finishDraft(this._user) as TUser;
@@ -45,5 +90,7 @@ export class StorageService<TSession extends object, TUser extends object> {
       this._conv.session.params = b as TSession;
       this._session = undefined;
     }
+
+    await p;
   }
 }

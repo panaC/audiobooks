@@ -1,23 +1,24 @@
-import {conversation} from '@assistant/conversation';
+import { conversation } from '@assistant/conversation';
 import {
-  Conversation,
-  ConversationV3,
-  ConversationV3App,
+    Conversation, ConversationV3, ConversationV3App
 } from '@assistant/conversation/dist/conversation';
-import {tryCatch} from '../utils/tryCatch';
-import {ConfigService} from './config';
-import {LocaleService} from './locale';
-import {LoggerService} from './logger';
-import {OpdsService} from './opds';
-import {StorageService} from './storage';
 
-export type IAppUserStorage = {};
+import { tryCatch } from '../utils/tryCatch';
+import { ConfigService } from './config';
+import { LocaleService } from './locale';
+import { LoggerService } from './logger';
+import { OpdsService } from './opds';
+import { IUserStorageService, StorageService } from './storage';
+
+export interface IAppUserStorage extends IUserStorageService {
+};
 export interface IAppSessionStorage {
   error: boolean;
 }
+export interface IAppStore {}
 
 export class AppService<
-  TStorageService extends StorageService<IAppSessionStorage, IAppUserStorage>,
+  TStorageService extends StorageService<IAppSessionStorage, IAppUserStorage, IAppStore>,
   TLocaleService extends LocaleService<any>,
   TConfigService extends ConfigService<any>
 > {
@@ -42,14 +43,14 @@ export class AppService<
     this._opdsService = opdsService;
     this._configService = configService;
 
-    this._app.catch((conv, err) => {
+    this._app.catch(async (conv, err) => {
       logService.log.error('app catch ' + err.message);
 
       conv.add("Une erreur s'est produite");
       conv.add(err.message);
 
       storageService.session.error = true;
-      storageService.apply();
+      return storageService.apply();
 
       /*
             conv.scene.next = {
@@ -59,12 +60,16 @@ export class AppService<
             */
     });
 
-    this._app.middleware((conv, _framework) => {
-      this._storageService.setConv(conv);
+    this._app.middleware(async (conv, _framework) => {
+
       this._logService.setContext(conv);
       tryCatch(() => (localeService.locale = conv.user.locale.split('-')[0]));
 
       logService.log.info('new request from ' + conv.intent.name);
+
+      // storage initialisation (store persistence)
+      await this._storageService.init(conv);
+      await this._storageService.storeGet();
 
       // conv request
       // console.log("CONV DEBUG");
@@ -114,13 +119,15 @@ export class AppService<
         //     throw e;
         //   } finally {
       } finally {
-        this._storageService.apply();
+        await this._storageService.apply();
         // this._logService.log(`[${conv.intent.name}] done`);
         this._logService.log(
           'USER: ' +
             JSON.stringify(conv.user.params) +
             ' SESSION: ' +
-            JSON.stringify(conv.session.params)
+            JSON.stringify(conv.session.params) +
+            ' STORE: ' +
+            JSON.stringify(this._storageService.storeAdapter.store)
         );
       }
     });
