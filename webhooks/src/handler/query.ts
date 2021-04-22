@@ -76,12 +76,26 @@ export default function (app: TAppService) {
   app.handle('query_select_publications_list', async conv => {
     const pubs = app.storage.session.query_publicationsList;
     ok(Array.isArray(pubs));
+
+    const config = await app.config.get();
     conv.add(
-      `il y a ${pubs.length} publications :\nPour choisir une publication dite son numéro`
+      app.locale
+        .translate(
+          config.locale?.query_select_publication_first,
+          'undefined message'
+        )
+        .replace('${length}', pubs.length.toString())
     );
     let text = '';
     pubs.map(({title, author}, i) => {
-      text += `numero ${i + 1} : ${title} ${author ? `de ${author}` : ''}\n`;
+      text += app.locale
+        .translate(
+          config.locale?.query_select_publication_second,
+          'undefined message'
+        )
+        .replace('${i}', i.toString())
+        .replace('${title}', title.toString())
+        .replace('${author}', author ? `de ${author}` : '');
     });
 
     conv.add(text);

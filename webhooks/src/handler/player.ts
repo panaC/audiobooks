@@ -39,10 +39,17 @@ export default function (app: TAppService) {
 
   app.handle('player_media_status_finished', conv => {
     reset();
+
+    conv.scene.next = {
+      name: 'home',
+    };
   });
 
   app.handle('player_media_status_failed', conv => {
     reset();
+    conv.scene.next = {
+      name: 'home',
+    };
   });
 
   app.handle('player_media_status_paused', conv => {
@@ -55,12 +62,22 @@ export default function (app: TAppService) {
     app.log.log(JSON.stringify(conv.request.context?.media));
 
     player(conv);
+
+    // when stopped go to home ?
+    // works ?
+    conv.scene.next = {
+      name: 'home',
+    };
   });
 
   app.handle('cancel', conv => {
     console.log('CANCEL PLAYER');
 
     // save media player on cancel
-    player(conv);
+    try {
+      player(conv);
+    } catch {
+      // nop
+    }
   });
 }

@@ -9,9 +9,13 @@
     "search": "https://europe-west1-audiobooks-a6348.cloudfunctions.net/indexer?url=https://storage.googleapis.com/audiobook_edrlab/navigation/all.json&query={query}"
   },
   "locale": {
-    "first": {
-      "fr": "bonjour",
-      "en": "hello"
+    "query_select_publication_first": {
+      "fr": "il y a ${length} publications :\nPour choisir une publication dite son numéro",
+      "en": "they are ${length} publications :\nTell his numero to choose one"
+    },
+    "query_select_publication_second": {
+      "fr": "numero ${i} : ${title} ${author}\n",
+      "en": "numero ${i} : ${title} ${author}\n"
     }
   }
 }
