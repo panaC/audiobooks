@@ -1,0 +1,3 @@
+handler:
+  webhookHandler: player_media_status_finished
+transitionToScene: home

@@ -1,4 +1,3 @@
-import {webpubViewConverter} from '../../src/di';
 import {Publication as R2Publication} from '@r2-shared-js/models/publication';
 import {
   TaJsonDeserialize,
@@ -6,6 +5,7 @@ import {
 } from 'r2-lcp-js/dist/es6-es2015/src/serializable';
 
 import * as assert from 'assert';
+import {WebpubViewConverter} from '../../src/converter/webpub';
 
 const json = {
   '@context': 'https://readium.org/webpub-manifest/context.jsonld',
@@ -125,7 +125,7 @@ describe('webpub view converter', () => {
   it('test', () => {
     const pub = TaJsonDeserialize(json, R2Publication);
 
-    const view = webpubViewConverter.convertWebpubToView(
+    const view = new WebpubViewConverter().convertWebpubToView(
       pub,
       'https://storage.googleapis.com/audiobook_edrlab/webpub/'
     );

@@ -1,0 +1,7 @@
+intentEvents:
+- handler:
+    webhookHandler: listen_ask_yes
+  intent: actions.intent.YES
+  transitionToScene: listen_publication
+- intent: actions.intent.NO
+  transitionToScene: listen_publication

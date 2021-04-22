@@ -1,0 +1,23 @@
+conditionalEvents:
+- condition: session.params.state == "publistover1"
+  transitionToScene: select_publication_number
+- condition: session.params.state == "readytolisten"
+  transitionToScene: listen_publication
+- condition: session.params.state == "nopub"
+  handler:
+    staticPrompt:
+      candidates:
+      - promptResponse:
+          firstSimple:
+            variants:
+            - speech: Aucun livre trouvé !
+  transitionToScene: listen_start
+- condition: session.params.state == "alreadylisten"
+  transitionToScene: listen_ask
+onSlotUpdated:
+  webhookHandler: query_search_query
+slots:
+- name: query
+  required: true
+  type:
+    name: string

@@ -1,0 +1,12 @@
+parameters:
+- name: number
+  type:
+    name: actions.type.Number
+trainingPhrases:
+- le ($number '5' auto=false)
+- ($number 'le deuxieme' auto=false)
+- ($number 'le premier' auto=false)
+- je veux écouter le ($number '1' auto=false)
+- ($number '6' auto=true)
+- la ($number '5' auto=false)
+- le numéro ($number '4' auto=false)

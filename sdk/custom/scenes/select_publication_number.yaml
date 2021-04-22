@@ -1,0 +1,5 @@
+intentEvents:
+- intent: publication_number
+  transitionToScene: publication_numberSlotFilling
+onEnter:
+  webhookHandler: query_select_publications_list

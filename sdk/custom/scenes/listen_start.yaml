@@ -1,0 +1,10 @@
+intentEvents:
+- intent: I_want_to_listen
+  transitionToScene: I_want_to_listenSlotFilling
+onEnter:
+  staticPrompt:
+    candidates:
+    - promptResponse:
+        firstSimple:
+          variants:
+          - speech: Que voulez-vous écouter ?

@@ -1,12 +1,14 @@
+accountLinking:
+  appClientId: "1232456"
+  authGrantType: IMPLICIT
+  authorizationUrl: https://opds-auth-test-server-aplqpqv3wa-ey.a.run.app//implicit/login/google
+  linkingType: OAUTH
 defaultLocale: fr
 localizedSettings:
-  displayName: audiobooks
-  pronunciation: lecteur livre audio
   developerEmail: panacpp@gmail.com
   developerName: pierre leroux
-  fullDescription: 
-  privacyPolicyUrl:
-  smallLogoImage:
-  termsOfServiceUrl:
+  displayName: kvmai
+  pronunciation: kvmai
   voice: female_1
 projectId: audiobooks-a6348
+testingInstructions: admin:admin

@@ -1,0 +1,19 @@
+conditionalEvents:
+- condition: session.params.state == 'readytolisten'
+  transitionToScene: listen_publication
+- condition: session.params.state == 'notinrange'
+  handler:
+    staticPrompt:
+      candidates:
+      - promptResponse:
+          firstSimple:
+            variants:
+            - speech: impossible de sélectionnez cette publication. Veuillez réessayer
+  transitionToScene: select_publication_number
+onSlotUpdated:
+  webhookHandler: query_select_publication_check_number
+slots:
+- name: number
+  required: true
+  type:
+    name: actions.type.Number

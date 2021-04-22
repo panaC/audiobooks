@@ -17,6 +17,9 @@
       ],
       "@r2-lcp-js/*": [
         "./node_modules/r2-lcp-js/dist/es6-es2015/src/*"
+      ],
+      "src/*": [
+        "src/*"
       ]
     }
   },

@@ -1,0 +1,95 @@
+{
+  "@context": "https://readium.org/webpub-manifest/context.jsonld",
+  "metadata": {
+    "@type": "http://schema.org/Audiobook",
+    "title": "Thérèse Raquin",
+    "identifier": "therese_raquin_emile_zola",
+    "author": "Emile Zola",
+    "publisher": "archive",
+    "language": "fr",
+    "description": "Thérèse Raquin est le troisième roman de l'écrivain français Émile Zola publié en 1867. Ce roman, qui présente déjà les caractéristiques du naturalisme développé plus tard dans le cycle des Rougon-Macquart, fera connaître l'écrivain au public parisien. L'auteur en tirera lui-même, en 1873, une pièce de théâtre intitulée Thérèse Raquin : drame en 4 actes.",
+    "rights": "",
+    "duration": 35078,
+    "subject": "roman"
+  },
+  "links": [
+    {
+      "type": "application/webpub+json",
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/therese_raquin_emile_zola.json"
+    }
+  ],
+  "readingOrder": [
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap01-03.mp3",
+          "type": "audio/mpeg",
+          "duration": 2835
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap04-06.mp3",
+          "type": "audio/mpeg",
+          "duration": 2345
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap07-09.mp3",
+          "type": "audio/mpeg",
+          "duration": 3338
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap10-12.mp3",
+          "type": "audio/mpeg",
+          "duration": 3347
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap13-16.mp3",
+          "type": "audio/mpeg",
+          "duration": 3358
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap17-18.mp3",
+          "type": "audio/mpeg",
+          "duration": 2295
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap19-20.mp3",
+          "type": "audio/mpeg",
+          "duration": 2240
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap21-22.mp3",
+          "type": "audio/mpeg",
+          "duration": 3161
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap23-25.mp3",
+          "type": "audio/mpeg",
+          "duration": 3440
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap26-27.mp3",
+          "type": "audio/mpeg",
+          "duration": 2525
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap28-29.mp3",
+          "type": "audio/mpeg",
+          "duration": 2515
+      },
+      {
+          "href": "https://archive.org/download/Therese-Raquin/Therese-Raquin-Chap30-32.mp3",
+          "type": "audio/mpeg",
+          "duration": 3679
+      }
+  ],
+  "resources": [
+    {
+      "type": "image/jpeg",
+      "rel": "cover",
+      "href": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Raquin.jpg"
+    }
+  ],
+  "toc": [
+  ],
+  "landmarks": [
+  ]
+}
