@@ -5,4 +5,5 @@ handler:
         firstSimple:
           variants:
           - speech: Au revoir
+  webhookHandler: cancel
 transitionToScene: actions.scene.END_CONVERSATION

@@ -5,3 +5,16 @@ intentEvents:
   transitionToScene: listen_publication
 - intent: actions.intent.NO
   transitionToScene: listen_publication
+- handler:
+    webhookHandler: listen_ask_yes
+  intent: "YES"
+  transitionToScene: listen_publication
+- intent: "NO"
+  transitionToScene: listen_publication
+onEnter:
+  staticPrompt:
+    candidates:
+    - promptResponse:
+        firstSimple:
+          variants:
+          - speech: Voulez-vous continuer la lecture

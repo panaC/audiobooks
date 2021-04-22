@@ -1,0 +1,7 @@
+conditionalEvents:
+- condition: user.accountLinkingStatus == "LINKED"
+  handler:
+    webhookHandler: read_my_book
+  transitionToScene: listen_publication
+- condition: user.accountLinkingStatus != "LINKED"
+  transitionToScene: read_my_bookSlotFilling_AccountLinking

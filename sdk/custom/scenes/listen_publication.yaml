@@ -1,2 +1,12 @@
+conditionalEvents:
+- condition: session.params.state == 'nopub'
+  handler:
+    staticPrompt:
+      candidates:
+      - promptResponse:
+          firstSimple:
+            variants:
+            - speech: publication non disponible pour une lecture
+  transitionToScene: home
 onEnter:
   webhookHandler: listen_publication_start

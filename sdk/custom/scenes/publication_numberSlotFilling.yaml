@@ -10,6 +10,8 @@ conditionalEvents:
             variants:
             - speech: impossible de sélectionnez cette publication. Veuillez réessayer
   transitionToScene: select_publication_number
+- condition: session.params.state == 'alreadylisten'
+  transitionToScene: listen_ask
 onSlotUpdated:
   webhookHandler: query_select_publication_check_number
 slots:

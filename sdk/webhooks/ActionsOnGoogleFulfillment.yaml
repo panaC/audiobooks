@@ -8,6 +8,8 @@ handlers:
 - name: player_media_status_paused
 - name: listen_publication_start
 - name: listen_ask_yes
+- name: cancel
+- name: read_my_book
 httpsEndpoint:
   baseUrl: https://audiobooks-webhooks.loca.lt
   endpointApiVersion: 2
