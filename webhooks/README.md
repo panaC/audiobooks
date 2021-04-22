@@ -260,7 +260,7 @@ used by the webhook to synchronize the state between google action logic and web
 
 https://developers.google.com/assistant/conversational/storage-user
 
-**doesn't works in my side**
+**does not work**
 
 __caveats__:
 
@@ -280,3 +280,10 @@ Always check the user's verification status before storing data with user storag
 
 
 ```
+
+for the key value database : I used google datastore https://cloud.google.com/datastore
+a simple NoSql Database made by google 
+
+and coupled with google cloud functions 
+https://github.com/panaC/audiobooks/tree/main/datastore
+
