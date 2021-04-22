@@ -58,8 +58,7 @@ export default function (app: TAppService) {
   });
 
   app.handle('cancel', conv => {
-
-    console.log("CANCEL PLAYER");
+    console.log('CANCEL PLAYER');
 
     // save media player on cancel
     player(conv);

@@ -7,7 +7,6 @@ const _isDraft = <T>(v: T | undefined): v is T => {
 };
 
 export interface IStoreNew<T> {
-
   apply: (d: Partial<T>) => Promise<void>;
   store: Partial<T>;
   init: (key: string) => Promise<undefined>;
@@ -20,7 +19,8 @@ export interface IUserStorageService {
 export class StorageService<
   TSession extends object,
   TUser extends IUserStorageService,
-  TStore extends object> {
+  TStore extends object
+> {
   private _conv: ConversationV3 | undefined;
   private _session: Draft<Partial<TSession>> | undefined;
   private _user: Draft<Partial<TUser>> | undefined;
@@ -57,7 +57,6 @@ export class StorageService<
   }
 
   public async storeGet() {
-
     // @ts-ignore
     // bug with Draft :(
     const key = this.user?.bearerToken;

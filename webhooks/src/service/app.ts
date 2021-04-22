@@ -1,24 +1,29 @@
-import { conversation } from '@assistant/conversation';
+import {conversation} from '@assistant/conversation';
 import {
-    Conversation, ConversationV3, ConversationV3App
+  Conversation,
+  ConversationV3,
+  ConversationV3App,
 } from '@assistant/conversation/dist/conversation';
 
-import { tryCatch } from '../utils/tryCatch';
-import { ConfigService } from './config';
-import { LocaleService } from './locale';
-import { LoggerService } from './logger';
-import { OpdsService } from './opds';
-import { IUserStorageService, StorageService } from './storage';
+import {tryCatch} from '../utils/tryCatch';
+import {ConfigService} from './config';
+import {LocaleService} from './locale';
+import {LoggerService} from './logger';
+import {OpdsService} from './opds';
+import {IUserStorageService, StorageService} from './storage';
 
-export interface IAppUserStorage extends IUserStorageService {
-};
+export type IAppUserStorage = IUserStorageService;
 export interface IAppSessionStorage {
   error: boolean;
 }
 export interface IAppStore {}
 
 export class AppService<
-  TStorageService extends StorageService<IAppSessionStorage, IAppUserStorage, IAppStore>,
+  TStorageService extends StorageService<
+    IAppSessionStorage,
+    IAppUserStorage,
+    IAppStore
+  >,
   TLocaleService extends LocaleService<any>,
   TConfigService extends ConfigService<any>
 > {
@@ -61,7 +66,6 @@ export class AppService<
     });
 
     this._app.middleware(async (conv, _framework) => {
-
       this._logService.setContext(conv);
       tryCatch(() => (localeService.locale = conv.user.locale.split('-')[0]));
 
