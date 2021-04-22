@@ -79,3 +79,14 @@ TODO: switch to https://raw.githack.com/
 `gsutil cp -R publication-database gs://audiobook_edrlab`
 
 `gsutil iam ch allUsers:objectViewer gs://audiobook_edrlab`
+
+## key value database for the store persistence
+
+Cloud functions URL :
+
+- https://us-central1-audiobooks-a6348.cloudfunctions.net/get
+- https://us-central1-audiobooks-a6348.cloudfunctions.net/set
+
+https://console.cloud.google.com/datastore/stats?project=audiobooks-a6348
+
+
