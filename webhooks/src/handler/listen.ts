@@ -40,11 +40,11 @@ export default function (app: TAppService) {
       new Media({
         mediaObjects: webpub.readingOrders
           .map((v, i) => ({
-            name: `${pub?.title || ''} - ${i + 1}`,
+            name: `${webpub?.title || ''} - ${i + 1}`,
             url: v.url,
             image: {
               large: {
-                alt: pub?.title,
+                alt: webpub?.title,
                 url: webpub.cover || '',
               },
             },
