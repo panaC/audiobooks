@@ -8,5 +8,10 @@ conditionalEvents:
             variants:
             - speech: publication non disponible pour une lecture
   transitionToScene: home
+intentEvents:
+- handler:
+    webhookHandler: read_toc
+  intent: read_toc
+  transitionToScene: listen_publication
 onEnter:
   webhookHandler: listen_publication_start

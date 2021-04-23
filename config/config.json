@@ -16,6 +16,14 @@
     "query_select_publication_second": {
       "fr": "numero ${i} : ${title} ${author}\n",
       "en": "numero ${i} : ${title} ${author}\n"
+    },
+    "read_toc": {
+      "fr": "numero ${i} : ${title}\n",
+      "en": "numero ${i} : ${title}\n"
+    },
+    "read_toc_no_response": {
+      "fr": "aucune table des matières disponible",
+      "en": "no table of content available"
     }
   }
 }

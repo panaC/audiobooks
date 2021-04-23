@@ -10,6 +10,7 @@ handlers:
 - name: listen_ask_yes
 - name: cancel
 - name: read_my_book
+- name: read_toc
 httpsEndpoint:
   baseUrl: https://audiobooks-webhooks.loca.lt
   endpointApiVersion: 2
