@@ -12,8 +12,6 @@ you have a google home nest speaker (or your phone)
 
 ## This project is a work in progress
 
-The deadline for first stage of the project (cf technical specification) is for the first july of this year.
-
 ### actual state
 
 **It Works ! first stage**
