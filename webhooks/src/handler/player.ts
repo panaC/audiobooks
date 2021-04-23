@@ -24,11 +24,15 @@ export default function (app: TAppService) {
     }
     const url = app.storage.session.listen_publication?.webpuburl;
     ok(url);
+
+    const time = parseInt(progress, 10);
     app.storage.store.player[url] = {
       i: index,
-      t: parseInt(progress, 10),
+      t: time,
       d: new Date().getTime(),
     };
+    app.storage.session.player_startIndex = index;
+    app.storage.session.player_startTime = time;
 
     conv.add(
       new Media({
@@ -79,5 +83,35 @@ export default function (app: TAppService) {
     } catch {
       // nop
     }
+  });
+
+  app.handle('read_toc', async conv => {
+    const pub = app.storage.session.listen_publication;
+    ok(pub, 'publication not found');
+
+    const webpub = await app.opds.webpubRequest(pub.webpuburl);
+    ok(webpub, 'publication not found');
+
+    const config = await app.config.get();
+    let text = '';
+    if (Array.isArray(webpub.toc)) {
+      webpub.toc.map((l, i) => {
+        const title = l.title || '';
+        text += app.locale
+          .translate(config.locale?.read_toc, 'undefined message')
+          .replace('${i}', (i + 1).toString())
+          .replace('${title}', title);
+      });
+    }
+
+    if (!text) {
+      text += app.locale.translate(
+        config.locale?.read_toc_no_response,
+        'undefined message'
+      );
+    }
+
+    conv.add(text);
+    player(conv);
   });
 }

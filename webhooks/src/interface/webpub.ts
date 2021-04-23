@@ -10,6 +10,12 @@ export interface IReadingLink {
   url: string;
 }
 
+export interface ITocLink {
+  url: string;
+  title?: string;
+  children?: ITocLink[];
+}
+
 export interface IWebPubView {
   identifier: string;
   title: string;
@@ -27,4 +33,5 @@ export interface IWebPubView {
   nbOfTracks?: number;
 
   readingOrders: IReadingLink[];
+  toc?: ITocLink[];
 }

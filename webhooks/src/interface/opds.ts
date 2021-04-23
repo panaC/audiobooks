@@ -119,6 +119,7 @@ export interface IOpdsLinkView {
   properties?: IOPDSPropertiesView;
   duration?: number;
   rel?: string;
+  children?: IOpdsLinkView[];
 }
 
 export interface IOpdsNavigationLink {

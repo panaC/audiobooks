@@ -65,6 +65,15 @@ const supportedFileTypeLinkArray = [
 ];
 
 export class OpdsFeedViewConverter {
+  public convertOpdsTocToView(
+    toc: TLinkMayBeOpds[],
+    baseUrl: string
+  ): IOpdsLinkView[] | undefined {
+    return Array.isArray(toc)
+      ? toc.map(l => this.convertLinkToView(l, baseUrl))
+      : undefined;
+  }
+
   public convertOpdsNavigationLinkToView(
     link: OPDSLink,
     baseUrl: string
@@ -129,6 +138,9 @@ export class OpdsFeedViewConverter {
       type: ln.TypeLink,
       rel: ln.Rel && ln.Rel.length > 0 ? ln.Rel[0] : undefined,
       duration: ln.Duration,
+      children: Array.isArray(ln.Children)
+        ? ln.Children.map(l => this.convertLinkToView(l, baseUrl))
+        : undefined,
     };
   }
 

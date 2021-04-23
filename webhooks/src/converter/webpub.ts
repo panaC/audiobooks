@@ -82,6 +82,11 @@ export class WebpubViewConverter {
         url: l.url,
       })) || [];
 
+    const toc = this.opdsFeedViewConverter.convertOpdsTocToView(
+      r2Publication.TOC,
+      baseUrl
+    );
+
     return {
       identifier: nanoid(),
       title, // default title
@@ -98,6 +103,7 @@ export class WebpubViewConverter {
       nbOfTracks: readingOrders.length,
 
       readingOrders,
+      toc,
     };
   }
 }

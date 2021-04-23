@@ -150,6 +150,7 @@ describe('webpub view converter', () => {
         RDFType: 'http://schema.org/Audiobook',
         duration: 61664,
         nbOfTracks: 13,
+        toc: [],
         readingOrders: [
           {
             duration: 4054,

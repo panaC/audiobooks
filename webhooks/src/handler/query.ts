@@ -93,7 +93,7 @@ export default function (app: TAppService) {
           config.locale?.query_select_publication_second,
           'undefined message'
         )
-        .replace('${i}', i.toString())
+        .replace('${i}', (i + 1).toString())
         .replace('${title}', title.toString())
         .replace('${author}', author ? `de ${author}` : '');
     });
