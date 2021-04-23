@@ -16,7 +16,12 @@ The deadline for first stage of the project (cf technical specification) is for 
 
 ### actual state
 
-**not working at all**
+**It Works ! first stage**
+
+- toc
+- read my book
+- search in opds catalog
+- playlist audiobook controls
 
 ## some technical challenges
 
