@@ -76,7 +76,7 @@ TODO: switch to https://raw.githack.com/
 
 #### update
 
-`gsutil cp -R publication-database gs://audiobook_edrlab`
+`gsutil cp -R publication-database/* gs://audiobook_edrlab`
 
 `gsutil iam ch allUsers:objectViewer gs://audiobook_edrlab`
 
