@@ -57,9 +57,8 @@ export class StorageService<
   }
 
   public async storeGet() {
-    // @ts-ignore
-    // bug with Draft :(
-    const key = this.user?.bearerToken;
+    const key = (this.user as any).bearerToken;
+    ok(typeof key === 'string');
     await this._storeAdapter.init(key);
     return this.store;
   }
