@@ -84,6 +84,16 @@ export default function (app: TAppService) {
       // nop
     }
   });
+  app.handle('stop_reading', conv => {
+    console.log('CANCEL PLAYER');
+
+    // save media player on cancel
+    try {
+      player(conv);
+    } catch {
+      // nop
+    }
+  });
 
   app.handle('read_toc', async conv => {
     const pub = app.storage.session.listen_publication;
