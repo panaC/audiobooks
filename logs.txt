@@ -43,3 +43,5 @@ I receive the authentication notification in my google home application on my ph
 
 ...
 10/05/21 : 8 hours -- flowchart - conversationnal test instruction. (gdocs)
+11/05/21
+12/05/21 : 8 hours -- test specification
