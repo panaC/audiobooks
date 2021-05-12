@@ -124,4 +124,49 @@ export default function (app: TAppService) {
     conv.add(text);
     player(conv);
   });
+
+  app.handle('remaining_time', async conv => {
+    // ack player and set startIndex and startTime in session
+    player(conv);
+
+    const index = app.storage.session.player_startIndex || 0;
+    const time = app.storage.session.player_startTime || 0;
+
+    const pub = app.storage.session.listen_publication;
+    ok(pub, 'publication not found');
+
+    const webpub = await app.opds.webpubRequest(pub.webpuburl);
+    ok(webpub, 'publication not found');
+
+    let minutes = 0;
+    if (Array.isArray(webpub.readingOrders)) {
+      let remainingTime = 0;
+      for (let i = index + 1; i < webpub.readingOrders.length; i += 1)
+        remainingTime += webpub.readingOrders[i].duration || 0;
+      const pos = (v: number) => (v < 0 ? 0 : v);
+      remainingTime += pos((webpub.readingOrders[index].duration || 0) - time);
+
+      if (remainingTime >= 60) {
+        minutes = Math.floor(remainingTime / 60);
+      }
+    }
+
+    const config = await app.config.get();
+    const hours = Math.floor(minutes % 60);
+    if (hours) {
+      minutes = Math.floor(minutes % 60);
+      conv.add(
+        app.locale
+          .translate(config.locale?.remaining_time_hours)
+          .replace('${minutes}', minutes.toString())
+          .replace('${hours}', hours.toString())
+      );
+    } else {
+      conv.add(
+        app.locale
+          .translate(config.locale?.remaining_time_minutes)
+          .replace('${minutes}', minutes.toString())
+      );
+    }
+  });
 }

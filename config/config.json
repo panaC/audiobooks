@@ -24,6 +24,14 @@
     "read_toc_no_response": {
       "fr": "aucune table des matières disponible",
       "en": "no table of content available"
+    },
+    "remaining_time_minutes": {
+      "fr": "il reste ${minutes} minutes",
+      "en": "${minutes} minutes left"
+    },
+    "remaining_time_hours": {
+      "fr": "il reste ${hours} heures et ${minutes} minutes",
+      "en": "${hours} hours and ${minutes} minutes left"
     }
   }
 }
