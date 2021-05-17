@@ -18,16 +18,17 @@ import 'mocha';
 
 import {env} from 'process';
 import {ActionsOnGoogleTestManager} from '@assistant/conversation-testing';
+import {ok, rejects} from 'assert';
 
 const DEFAULT_LOCALE = 'fr-FR';
 const DEFAULT_SURFACE = 'PHONE';
 const CONTINUE_CONVO_PROMPT =
-  "Bienvenue dans l'application d'écoute de livres audio";
+  "Bienvenue dans l'application de lecture de livre audio Que voulez-vous faire ? Vous pouvez écouter un livre audio";
 
 const PROJECT_ID = env['PROJECT_ID'] || '';
-const TRIGGER_PHRASE = 'Parler avec audiobooks';
+const TRIGGER_PHRASE = 'Parler avec kvmai';
 
-console.log(PROJECT_ID);
+ok(PROJECT_ID, 'no PROJECT_ID');
 
 // tslint:disable:only-arrow-functions
 
@@ -41,7 +42,8 @@ describe('My Action Test Suite', function () {
     test.assertSpeech(CONTINUE_CONVO_PROMPT);
     test.assertText(CONTINUE_CONVO_PROMPT);
     test.assertIntent('actions.intent.MAIN');
-    // test.assertScene('Prompts');
+    test.assertScene('home');
+    await rejects(async () => await test.sendQuery('je ne sais pas'));
   }
 
   before('before all', async () => {
@@ -58,7 +60,7 @@ describe('My Action Test Suite', function () {
 
   it('trigger only', async () => {
     await startConversation();
-    // await test.sendStop();
+    await test.sendStop();
     test.assertConversationEnded();
   });
 });
