@@ -45,3 +45,6 @@ I receive the authentication notification in my google home application on my ph
 10/05/21 : 8 hours -- flowchart - conversationnal test instruction. (gdocs)
 11/05/21
 12/05/21 : 8 hours -- test specification
+14/05/21 : n hours -- ""
+17/05/21 : 8 hours -- github actions and begin to write the e2e test
+                        github actions : test.js.yml with SECRETs key and https://github.com/marketplace/actions/set-up-gcloud-cloud-sdk-environment
