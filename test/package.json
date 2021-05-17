@@ -13,7 +13,8 @@
   "license": "Apache-2.0",
   "keywords": [],
   "scripts": {
-    "test": "env GOOGLE_APPLICATION_CREDENTIALS=$PWD/../service_account.json PROJECT_ID=$(cat $PWD/../service_account.json| jq -r '.project_id') mocha --recursive build/src",
+    "test": "mocha --recursive build/src",
+    "test:run": "env GOOGLE_APPLICATION_CREDENTIALS=$PWD/../service_account.json PROJECT_ID=$(cat $PWD/../service_account.json| jq -r '.project_id') mocha --recursive build/src",
     "enable-activity-controls": "env GOOGLE_APPLICATION_CREDENTIALS=$PWD/../service_account.json web-and-app-activity-controls",
     "lint": "gts lint",
     "clean": "gts clean",
