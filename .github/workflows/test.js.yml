@@ -5,9 +5,13 @@ name: test CI
 
 on:
   push:
+    paths:
+      - '!docs/**'
+      - '!logs.txt'
+      - '!webhooks/README.md'
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
+      #  pull_request:
+      # branches:
 
 jobs:
   build:
