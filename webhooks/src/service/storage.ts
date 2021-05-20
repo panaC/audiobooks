@@ -56,9 +56,15 @@ export class StorageService<
     return this._user;
   }
 
+  // TODO
   public async storeGet() {
-    const key = (this.user as any).bearerToken;
-    ok(typeof key === 'string');
+    // @ts-ignore
+    const key: string = this.user?.bearerToken || 'key not defined'; // TODO
+    try {
+      ok(typeof key === 'string');
+    } catch {
+      console.error('STORE KEY is not a string key', key);
+    }
     await this._storeAdapter.init(key);
     return this.store;
   }
