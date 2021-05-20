@@ -65,6 +65,9 @@ export class StorageService<
     } catch {
       console.error('STORE KEY is not a string key', key);
     }
+
+    console.log("STORE KEY", key);
+    
     await this._storeAdapter.init(key);
     return this.store;
   }
