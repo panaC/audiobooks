@@ -48,3 +48,8 @@ I receive the authentication notification in my google home application on my ph
 14/05/21 : n hours -- ""
 17/05/21 : 8 hours -- github actions and begin to write the e2e test
                         github actions : test.js.yml with SECRETs key and https://github.com/marketplace/actions/set-up-gcloud-cloud-sdk-environment
+                        
+20/05/21 : 8 hours -- bug in user storage : bearerTOken memory -> https://github.com/panaC/audiobooks/commit/6107ce3e1bd7a9f8de56ce68e6b9860bbdc4ad84 -> https://github.com/panaC/audiobooks/commit/7ae551470a5044bc3443a9211455c2591269291d
+                            test works with webhook running on my computer but not all the time with the production server
+                            random user storage memory ,, perhaps it's the test mode (not deploy) on google assistant architecture
+                       
