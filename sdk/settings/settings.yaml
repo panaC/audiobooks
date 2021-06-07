@@ -3,12 +3,28 @@ accountLinking:
   authGrantType: IMPLICIT
   authorizationUrl: https://opds-auth-test-server-aplqpqv3wa-ey.a.run.app//implicit/login/google
   linkingType: OAUTH
+category: EDUCATION_AND_REFERENCE
 defaultLocale: fr
+enabledRegions:
+- France
 localizedSettings:
   developerEmail: panacpp@gmail.com
   developerName: pierre leroux
-  displayName: kvmai
-  pronunciation: kvmai
+  displayName: eole audio
+  fullDescription: |-
+    lecteur de livre audio
+    projet EDRLab
+  privacyPolicyUrl: https://edrlab.org/legal-information
+  pronunciation: eole audio
+  sampleInvocations:
+  - Parler avec eole audio
+  - Passe moi eole audio
+  shortDescription: lecteur de livre audio
+  smallLogoImage: https://lh3.googleusercontent.com/y21bkdpBEAHuchY7ILZ2u_5DQECE2xKZcnYvYeBYLMv3riV3boz31RHTy1P2Xwbd1IFU5Cxl2E3A
   voice: female_1
 projectId: audiobooks-a6348
-testingInstructions: admin:admin
+surfaceRequirements:
+  minimumRequirements:
+  - capability: AUDIO_OUTPUT
+  - capability: MEDIA_RESPONSE_AUDIO
+testingInstructions: Parler avec eole audio

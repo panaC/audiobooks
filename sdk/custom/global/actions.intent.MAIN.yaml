@@ -4,5 +4,5 @@ handler:
     - promptResponse:
         firstSimple:
           variants:
-          - speech: Bienvenue dans l'application de lecture de livre audio
+          - speech: Bienvenue
 transitionToScene: home

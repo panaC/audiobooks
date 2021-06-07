@@ -3,6 +3,9 @@ parameters:
   type:
     name: string
 trainingPhrases:
+- ($query 'l\'assomoir de zola' auto=false)
+- ($query 'emile zola' auto=false)
+- ($query 'la vie est belle' auto=false)
 - je veux écouter ce livre de ($query 'emile zola' auto=false)
 - écouter ce livre ($query 'la vie est belle' auto=false)
 - lis moi ($query 'L\'assommoir de zola' auto=false)

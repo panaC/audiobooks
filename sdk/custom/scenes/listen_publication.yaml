@@ -13,5 +13,13 @@ intentEvents:
     webhookHandler: read_toc
   intent: read_toc
   transitionToScene: listen_publication
+- handler:
+    webhookHandler: stop_reading
+  intent: quit_reading
+  transitionToScene: home
+- handler:
+    webhookHandler: remaining_time
+  intent: remaining_time
+  transitionToScene: listen_publication
 onEnter:
   webhookHandler: listen_publication_start

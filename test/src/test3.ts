@@ -23,10 +23,10 @@ import {ok, rejects} from 'assert';
 const DEFAULT_LOCALE = 'fr-FR';
 const DEFAULT_SURFACE = 'PHONE';
 const CONTINUE_CONVO_PROMPT =
-  "Bienvenue dans l'application de lecture de livre audio Que voulez-vous faire ? Vous pouvez écouter un livre audio";
+  "" // Bienvenue dans l'application de lecture de livre audio Que voulez-vous faire ? Vous pouvez écouter un livre audio";
 
 const PROJECT_ID = env['PROJECT_ID'] || '';
-const TRIGGER_PHRASE = 'Parler avec kvmai';
+const TRIGGER_PHRASE = 'Parler avec eole audio';
 
 ok(PROJECT_ID, 'no PROJECT_ID');
 

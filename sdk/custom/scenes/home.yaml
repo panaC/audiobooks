@@ -3,13 +3,23 @@ intentEvents:
   transitionToScene: listen_audiobookSlotFilling
 - intent: read_my_book
   transitionToScene: read_my_bookSlotFilling
+- handler:
+    staticPrompt:
+      candidates:
+      - promptResponse:
+          firstSimple:
+            variants:
+            - speech: vos données ont été effacé
+    webhookHandler: remove_data
+  intent: remove_data
+  transitionToScene: home
 onEnter:
   staticPrompt:
     candidates:
     - promptResponse:
         firstSimple:
           variants:
-          - speech: Que voulez-vous faire ? Vous pouvez écouter un livre audio
+          - speech: voulez-vous écouter ou reprendre la lecture ?
         suggestions:
-        - title: écouter un livre audio
-        - title: lis mon livre
+        - title: écouter
+        - title: reprendre

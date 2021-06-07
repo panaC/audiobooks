@@ -4,3 +4,4 @@ custom:
   actions.intent.MEDIA_STATUS_FINISHED: {}
   actions.intent.MEDIA_STATUS_PAUSED: {}
   actions.intent.MEDIA_STATUS_STOPPED: {}
+  listen_audiobook: {}

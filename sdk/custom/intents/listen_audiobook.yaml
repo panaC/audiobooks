@@ -1,7 +1,7 @@
 trainingPhrases:
-- écouter un livre audio
+- écouter
+- écouter un livre
 - écouter u($number1 'n ' auto=true)audiobook
 - audiobook
 - écouter mon livre
-- écouter un livre
 - je veux écouter un livre audio

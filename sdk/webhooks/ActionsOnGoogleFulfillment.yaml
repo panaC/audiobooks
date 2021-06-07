@@ -11,6 +11,9 @@ handlers:
 - name: cancel
 - name: read_my_book
 - name: read_toc
+- name: stop_reading
+- name: remove_data
+- name: remaining_time
 httpsEndpoint:
-  baseUrl: https://audiobooks-webhooks.loca.lt
+  baseUrl: https://webhooks-4ovpraf5sq-ew.a.run.app/
   endpointApiVersion: 2
