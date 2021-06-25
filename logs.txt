@@ -60,3 +60,5 @@ I receive the authentication notification in my google home application on my ph
 07/06/21 : 8 hours -- project thinking : prepare a bug report with a demo to prove a specific issue
 
 21/06/21 -- 23/06 -- 24/06 -- 25/06 : Bilan and  where i am document                       
+25/06/21 : create a project to prove specific issue (persistence + playing context) hosted on dev.edrlab@gmail.com
+            - I saw Media_status intent can be setup inside the scene and not globally .. is it the playing issue ?
