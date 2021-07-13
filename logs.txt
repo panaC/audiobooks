@@ -64,3 +64,4 @@ I receive the authentication notification in my google home application on my ph
             - I saw Media_status intent can be setup inside the scene and not globally .. is it the playing issue ?
             
 05/07/21 - 06/07/21 -- Works on POC (demo) lis mon livre (called valentin)
+13/07/21 : solve test online issue ,, how ?? magic ! || works on valentin-4 project -> re-implement all conversations and scenes
