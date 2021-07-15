@@ -49,7 +49,19 @@ I receive the authentication notification in my google home application on my ph
 17/05/21 : 8 hours -- github actions and begin to write the e2e test
                         github actions : test.js.yml with SECRETs key and https://github.com/marketplace/actions/set-up-gcloud-cloud-sdk-environment
                         
-20/05/21 : 8 hours -- bug in user storage : bearerTOken memory -> https://github.com/panaC/audiobooks/commit/6107ce3e1bd7a9f8de56ce68e6b9860bbdc4ad84 -> https://github.com/panaC/audiobooks/commit/7ae551470a5044bc3443a9211455c2591269291d
+20/05/21 : 8 hours -- bug in user storage : bearerToken memory -> https://github.com/panaC/audiobooks/commit/6107ce3e1bd7a9f8de56ce68e6b9860bbdc4ad84 -> https://github.com/panaC/audiobooks/commit/7ae551470a5044bc3443a9211455c2591269291d
                             test works with webhook running on my computer but not all the time with the production server
                             random user storage memory ,, perhaps it's the test mode (not deploy) on google assistant architecture
                        
+01/06/21 - 04/06/21 -- review of the state of the project : not usable in the actual state
+                            -- google nest player overide our application command control
+                            -- authentication with user persistence storage isn't stable (random failed)
+                            
+07/06/21 : 8 hours -- project thinking : prepare a bug report with a demo to prove a specific issue
+
+21/06/21 -- 23/06 -- 24/06 -- 25/06 : Bilan and  where i am document                       
+25/06/21 : create a project to prove specific issue (persistence + playing context) hosted on dev.edrlab@gmail.com
+            - I saw Media_status intent can be setup inside the scene and not globally .. is it the playing issue ?
+            
+05/07/21 - 06/07/21 -- Works on POC (demo) lis mon livre (called valentin)
+13/07/21 : solve test online issue ,, how ?? magic ! || works on valentin-4 project -> re-implement all conversations and scenes

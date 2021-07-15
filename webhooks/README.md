@@ -5,6 +5,8 @@
 
 # webhooks
 
+references : https://actions-on-google.github.io/assistant-conversation-nodejs/3.7.0/modules/conversation_handler_user.html
+
 the webhooks server is a conversationnal bridge beetween google actions api (user voice) and the opds publication feed (api)
 
 it receive voice request from google actions api and send back the conversational answer to google action.
