@@ -1,0 +1,10 @@
+handlers:
+- name: cancel
+- name: ecouter_livre_audio_lvl2
+- name: reprendre_mon_livre_lvl2
+- name: media_status
+- name: player
+- name: i_want_to_listen
+httpsEndpoint:
+  baseUrl: https://audiobooks-webhooks.loca.lt
+  endpointApiVersion: 2
