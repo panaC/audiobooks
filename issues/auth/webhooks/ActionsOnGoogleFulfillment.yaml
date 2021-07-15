@@ -1,0 +1,6 @@
+handlers:
+- name: login_ok
+- name: persist
+httpsEndpoint:
+  baseUrl: https://lazy-wasp-38.loca.lt
+  endpointApiVersion: 2

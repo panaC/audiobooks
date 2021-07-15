@@ -1,0 +1,7 @@
+intentEvents:
+- intent: tester
+  transitionToScene: auth_AccountLinking
+- handler:
+    webhookHandler: persist
+  intent: store
+  transitionToScene: login_ok

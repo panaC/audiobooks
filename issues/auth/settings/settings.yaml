@@ -1,0 +1,12 @@
+accountLinking:
+  appClientId: "1232456"
+  authGrantType: IMPLICIT
+  authorizationUrl: https://opds-auth-test-server-aplqpqv3wa-ey.a.run.app//implicit/login/google
+  linkingType: OAUTH
+defaultLocale: fr
+localizedSettings:
+  displayName: kvmai authentification
+  pronunciation: kvmai authentification
+  voice: female_1
+projectId: authentication-test-2f56d
+testingInstructions: parler avec kvmai authentification
