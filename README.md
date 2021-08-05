@@ -95,4 +95,8 @@ https://console.cloud.google.com/datastore/stats?project=audiobooks-a6348
 ## specification document (private)
 https://docs.google.com/document/d/1Gz0lipop1liGCl2wID0sbYJRegvYIA428TXLIV284eI/edit?usp=sharing
 
+### test specification
+
+https://docs.google.com/document/d/190HxAP1DIHZNUSSXYE7OeAtPvPTPSfx22ra1dkF5-5U/edit?usp=sharing
+
 ----
