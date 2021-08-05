@@ -10,6 +10,10 @@ intentEvents:
   transitionToScene: home
 - intent: entrer_espace_membres_lvl1
   transitionToScene: home_AccountLinking
+- intent: reprendre_la_lecture_player
+  transitionToScene: home
+- intent: ecouter_un_livre_lvl1
+  transitionToScene: home_members
 onEnter:
   staticPrompt:
     candidates:

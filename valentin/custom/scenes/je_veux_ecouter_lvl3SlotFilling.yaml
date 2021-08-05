@@ -1,9 +1,0 @@
-onSlotUpdated:
-  webhookHandler: i_want_to_listen
-slots:
-- commitBehavior:
-    writeSessionParam: query
-  name: query
-  required: true
-  type:
-    name: string
