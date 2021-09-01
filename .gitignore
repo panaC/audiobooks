@@ -1,4 +1,8 @@
 
+
+.DS_STORE
+functions/functions/.DS_Store
+
 service_account.json
 
 webhooks/build/

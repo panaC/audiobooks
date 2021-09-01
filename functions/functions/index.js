@@ -29,6 +29,17 @@ app.handle("reprendre_mon_livre_lvl2", (conv) => {
 
   // set the context storage
   // then the scene start the player
+
+  try {
+    const url = conv.user.params.player_url;
+    ok(url, "url not defined");
+  } catch (_) {
+
+    conv.scene.next.name = "home_members";
+    conv.add("aucune lecture en cours");
+
+  }
+
 });
 
 app.handle("ecouter_livre_audio_lvl2", (conv) => {
@@ -103,6 +114,8 @@ app.handle("i_want_to_listen", async (conv) => {
     conv.user.params.player_url = list[0].webpuburl;
   } else {
     conv.scene.next.name = "search";
+
+    conv.add("aucun résultat trouvé");
   }
 
   console.log("i_want_to_listen STOP");
