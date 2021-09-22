@@ -20,7 +20,7 @@ const app = conversation();
 
 app.handle("cancel", (conv) => {
   // Implement your code here
-  conv.add("cancel");
+  // conv.add("cancel");
 });
 
 app.handle("reprendre_mon_livre_lvl2", (conv) => {
@@ -48,6 +48,7 @@ app.handle("ecouter_livre_audio_lvl2", (conv) => {
   console.log("écouter_livre_audio_lvl2");
 });
 
+const SEARCH_URL = "https://europe-west1-audiobooks-a6348.cloudfunctions.net/indexer?url=https://storage.googleapis.com/audiobook_edrlab/navigation/all.json&query={query}";
 async function getPubsFromFeed(query) {
   ok(typeof query === "string", "query not defined");
   const url = SEARCH_URL.replace("{query}", encodeURIComponent(query));
@@ -76,7 +77,7 @@ async function getPubsFromFeed(query) {
 }
 
 
-const SEARCH_URL = "https://europe-west1-audiobooks-a6348.cloudfunctions.net/indexer?url=https://storage.googleapis.com/audiobook_edrlab/navigation/all.json&query={query}";
+// if scene.slot.status == "FINAL" => call i_want_to_listen
 app.handle("i_want_to_listen", async (conv) => {
   // void
 
@@ -99,8 +100,7 @@ app.handle("i_want_to_listen", async (conv) => {
   const length = list.length;
   if (length > 1) {
     conv.scene.next.name = "select_pub_after_search";
-
-    conv.add(`Il y a ${length} publications :\nPour choisir une publication dite son numéro`);
+    conv.add(`Il y a ${length} publications :\n`);
 
     let text = "";
     list.map(({title, author}, i) => {
@@ -151,7 +151,8 @@ app.handle("select_publication_number", async (conv) => {
     conv.user.params.player_url = url;
   } else {
     console.log("NO PUBS found !!");
-    conv.scene.next.name = "search";
+    conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro`);
+    conv.scene.next.name = "select_pub_after_search";
   }
 
   console.log("select_publication_number END");
