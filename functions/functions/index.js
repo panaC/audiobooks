@@ -23,6 +23,75 @@ app.handle("cancel", (conv) => {
   // conv.add("cancel");
 });
 
+
+const SELECTION_URL = "https://storage.googleapis.com/audiobook_edrlab/groups/popular.json"
+app.handle("selection_livre_lvl2", (conv) => {
+
+  const url = SELECTION_URL;
+  const list = getPubsFromFeed(url);
+
+  console.log("PUBs: ", list);
+
+  const length = list.length;
+  if (length > 1) {
+    conv.scene.next.name = "select_pub_after_selection";
+    conv.add(`Il y a ${length} publications :\n`);
+
+    let text = "";
+    list.map(({title, author}, i) => {
+      text += `numero ${i + 1} : ${title} ${author ? `de ${author}` : ""}\n`;
+    });
+
+    conv.add(text);
+  } else if (length === 1) {
+    conv.scene.next.name = "player";
+
+    conv.user.params.player_url = list[0].webpuburl;
+  } else {
+    conv.scene.next.name = "home_members";
+
+    conv.add("aucun résultat trouvé");
+  }
+
+  console.log("selection_livre_lvl2 EXIT");
+
+});
+
+app.handle("select_publication_number_after_search", async (conv) => {
+  console.log("select_publication_number START");
+
+  const number = conv.intent.params.number.resolved;
+
+  const url = SELECTION_URL;
+  const list = getPubsFromFeed(url);
+  const pub = list[number - 1];
+  if (pub) {
+    console.log("PUB: ", pub);
+
+    const url = pub.webpuburl;
+
+    if (!conv.user.params.player) {
+      conv.user.params.player = {};
+    }
+
+    const history = conv.user.params.player[url];
+    if (!history) {
+      conv.user.params.player_startIndex = 0;
+      conv.user.params.player_startTime = 0;
+    } else {
+      conv.user.params.player_startIndex = history.i;
+      conv.user.params.player_startTime = history.t;
+    }
+    conv.user.params.player_url = url;
+  } else {
+    console.log("NO PUBS found !!");
+    conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
+    conv.scene.next.name = "select_pub_after_search";
+  }
+
+  console.log("select_publication_number END");
+});
+
 app.handle("reprendre_mon_livre_lvl2", (conv) => {
 
   // void
@@ -48,11 +117,7 @@ app.handle("ecouter_livre_audio_lvl2", (conv) => {
   console.log("écouter_livre_audio_lvl2");
 });
 
-const SEARCH_URL = "https://europe-west1-audiobooks-a6348.cloudfunctions.net/indexer?url=https://storage.googleapis.com/audiobook_edrlab/navigation/all.json&query={query}";
-async function getPubsFromFeed(query) {
-  ok(typeof query === "string", "query not defined");
-  const url = SEARCH_URL.replace("{query}", encodeURIComponent(query));
-  console.log(url);
+async function getPubsFromFeed(url) {
 
   const opds = new OpdsFetcher();
   const feed = await opds.feedRequest(url);
@@ -76,6 +141,7 @@ async function getPubsFromFeed(query) {
   return list;
 }
 
+const SEARCH_URL = "https://europe-west1-audiobooks-a6348.cloudfunctions.net/indexer?url=https://storage.googleapis.com/audiobook_edrlab/navigation/all.json&query={query}";
 
 // if scene.slot.status == "FINAL" => call i_want_to_listen
 app.handle("i_want_to_listen", async (conv) => {
@@ -91,8 +157,13 @@ app.handle("i_want_to_listen", async (conv) => {
     // ignore
   }
 
+  ok(typeof query === "string", "aucune requete demandée");
   conv.session.params.query = query;
-  const list = await getPubsFromFeed(query);
+ 
+  const url = SEARCH_URL.replace("{query}", encodeURIComponent(query));
+  console.log("I want to listen URL: ", url);
+
+  const list = await getPubsFromFeed(url);
 
   console.log("PUBs: ");
   console.log(list);
@@ -123,13 +194,19 @@ app.handle("i_want_to_listen", async (conv) => {
   // slot available for research
 });
 
-app.handle("select_publication_number", async (conv) => {
+app.handle("select_publication_number_after_search", async (conv) => {
   console.log("select_publication_number START");
 
   const number = conv.intent.params.number.resolved;
 
   console.log("NUMBER: ", number);
-  const list = await getPubsFromFeed(conv.session.params.query);
+  const query = conv.session.params.query;
+  ok(typeof query === "string", "aucune requete demandée");
+ 
+  const url = SEARCH_URL.replace("{query}", encodeURIComponent(query));
+  console.log("select_publication_number_after_search URL: ", url);
+
+  const list = await getPubsFromFeed(url);
   const pub = list[number - 1];
   if (pub) {
     console.log("PUB: ", pub);
@@ -151,7 +228,7 @@ app.handle("select_publication_number", async (conv) => {
     conv.user.params.player_url = url;
   } else {
     console.log("NO PUBS found !!");
-    conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro`);
+    conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
     conv.scene.next.name = "select_pub_after_search";
   }
 
