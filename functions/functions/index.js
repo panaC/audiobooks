@@ -16,6 +16,36 @@ function isValidHttpUrl(string) {
   return url.protocol === "http:" || url.protocol === "https:";
 }
 
+async function getPubsFromFeed(url) {
+
+  const opds = new OpdsFetcher();
+  const feed = await opds.feedRequest(url);
+
+  ok(Array.isArray(feed.publications), "no publications");
+  const list = feed.publications
+      .filter(({openAccessLinks: l}) /* : l is IOpdsLinkView[]*/ => {
+        return (
+          Array.isArray(l) &&
+        l[0] &&
+        isValidHttpUrl(l[0].url)
+        );
+      })
+      .slice(0, 5)
+      .map(({title, authors, openAccessLinks}) => ({
+        title: title,
+        author: Array.isArray(authors) ? authors[0].name : "",
+        webpuburl: openAccessLinks[0].url,
+      }));
+
+  return list;
+}
+
+// ----------------
+//
+// CONVERSATION START
+//
+// ----------------
+
 const app = conversation();
 
 app.handle("cancel", (conv) => {
@@ -23,12 +53,22 @@ app.handle("cancel", (conv) => {
   // conv.add("cancel");
 });
 
+app.handle("test_webhook", (conv) => {
+
+  conv.add("Webook works");
+  console.log("TEST OK");
+});
+
+// -----------
+// LVL2 MENU
+// SELECTION 
+// -----------
 
 const SELECTION_URL = "https://storage.googleapis.com/audiobook_edrlab/groups/popular.json"
-app.handle("selection_livre_lvl2", (conv) => {
+app.handle("selection_livre_lvl2", async (conv) => {
 
   const url = SELECTION_URL;
-  const list = getPubsFromFeed(url);
+  const list = await getPubsFromFeed(url);
 
   console.log("PUBs: ", list);
 
@@ -57,13 +97,13 @@ app.handle("selection_livre_lvl2", (conv) => {
 
 });
 
-app.handle("select_publication_number_after_search", async (conv) => {
+app.handle("select_publication_number_after_selection", async (conv) => {
   console.log("select_publication_number START");
 
   const number = conv.intent.params.number.resolved;
 
   const url = SELECTION_URL;
-  const list = getPubsFromFeed(url);
+  const list = await getPubsFromFeed(url);
   const pub = list[number - 1];
   if (pub) {
     console.log("PUB: ", pub);
@@ -86,11 +126,17 @@ app.handle("select_publication_number_after_search", async (conv) => {
   } else {
     console.log("NO PUBS found !!");
     conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
-    conv.scene.next.name = "select_pub_after_search";
+    conv.scene.next.name = "select_pub_after_selection";
   }
 
   console.log("select_publication_number END");
 });
+
+
+// -----------
+// LVL2 MENU
+// SELECTION 
+// -----------
 
 app.handle("reprendre_mon_livre_lvl2", (conv) => {
 
@@ -115,39 +161,27 @@ app.handle("ecouter_livre_audio_lvl2", (conv) => {
   // void
 
   console.log("écouter_livre_audio_lvl2");
+
+  // first entry point for search
+  //
+  // VOID
+  //
+  // search_livre_lvl2 is the main entry point
 });
 
-async function getPubsFromFeed(url) {
 
-  const opds = new OpdsFetcher();
-  const feed = await opds.feedRequest(url);
-
-  ok(Array.isArray(feed.publications), "no publications");
-  const list = feed.publications
-      .filter(({openAccessLinks: l}) /* : l is IOpdsLinkView[]*/ => {
-        return (
-          Array.isArray(l) &&
-        l[0] &&
-        isValidHttpUrl(l[0].url)
-        );
-      })
-      .slice(0, 5)
-      .map(({title, authors, openAccessLinks}) => ({
-        title: title,
-        author: Array.isArray(authors) ? authors[0].name : "",
-        webpuburl: openAccessLinks[0].url,
-      }));
-
-  return list;
-}
+// ----------
+// LVL2 MENU
+// SEARCH
+// ----------
 
 const SEARCH_URL = "https://europe-west1-audiobooks-a6348.cloudfunctions.net/indexer?url=https://storage.googleapis.com/audiobook_edrlab/navigation/all.json&query={query}";
 
-// if scene.slot.status == "FINAL" => call i_want_to_listen
-app.handle("i_want_to_listen", async (conv) => {
+// if scene.slot.status == "FINAL" => call search_livre_lvl2
+app.handle("search_livre_lvl2", async (conv) => {
   // void
 
-  console.log("i_want_to_listen START");
+  console.log("search_livre_lvl2 START");
 
   let query = null;
 
@@ -161,7 +195,7 @@ app.handle("i_want_to_listen", async (conv) => {
   conv.session.params.query = query;
  
   const url = SEARCH_URL.replace("{query}", encodeURIComponent(query));
-  console.log("I want to listen URL: ", url);
+  console.log("search URL: ", url);
 
   const list = await getPubsFromFeed(url);
 
@@ -189,7 +223,7 @@ app.handle("i_want_to_listen", async (conv) => {
     conv.add("aucun résultat trouvé");
   }
 
-  console.log("i_want_to_listen STOP");
+  console.log("search_livre_lvl2 STOP");
 
   // slot available for research
 });
@@ -236,6 +270,16 @@ app.handle("select_publication_number_after_search", async (conv) => {
 });
 
 
+// ----------
+// LVL2 MENU
+// SEARCH
+// ----------
+
+
+// ----------
+// PLAYER
+// ----------
+
 app.handle("player", async (conv) => {
   const url = conv.user.params.player_url;
   ok(url, "url not defined");
@@ -279,6 +323,10 @@ app.handle("player", async (conv) => {
       }),
   );
 });
+
+// ----------
+// PLAYER
+// ----------
 
 
 // ////////////////////////
@@ -412,6 +460,8 @@ app.catch((conv, error) => {
 // middleware<TConversationPlugin>(middleware: ConversationV3Middleware<TConversationPlugin>): ConversationV3App<TConversation>
 // ConversationV3Middleware(conv: ConversationV3, framework: BuiltinFrameworkMetadata): void | ConversationV3 & TConversationPlugin | Promise<ConversationV3 & TConversationPlugin> | Promise<void>
 app.middleware((conv) => {
+
+  console.log(conv);
 
   // void
 });
