@@ -55,7 +55,7 @@ app.handle("cancel", (conv) => {
 
 app.handle("test_webhook", (conv) => {
 
-  conv.add("Webook works");
+  conv.add("Webook works : version 2");
   console.log("TEST OK");
 });
 
@@ -63,6 +63,19 @@ app.handle("test_webhook", (conv) => {
 // LVL2 MENU
 // SELECTION 
 // -----------
+
+
+const WEBPUB_URL = "https://storage.googleapis.com/audiobook_edrlab/webpub/";
+
+const extract_name_from_url = (url) => {
+
+  const name = /\/(?:.(?!\/))+$/.exec(url)[0];
+
+  if (typeof name === "string")
+    return name.slice(1);
+
+  return "";
+};
 
 const SELECTION_URL = "https://storage.googleapis.com/audiobook_edrlab/groups/popular.json"
 app.handle("selection_livre_lvl2", async (conv) => {
@@ -86,7 +99,7 @@ app.handle("selection_livre_lvl2", async (conv) => {
   } else if (length === 1) {
     conv.scene.next.name = "player";
 
-    conv.user.params.player_url = list[0].webpuburl;
+    conv.user.params.p_n = extract_name_from_url(list[0].webpuburl);
   } else {
     conv.scene.next.name = "home_members";
 
@@ -108,7 +121,7 @@ app.handle("select_publication_number_after_selection", async (conv) => {
   if (pub) {
     console.log("PUB: ", pub);
 
-    const url = pub.webpuburl;
+    const url = extract_name_from_url(pub.webpuburl);
 
     if (!conv.user.params.player) {
       conv.user.params.player = {};
@@ -116,13 +129,13 @@ app.handle("select_publication_number_after_selection", async (conv) => {
 
     const history = conv.user.params.player[url];
     if (!history) {
-      conv.user.params.player_startIndex = 0;
-      conv.user.params.player_startTime = 0;
+      conv.user.params.p_i = 0;
+      conv.user.params.p_t = 0;
     } else {
-      conv.user.params.player_startIndex = history.i;
-      conv.user.params.player_startTime = history.t;
+      conv.user.params.p_i = history.i;
+      conv.user.params.p_t = history.t;
     }
-    conv.user.params.player_url = url;
+    conv.user.params.p_n = url;
   } else {
     console.log("NO PUBS found !!");
     conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
@@ -143,24 +156,14 @@ app.handle("reprendre_mon_livre_lvl2", (conv) => {
   // void
 
   try {
-    const url = conv.user.params.player_url;
-    ok(url, "url not defined");
+    const name = conv.user.params.p_n;
+    ok(name, "titre non défini");
  
-    const history = conv.user.params.player[url];
-    if (!history) {
-      conv.user.params.player_startIndex = 0;
-      conv.user.params.player_startTime = 0;
-    } else {
-      conv.user.params.player_startIndex = history.i;
-      conv.user.params.player_startTime = history.t;
-    }
   } catch (_) {
 
     conv.scene.next.name = "home_members";
     conv.add("aucune lecture en cours");
-
   }
-
 });
 
 app.handle("ecouter_livre_audio_lvl2", (conv) => {
@@ -222,7 +225,7 @@ app.handle("search_livre_lvl2", async (conv) => {
   } else if (length === 1) {
     conv.scene.next.name = "player";
 
-    conv.user.params.player_url = list[0].webpuburl;
+    conv.user.params.p_n = extract_name_from_url(list[0].webpuburl);
   } else {
     conv.scene.next.name = "search";
 
@@ -251,7 +254,7 @@ app.handle("select_publication_number_after_search", async (conv) => {
   if (pub) {
     console.log("PUB: ", pub);
 
-    const url = pub.webpuburl;
+    const url = extract_name_from_url(pub.webpuburl);
 
     if (!conv.user.params.player) {
       conv.user.params.player = {};
@@ -259,13 +262,13 @@ app.handle("select_publication_number_after_search", async (conv) => {
 
     const history = conv.user.params.player[url];
     if (!history) {
-      conv.user.params.player_startIndex = 0;
-      conv.user.params.player_startTime = 0;
+      conv.user.params.p_i= 0;
+      conv.user.params.p_t = 0;
     } else {
-      conv.user.params.player_startIndex = history.i;
-      conv.user.params.player_startTime = history.t;
+      conv.user.params.p_i = history.i;
+      conv.user.params.p_t = history.t;
     }
-    conv.user.params.player_url = url;
+    conv.user.params.p_n = url;
   } else {
     console.log("NO PUBS found !!");
     conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
@@ -295,12 +298,12 @@ app.handle("player", async (conv) => {
   const webpub = await opds.webpubRequest(url);
   ok(webpub, "webpub not defined");
 
-  const startIndexRaw = conv.user.params.player_startIndex;
+  const startIndexRaw = conv.user.params.p_i;
   const startIndex =
     typeof startIndexRaw === "number" &&
       startIndexRaw <= webpub.readingOrders.length ? startIndexRaw : 0;
 
-  const startTimeRaw = conv.user.params.player_startTime;
+  const startTimeRaw = conv.user.params.p_t;
   const startTime =
     typeof startTimeRaw === "number" &&
       startTimeRaw <= (webpub.readingOrders[startIndex].duration || Infinity) ? startTimeRaw : 0;
@@ -345,16 +348,16 @@ function persistMediaPlayer(conv) {
 
     const progress = parseInt(conv.request.context.media.progress, 10);
     const index = conv.request.context.media.index;
-    const url = conv.user.params.player_url;
+    const name = conv.user.params.p_n;
 
-    conv.user.params.player_startIndex = index;
-    conv.user.params.player_startTime = progress;
+    conv.user.params.p_i = index;
+    conv.user.params.p_t = progress;
 
     if (!conv.user.params.player) {
       conv.user.params.player = {};
     }
 
-    conv.user.params.player[url] = {
+    conv.user.params.player[name] = {
       i: index,
       t: progress,
       d: new Date().getTime(),
@@ -382,8 +385,10 @@ app.handle("reprendre_la_lecture", (conv) => {
 app.handle("remaining_time", async (conv) => {
   persistMediaPlayer(conv);
 
-  const url = conv.user.params.player_url;
-  ok(url, "url not defined");
+  const name = conv.user.params.p_n;
+  ok(name, "titre non défini");
+
+  const url = WEBPUB_URL + name;
   ok(isValidHttpUrl(url), "url not valid " + url);
 
   const opds = new OpdsFetcher();
@@ -472,7 +477,10 @@ app.catch((conv, error) => {
 // ConversationV3Middleware(conv: ConversationV3, framework: BuiltinFrameworkMetadata): void | ConversationV3 & TConversationPlugin | Promise<ConversationV3 & TConversationPlugin> | Promise<void>
 app.middleware((conv) => {
 
+  console.log(conv.user.params);
+  console.log("==========");
   console.log(conv);
+  console.log("----------");
 
   // void
 });
