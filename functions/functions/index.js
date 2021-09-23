@@ -142,12 +142,18 @@ app.handle("reprendre_mon_livre_lvl2", (conv) => {
 
   // void
 
-  // set the context storage
-  // then the scene start the player
-
   try {
     const url = conv.user.params.player_url;
     ok(url, "url not defined");
+ 
+    const history = conv.user.params.player[url];
+    if (!history) {
+      conv.user.params.player_startIndex = 0;
+      conv.user.params.player_startTime = 0;
+    } else {
+      conv.user.params.player_startIndex = history.i;
+      conv.user.params.player_startTime = history.t;
+    }
   } catch (_) {
 
     conv.scene.next.name = "home_members";
@@ -356,6 +362,9 @@ function persistMediaPlayer(conv) {
 
     console.log("player persistence :");
     console.log(conv.user.params.player);
+  } else {
+
+    console.log("NO conv.request.context !!");
   }
 }
 
@@ -425,6 +434,8 @@ app.handle("media_status", (conv) => {
   console.log("MediaStatus : ", mediaStatus);
   switch (mediaStatus) {
     case "FINISHED":
+      persistMediaPlayer(conv);
+      conv.scene.next.name = "home_members";
 
       // void
       break;
