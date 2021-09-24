@@ -55,7 +55,7 @@ app.handle("cancel", (conv) => {
 
 app.handle("test_webhook", (conv) => {
 
-  conv.add("Webook works : version 2");
+  conv.add("Webook works : version debug 24 septembre");
   console.log("TEST OK");
 });
 
@@ -136,6 +136,7 @@ app.handle("select_publication_number_after_selection", async (conv) => {
       conv.user.params.p_t = history.t;
     }
     conv.user.params.p_n = url;
+    conv.scene.next.name = "player";
   } else {
     console.log("NO PUBS found !!");
     conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
@@ -269,6 +270,7 @@ app.handle("select_publication_number_after_search", async (conv) => {
       conv.user.params.p_t = history.t;
     }
     conv.user.params.p_n = url;
+    conv.scene.next.name = "player";
   } else {
     console.log("NO PUBS found !!");
     conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
@@ -290,7 +292,10 @@ app.handle("select_publication_number_after_search", async (conv) => {
 // ----------
 
 app.handle("player", async (conv) => {
-  const url = conv.user.params.player_url;
+  const name = conv.user.params.p_n;
+
+  const url = WEBPUB_URL + name;
+  console.log("Player URL:", url);
   ok(url, "url not defined");
   ok(isValidHttpUrl(url), "url not valid " + url);
 
