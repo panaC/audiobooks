@@ -1,8 +1,29 @@
 const {conversation, Media} = require("@assistant/conversation");
 const functions = require("firebase-functions");
+const admin = require('firebase-admin');
+
+admin.initializeApp();
+
+const db = admin.firestore();
 
 const {OpdsFetcher} = require("opds-fetcher-parser");
 const {ok} = require("assert");
+
+const app = conversation();
+
+const appHandle = app.handle.bind(app);
+
+app.handle = (path, fn) => {
+
+  appHandle(path, async (conv) => {
+
+    const id = conv.user.params.bearerToken;
+    ok(id, "bearerToken not defined");
+    const docRef = db.collection('user-storage').doc(id);
+    await Promise.resolve(fn(conv));
+    await docRef.set(conv.user.params);
+  });
+};
 
 function isValidHttpUrl(string) {
   let url;
@@ -45,8 +66,6 @@ async function getPubsFromFeed(url) {
 // CONVERSATION START
 //
 // ----------------
-
-const app = conversation();
 
 app.handle("cancel", (conv) => {
   // Implement your code here
@@ -480,12 +499,24 @@ app.catch((conv, error) => {
 
 // middleware<TConversationPlugin>(middleware: ConversationV3Middleware<TConversationPlugin>): ConversationV3App<TConversation>
 // ConversationV3Middleware(conv: ConversationV3, framework: BuiltinFrameworkMetadata): void | ConversationV3 & TConversationPlugin | Promise<ConversationV3 & TConversationPlugin> | Promise<void>
-app.middleware((conv) => {
+app.middleware(async (conv) => {
 
   console.log(conv.user.params);
   console.log("==========");
   console.log(conv);
   console.log("----------");
+
+  const id = conv.user.params.bearerToken;
+  ok(id, "bearerToken not defined");
+  const docRef = db.collection('user-storage').doc(id);
+
+  const doc = await docRef.get();
+  if (!doc.exists) {
+    console.log('No such document!');
+  } else {
+    console.log('Document data:', doc.data());
+    conv.user.params = doc.data();
+  }
 
   // void
 });
