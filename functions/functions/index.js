@@ -1,6 +1,6 @@
 const {conversation, Media} = require("@assistant/conversation");
 const functions = require("firebase-functions");
-const admin = require('firebase-admin');
+const admin = require("firebase-admin");
 
 admin.initializeApp();
 
@@ -24,7 +24,7 @@ app.handle = (path, fn) => {
 
       ok(id, "bearerToken not defined");
 
-      const docRef = db.collection('user-storage').doc(id);
+      const docRef = db.collection("user-storage").doc(id);
       await Promise.resolve(fn(conv));
       pass = true;
       await docRef.set(conv.user.params);
@@ -525,12 +525,12 @@ app.middleware(async (conv) => {
 
     const id = conv.user.params.bearerToken;
     ok(id, "bearerToken not defined");
-    const docRef = db.collection('user-storage').doc(id);
+    const docRef = db.collection("user-storage").doc(id);
     const doc = await docRef.get();
     if (!doc.exists) {
-      console.log('No such document!');
+      console.log("No such document!");
     } else {
-      console.log('Document data:', doc.data());
+      console.log("Document data:", doc.data());
       conv.user.params = doc.data();
     }
   } catch (e) {
