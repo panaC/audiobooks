@@ -17,11 +17,24 @@ app.handle = (path, fn) => {
 
   appHandle(path, async (conv) => {
 
-    const id = conv.user.params.bearerToken;
-    ok(id, "bearerToken not defined");
-    const docRef = db.collection('user-storage').doc(id);
-    await Promise.resolve(fn(conv));
-    await docRef.set(conv.user.params);
+    let pass = false;
+    try {
+
+      const id = conv.user.params.bearerToken;
+
+      ok(id, "bearerToken not defined");
+
+      const docRef = db.collection('user-storage').doc(id);
+      await Promise.resolve(fn(conv));
+      pass = true;
+      await docRef.set(conv.user.params);
+
+    } catch (e) {
+      console.error(e);
+      if (!pass)
+        await Promise.resolve(fn(conv));
+
+    }
   });
 };
 
@@ -155,6 +168,8 @@ app.handle("select_publication_number_after_selection", async (conv) => {
       conv.user.params.p_t = history.t;
     }
     conv.user.params.p_n = url;
+
+    // should be specified
     conv.scene.next.name = "player";
   } else {
     console.log("NO PUBS found !!");
@@ -175,15 +190,12 @@ app.handle("reprendre_mon_livre_lvl2", (conv) => {
 
   // void
 
-  try {
-    const name = conv.user.params.p_n;
-    ok(name, "titre non défini");
- 
-  } catch (_) {
-
+  const name = conv.user.params.p_n;
+  if (!name) {
     conv.scene.next.name = "home_members";
     conv.add("aucune lecture en cours");
   }
+
 });
 
 app.handle("ecouter_livre_audio_lvl2", (conv) => {
@@ -274,13 +286,13 @@ app.handle("select_publication_number_after_search", async (conv) => {
   if (pub) {
     console.log("PUB: ", pub);
 
-    const url = extract_name_from_url(pub.webpuburl);
+    const name = extract_name_from_url(pub.webpuburl);
 
     if (!conv.user.params.player) {
       conv.user.params.player = {};
     }
 
-    const history = conv.user.params.player[url];
+    const history = conv.user.params.player[name];
     if (!history) {
       conv.user.params.p_i= 0;
       conv.user.params.p_t = 0;
@@ -288,7 +300,9 @@ app.handle("select_publication_number_after_search", async (conv) => {
       conv.user.params.p_i = history.i;
       conv.user.params.p_t = history.t;
     }
-    conv.user.params.p_n = url;
+    conv.user.params.p_n = name;
+
+    // should be specified
     conv.scene.next.name = "player";
   } else {
     console.log("NO PUBS found !!");
@@ -346,6 +360,7 @@ app.handle("player", async (conv) => {
 
   console.log("Media list");
   console.log(mediaObjects);
+  console.log("Start Index = ", startIndex, " Start Time = ", startTime, " Start Time");
 
   conv.add(
       new Media({
@@ -506,16 +521,22 @@ app.middleware(async (conv) => {
   console.log(conv);
   console.log("----------");
 
-  const id = conv.user.params.bearerToken;
-  ok(id, "bearerToken not defined");
-  const docRef = db.collection('user-storage').doc(id);
+  try {
 
-  const doc = await docRef.get();
-  if (!doc.exists) {
-    console.log('No such document!');
-  } else {
-    console.log('Document data:', doc.data());
-    conv.user.params = doc.data();
+    const id = conv.user.params.bearerToken;
+    ok(id, "bearerToken not defined");
+    const docRef = db.collection('user-storage').doc(id);
+    const doc = await docRef.get();
+    if (!doc.exists) {
+      console.log('No such document!');
+    } else {
+      console.log('Document data:', doc.data());
+      conv.user.params = doc.data();
+    }
+  } catch (e) {
+
+    console.error("Middleware critical error firebase firestore");
+    console.error(e);
   }
 
   // void
