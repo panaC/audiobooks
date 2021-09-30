@@ -129,7 +129,7 @@ app.handle("selection_livre_lvl2", async (conv) => {
 
     conv.add(text);
   } else if (length === 1) {
-    conv.scene.next.name = "player";
+    conv.scene.next.name = "ask_to_resume_listening_at_last_offset";
 
     conv.user.params.p_n = extract_name_from_url(list[0].webpuburl);
   } else {
@@ -170,7 +170,7 @@ app.handle("select_publication_number_after_selection", async (conv) => {
     conv.user.params.p_n = url;
 
     // should be specified
-    conv.scene.next.name = "player";
+    conv.scene.next.name = "ask_to_resume_listening_at_last_offset";
   } else {
     console.log("NO PUBS found !!");
     conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
@@ -255,7 +255,7 @@ app.handle("search_livre_lvl2", async (conv) => {
 
     conv.add(text);
   } else if (length === 1) {
-    conv.scene.next.name = "player";
+    conv.scene.next.name = "ask_to_resume_listening_at_last_offset";
 
     conv.user.params.p_n = extract_name_from_url(list[0].webpuburl);
   } else {
@@ -303,7 +303,7 @@ app.handle("select_publication_number_after_search", async (conv) => {
     conv.user.params.p_n = name;
 
     // should be specified
-    conv.scene.next.name = "player";
+    conv.scene.next.name = "ask_to_resume_listening_at_last_offset";
   } else {
     console.log("NO PUBS found !!");
     conv.add(`Le numéro ${number} est inconnu. Veuillez choisir un autre numéro.`);
@@ -318,6 +318,45 @@ app.handle("select_publication_number_after_search", async (conv) => {
 // LVL2 MENU
 // SEARCH
 // ----------
+
+app.handle("ask_to_resume_listening_at_last_offset", async (conv) => {
+
+  const { p_n: name, p_i, p_t } = conv.user.params;
+  if (name && (p_i > 0 || p_t > 0)) {
+    console.log("ask to resume enabled , wait yes or no");
+    // ask yes or no in the no-code scene
+    const history = conv.user.params.player[name];
+    const date = history.d;;
+    // TODO: use the date info
+    
+    conv.add("Voulez-vous continuez la lecture ?");
+  } else {
+    console.log("no need to ask to resume");
+    conv.scene.next.name = "player";
+  }
+
+});
+
+app.handle("ask_to_resume_listening_at_last_offset__yes", async (conv) => {
+
+  // nothing
+  // not used
+  conv.scene.next.name = "player";
+  
+});
+
+
+app.handle("ask_to_resume_listening_at_last_offset__no", async (conv) => {
+
+  const name = conv.user.params.p_n;
+  if (name) {
+    console.log("erase ", name, " resume listening NO");
+    conv.user.params.p_i = 0;
+    conv.user.params.p_t = 0;
+  }
+  conv.scene.next.name = "player";
+
+});
 
 
 // ----------
