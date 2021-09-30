@@ -1,25 +1,10 @@
 # audiobooks
 
-**listen an audiobook on a smart speaker**
+**listen an audiobook on a GOOGLE smart speaker**
 
-## purpose of the project
+connect an OPDS Feed with some audiobook Readium Web Publication Manifest to the Google Assistant
 
-you have an opds feed with audiobook
-
-you have a google home nest speaker (or your phone)
-
-**SO** You can enjoy to read an audiobook on the google home
-
-## This project is a work in progress
-
-### actual state
-
-**It Works ! first stage**
-
-- toc
-- read my book
-- search in opds catalog
-- playlist audiobook controls
+Actually implemented to the name "Parler avec valentin audio" in french
 
 ## some technical challenges
 
