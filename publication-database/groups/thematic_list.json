@@ -1,0 +1,172 @@
+{
+  "metadata": {
+    "title": "Liste thématiqe"
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/groups/thematic_list.json",
+      "type": "application/opds+json"
+    }
+  ],
+  "groups": [
+    {
+      "metadata": {
+        "title": "liste d'essai de Philosophie",
+        "numberOfItems": 2
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/groups/thematic_list/philosophie.json",
+          "type": "application/opds+json"
+        }
+      ],
+      "publications": [
+        {
+          "metadata": {
+            "@type": "http://schema.org/Audiobook",
+            "title": "le prince",
+            "identifier": "machiavel_le_prince",
+            "author": "Nicolas Machiavel",
+            "publisher": "archive",
+            "language": "fr",
+            "description": "Le Prince, traduction française de l'ouvrage Il Principe ou De Principatibus est un traité politique écrit au début du XVIe siècle par Nicolas Machiavel, homme politique et écrivain florentin, qui montre comment devenir prince et le rester, analysant des exemples de l'histoire antique et de l'histoire italienne de l'époque. Parce que l'ouvrage ne donnait pas de conseils moraux au prince comme les traités classiques adressés à des rois, et qu'au contraire il conseillait dans certains cas des actions contraires aux bonnes mœurs, il a été souvent accusé d'immoralisme, donnant lieu à l'épithète machiavélique. Cependant, l'ouvrage a connu une grande postérité et a été loué et analysé par de nombreux penseurs. ",
+            "rights": "",
+            "duration": 19115,
+            "subject": "essai"
+          },
+          "links": [
+            {
+              "type": "application/opds-publication+json",
+              "rel": "self",
+              "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/machiavel_le_prince.json"
+            },
+            {
+              "rel": "http://opds-spec.org/acquisition/open-access",
+              "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/machiavel_le_prince.json",
+              "type": "application/webpub+json"
+            }
+          ],
+          "images": [
+            {
+              "type": "image/jpeg",
+              "href": "https://upload.wikimedia.org/wikipedia/commons/7/77/Machiavelli_Principe_Cover_Page.jpg"
+            }
+          ]
+        },
+        {
+          "metadata": {
+            "@type": "http://schema.org/Audiobook",
+            "title": "Du contrat social",
+            "identifier": "du_contrat_social_rousseau",
+            "author": "Rousseau",
+            "publisher": "archive",
+            "language": "fr",
+            "description": "Du contrat social ou Principes du droit politique est un ouvrage de philosophie politique pensé et écrit par Jean-Jacques Rousseau, publié en 1762. L'œuvre a constitué un tournant décisif pour la modernité et s'est imposée comme un des textes majeurs de la philosophie politique et sociale, en affirmant le principe de souveraineté du peuple appuyé sur les notions de liberté, d'égalité, et de volonté générale. ",
+            "rights": "",
+            "duration": 14127,
+            "subject": "essai"
+          },
+          "links": [
+            {
+              "type": "application/opds-publication+json",
+              "rel": "self",
+              "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/du_contrat_social_rousseau.json"
+            },
+            {
+              "rel": "http://opds-spec.org/acquisition/open-access",
+              "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/du_contrat_social_rousseau.json",
+              "type": "application/webpub+json"
+            }
+          ],
+          "images": [
+            {
+              "type": "image/jpeg",
+              "href": "https://upload.wikimedia.org/wikipedia/commons/d/db/Social_contract_rousseau_page.jpg"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "title": "liste de l'auteur Emile Zola",
+        "numberOfItems": 2
+      },
+      "links": [
+        {
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/groups/thematic_list/zola.json",
+          "type": "application/opds+json"
+        }
+      ],
+      "publications": [
+        {
+          "metadata": {
+            "@type": "http://schema.org/Audiobook",
+            "title": "L'assommoir",
+            "identifier": "assommoir_emile_zola",
+            "author": "Emile Zola",
+            "publisher": "archive",
+            "language": "fr",
+            "description": "L'Assommoir est un roman d'Émile Zola publié en feuilleton dès 1876 dans Le Bien public, puis dans La République des Lettres, avant sa sortie en livre en 1877 chez l'éditeur Georges Charpentier. C'est le septième volume de la série Les Rougon-Macquart.",
+            "rights": "",
+            "duration": 61664,
+            "subject": "roman"
+          },
+          "links": [
+            {
+              "type": "application/opds-publication+json",
+              "rel": "self",
+              "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/assommoir_emile_zola.json"
+            },
+            {
+              "rel": "http://opds-spec.org/acquisition/open-access",
+              "type": "application/webpub+json",
+              "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/assommoir_emile_zola.json"
+            }
+          ],
+          "images": [
+            {
+              "type": "image/jpeg",
+              "href": "https://ia600200.us.archive.org/8/items/LAssommoir/__ia_thumb.jpg"
+            }
+          ]
+        },
+        {
+          "metadata": {
+            "@type": "http://schema.org/Audiobook",
+            "title": "Thérèse Raquin",
+            "identifier": "therese_raquin_emile_zola",
+            "author": "Emile Zola",
+            "publisher": "archive",
+            "language": "fr",
+            "description": "Thérèse Raquin est le troisième roman de l'écrivain français Émile Zola publié en 1867. Ce roman, qui présente déjà les caractéristiques du naturalisme développé plus tard dans le cycle des Rougon-Macquart, fera connaître l'écrivain au public parisien. L'auteur en tirera lui-même, en 1873, une pièce de théâtre intitulée Thérèse Raquin : drame en 4 actes.",
+            "rights": "",
+            "duration": 35078,
+            "subject": "roman"  
+          },
+          "links": [
+            {
+              "type": "application/opds-publication+json",
+              "rel": "self",
+              "href": "https://storage.googleapis.com/audiobook_edrlab/therese_raquin_emile_zola.json"
+            },
+            {
+              "rel": "http://opds-spec.org/acquisition/open-access",
+              "type": "application/webpub+json",
+              "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/therese_raquin_emile_zola.json"
+            }
+          ],
+          "images": [
+            {
+              "type": "image/jpeg",
+              "href": "https://upload.wikimedia.org/wikipedia/commons/a/a1/Raquin.jpg"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
