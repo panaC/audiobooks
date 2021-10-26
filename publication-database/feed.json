@@ -27,11 +27,15 @@
       "rel": "http://opds-spec.org/sort/popular"
     },
     {
-      "href": "https://storage.googleapis.com/audiobook_edrlab/groups/thematic_list.json",
-      "title": "Liste thématique",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/navigation/thematic_list.json",
+      "title": "Thematic selection",
+      "type": "application/opds+json"
+    },
+    {
+      "href": "https://storage.googleapis.com/audiobook_edrlab/navigation/genre_list.json",
+      "title": "Genre selection",
       "type": "application/opds+json"
     }
-
   ],
   "groups": [
     {

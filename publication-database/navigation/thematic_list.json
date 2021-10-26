@@ -5,7 +5,7 @@
   "links": [
     {
       "rel": "self",
-      "href": "https://storage.googleapis.com/audiobook_edrlab/groups/thematic_list.json",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/navigation/thematic_list.json",
       "type": "application/opds+json"
     }
   ],

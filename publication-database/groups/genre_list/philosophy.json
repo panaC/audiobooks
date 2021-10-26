@@ -1,0 +1,79 @@
+{
+  "metadata": {
+    "title": "liste d'essai de Philosophie",
+    "numberOfItems": 2
+  },
+  "links": [
+    {
+      "rel": "self",
+      "href": "https://storage.googleapis.com/audiobook_edrlab/groups/genre_list/philosophy.json",
+      "type": "application/opds+json"
+    }
+  ],
+  "publications": [
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "le prince",
+        "identifier": "machiavel_le_prince",
+        "author": "Nicolas Machiavel",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "Le Prince, traduction française de l'ouvrage Il Principe ou De Principatibus est un traité politique écrit au début du XVIe siècle par Nicolas Machiavel, homme politique et écrivain florentin, qui montre comment devenir prince et le rester, analysant des exemples de l'histoire antique et de l'histoire italienne de l'époque. Parce que l'ouvrage ne donnait pas de conseils moraux au prince comme les traités classiques adressés à des rois, et qu'au contraire il conseillait dans certains cas des actions contraires aux bonnes mœurs, il a été souvent accusé d'immoralisme, donnant lieu à l'épithète machiavélique. Cependant, l'ouvrage a connu une grande postérité et a été loué et analysé par de nombreux penseurs. ",
+        "rights": "",
+        "duration": 19115,
+        "subject": "essai"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/machiavel_le_prince.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/machiavel_le_prince.json",
+          "type": "application/webpub+json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "href": "https://upload.wikimedia.org/wikipedia/commons/7/77/Machiavelli_Principe_Cover_Page.jpg"
+        }
+      ]
+    },
+    {
+      "metadata": {
+        "@type": "http://schema.org/Audiobook",
+        "title": "Du contrat social",
+        "identifier": "du_contrat_social_rousseau",
+        "author": "Rousseau",
+        "publisher": "archive",
+        "language": "fr",
+        "description": "Du contrat social ou Principes du droit politique est un ouvrage de philosophie politique pensé et écrit par Jean-Jacques Rousseau, publié en 1762. L'œuvre a constitué un tournant décisif pour la modernité et s'est imposée comme un des textes majeurs de la philosophie politique et sociale, en affirmant le principe de souveraineté du peuple appuyé sur les notions de liberté, d'égalité, et de volonté générale. ",
+        "rights": "",
+        "duration": 14127,
+        "subject": "essai"
+      },
+      "links": [
+        {
+          "type": "application/opds-publication+json",
+          "rel": "self",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/opdspub/du_contrat_social_rousseau.json"
+        },
+        {
+          "rel": "http://opds-spec.org/acquisition/open-access",
+          "href": "https://storage.googleapis.com/audiobook_edrlab/webpub/du_contrat_social_rousseau.json",
+          "type": "application/webpub+json"
+        }
+      ],
+      "images": [
+        {
+          "type": "image/jpeg",
+          "href": "https://upload.wikimedia.org/wikipedia/commons/d/db/Social_contract_rousseau_page.jpg"
+        }
+      ]
+    }
+  ]
+}
