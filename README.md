@@ -1,5 +1,7 @@
 # audiobooks
 
+OFFICIAL REPOSITORY : https://github.com/edrlab/lis-mon-livre
+
 **listen an audiobook on a GOOGLE smart speaker**
 
 connect an OPDS Feed with some audiobook Readium Web Publication Manifest to the Google Assistant
