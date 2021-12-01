@@ -2,7 +2,7 @@
   "metadata": {
     "@type": "http://schema.org/Audiobook",
     "title": "le prince",
-    "identifier": "machiavel_le_prince",
+    "identifier": "urn:id:machiavel_le_prince",
     "author": "Nicolas Machiavel",
     "publisher": "archive",
     "language": "fr",

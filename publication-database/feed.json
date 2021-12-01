@@ -11,7 +11,8 @@
     {
       "rel": "search",
       "href": "https://europe-west1-audiobooks-a6348.cloudfunctions.net/indexer?url=https://storage.googleapis.com/audiobook_edrlab/navigation/all.json&query={query}",
-      "type": "application/opds+json"
+      "type": "application/opds+json",
+      "templated": true
     }
   ],
   "navigation": [
@@ -55,7 +56,7 @@
           "metadata": {
             "@type": "http://schema.org/Audiobook",
             "title": "L'assommoir",
-            "identifier": "assommoir_emile_zola",
+            "identifier": "urn:id:assommoir_emile_zola",
             "author": "Emile Zola",
             "publisher": "archive",
             "language": "fr",
@@ -87,7 +88,7 @@
           "metadata": {
             "@type": "http://schema.org/Audiobook",
             "title": "Du contrat social",
-            "identifier": "du_contrat_social_rousseau",
+            "identifier": "urn:id:du_contrat_social_rousseau",
             "author": "Rousseau",
             "publisher": "archive",
             "language": "fr",

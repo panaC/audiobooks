@@ -15,7 +15,7 @@
       "metadata": {
         "@type": "http://schema.org/Audiobook",
         "title": "Thérèse Raquin",
-        "identifier": "therese_raquin_emile_zola",
+        "identifier": "urn:id:therese_raquin_emile_zola",
         "author": "Emile Zola",
         "publisher": "archive",
         "language": "fr",
@@ -47,7 +47,7 @@
       "metadata": {
         "@type": "http://schema.org/Audiobook",
         "title": "L'assommoir",
-        "identifier": "assommoir_emile_zola",
+        "identifier": "urn:id:assommoir_emile_zola",
         "author": "Emile Zola",
         "publisher": "archive",
         "language": "fr",
@@ -79,7 +79,7 @@
       "metadata": {
         "@type": "http://schema.org/Audiobook",
         "title": "Du contrat social",
-        "identifier": "du_contrat_social_rousseau",
+        "identifier": "urn:id:du_contrat_social_rousseau",
         "author": "Rousseau",
         "publisher": "archive",
         "language": "fr",
@@ -111,7 +111,7 @@
       "metadata": {
         "@type": "http://schema.org/Audiobook",
         "title": "La chevre de monsieur segin",
-        "identifier": "la_chevre_de_monsieur_segin_daudet",
+        "identifier": "urn:id:la_chevre_de_monsieur_segin_daudet",
         "author": "Alphonse Daudet",
         "publisher": "archive",
         "language": "fr",
@@ -143,7 +143,7 @@
       "metadata": {
         "@type": "http://schema.org/Audiobook",
         "title": "la guerre des boutons",
-        "identifier": "la_guerre_des_boutons_pergaud",
+        "identifier": "urn:id:la_guerre_des_boutons_pergaud",
         "author": "pergaud",
         "publisher": "archive",
         "language": "fr",
@@ -175,7 +175,7 @@
       "metadata": {
         "@type": "http://schema.org/Audiobook",
         "title": "le prince",
-        "identifier": "machiavel_le_prince",
+        "identifier": "urn:id:machiavel_le_prince",
         "author": "Nicolas Machiavel",
         "publisher": "archive",
         "language": "fr",
@@ -207,7 +207,7 @@
       "metadata": {
         "@type": "http://schema.org/Audiobook",
         "title": "peau d'âne",
-        "identifier": "peau_dane_perrault",
+        "identifier": "urn:id:peau_dane_perrault",
         "author": "Charles Perrault",
         "publisher": "archive",
         "language": "fr",
@@ -239,7 +239,7 @@
       "metadata": {
         "@type": "http://schema.org/Audiobook",
         "title": "vingt mille lieu sous les mers",
-        "identifier": "vingt_mille_lieu_sous_les_mers_verne",
+        "identifier": "urn:id:vingt_mille_lieu_sous_les_mers_verne",
         "author": "Jule Verne",
         "publisher": "archive",
         "language": "fr",

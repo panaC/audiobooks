@@ -15,7 +15,7 @@
             "metadata": {
                 "@type": "http://schema.org/Audiobook",
                 "title": "L'assommoir",
-                "identifier": "assommoir_emile_zola",
+                "identifier": "urn:id:assommoir_emile_zola",
                 "author": "Emile Zola",
                 "publisher": "archive",
                 "language": "fr",
@@ -47,7 +47,7 @@
             "metadata": {
                 "@type": "http://schema.org/Audiobook",
                 "title": "Du contrat social",
-                "identifier": "du_contrat_social_rousseau",
+                "identifier": "urn:id:du_contrat_social_rousseau",
                 "author": "Rousseau",
                 "publisher": "archive",
                 "language": "fr",

@@ -15,7 +15,7 @@
         "metadata": {
           "@type": "http://schema.org/Audiobook",
           "title": "L'assommoir",
-          "identifier": "assommoir_emile_zola",
+          "identifier": "urn:id:assommoir_emile_zola",
           "author": "Emile Zola",
           "publisher": "archive",
           "language": "fr",
@@ -47,7 +47,7 @@
         "metadata": {
           "@type": "http://schema.org/Audiobook",
           "title": "Thérèse Raquin",
-          "identifier": "therese_raquin_emile_zola",
+          "identifier": "urn:id:therese_raquin_emile_zola",
           "author": "Emile Zola",
           "publisher": "archive",
           "language": "fr",

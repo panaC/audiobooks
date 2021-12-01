@@ -2,7 +2,7 @@
   "metadata": {
     "@type": "http://schema.org/Audiobook",
     "title": "peau d'âne",
-    "identifier": "peau_dane_perrault",
+    "identifier": "urn:id:peau_dane_perrault",
     "author": "Charles Perrault",
     "publisher": "archive",
     "language": "fr",

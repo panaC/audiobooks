@@ -3,7 +3,7 @@
   "metadata": {
     "@type": "http://schema.org/Audiobook",
     "title": "La chevre de monsieur segin",
-    "identifier": "la_chevre_de_monsieur_segin_daudet",
+    "identifier": "urn:id:la_chevre_de_monsieur_segin_daudet",
     "author": "Alphonse Daudet",
     "publisher": "archive",
     "language": "fr",
